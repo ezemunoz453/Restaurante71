@@ -145,5 +145,33 @@ public class ProductoData {
         return producto;
     }
     
+       public Producto buscarProductoPorPrecio(Double precio) {
+        Producto producto= null;
+        
+        String sql = " SELECT  idProducto, nombre , cantidad, precio, estado FROM producto "
+                + "WHERE precio=? and estado=1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setDouble(1, precio);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                producto = new Producto();
+                producto.setIdProducto(rs.getInt("idProducto"));
+                producto.setNombre(rs.getString("nombre"));
+                producto.setCantidad(rs.getInt("cantidad"));
+                producto.setPrecio(rs.getDouble("precio"));
+//                producto.setEstado(true);
+                
+            } else {
+                JOptionPane.showMessageDialog(null, " No existe Producto con ese Precio");
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Producto");
+        }
+        return producto;
+    }
     
 }

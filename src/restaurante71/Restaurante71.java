@@ -28,7 +28,7 @@ public class Restaurante71 {
 
 
   //  Buscar por idProducto
-//        Producto encontrado = pData.buscarProductoPorId(2);
+//        Producto encontrado = pData.buscarProductoPorId(3);
 //        System.out.println(" IdProducto = " + encontrado.getIdProducto());
 //        System.out.println(" Nombre = " + encontrado.getNombre());
 //        System.out.println(" Cantidad = " + encontrado.getCantidad());
@@ -36,13 +36,20 @@ public class Restaurante71 {
 //        System.out.println(" Precio = " + encontrado.getPrecio());
 
   //  Buscar por Nombre Producto
-//        Producto encontrado = pData.buscarProductoPorNombre("coca cola");
+//        Producto encontrado = pData.buscarProductoPorNombre("papas fritas");
 //        System.out.println(" IdProducto = " + encontrado.getIdProducto());
 //        System.out.println(" Nombre = " + encontrado.getNombre());
 //        System.out.println(" Cantidad = " + encontrado.getCantidad());
 //        System.out.println(" Estado = " + encontrado.isEstado());
 //        System.out.println(" Precio = " + encontrado.getPrecio());
 
+//  Buscar por Precio
+//        Producto encontrado = pData.buscarProductoPorPrecio(10.0);
+//        System.out.println(" IdProducto = " + encontrado.getIdProducto());
+//        System.out.println(" Nombre = " + encontrado.getNombre());
+//        System.out.println(" Cantidad = " + encontrado.getCantidad());
+//        System.out.println(" Estado = " + encontrado.isEstado());
+//        System.out.println(" Precio = " + encontrado.getPrecio());
 
 
 ///nuihuhuygbyun
