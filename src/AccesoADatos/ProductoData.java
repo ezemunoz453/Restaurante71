@@ -21,11 +21,11 @@ public class ProductoData {
     
     
     public void guardarProducto( Producto producto) {
-        String sql = "INSERT INTO producto (nombre, cantidad ,precio, estado) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO producto (nombre, stock ,precio, estado) VALUES (?,?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, producto.getNombre());
-            ps.setInt(2, producto.getCantidad());
+            ps.setInt(2, producto.getStock());
             ps.setDouble(3, producto.getPrecio());
             ps.setBoolean(4, producto.isEstado());
             
@@ -46,11 +46,11 @@ public class ProductoData {
     }
     
     public void modificarProducto(Producto producto) {
-        String sql = "UPDATE producto SET nombre=?, cantidad=?, precio=? WHERE idProducto=? ";
+        String sql = "UPDATE producto SET nombre=?, stock=?, precio=? WHERE idProducto=? ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, producto.getNombre());
-            ps.setInt(2, producto.getCantidad());
+            ps.setInt(2, producto.getStock());
             ps.setDouble(3, producto.getPrecio());
             ps.setDouble(4, producto.getIdProducto());
                       
@@ -89,7 +89,7 @@ public class ProductoData {
     public Producto buscarProductoPorId(int idProducto) {
         Producto producto= null;
         
-        String sql = " SELECT  idProducto, nombre , cantidad, precio, estado FROM producto "
+        String sql = " SELECT  idProducto, nombre , stock, precio, estado FROM producto "
                 + "WHERE idProducto=? and estado=1";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -100,7 +100,7 @@ public class ProductoData {
                 producto = new Producto();
                 producto.setIdProducto(rs.getInt("idProducto"));
                 producto.setNombre(rs.getString("nombre"));
-                producto.setCantidad(rs.getInt("cantidad"));
+                producto.setStock(rs.getInt("stock"));
                 producto.setPrecio(rs.getDouble("precio"));
 //                producto.setEstado(true);
                 
@@ -119,7 +119,7 @@ public class ProductoData {
     public Producto buscarProductoPorNombre(String nombreProd) {
         Producto producto= null;
         
-        String sql = " SELECT  idProducto, nombre , cantidad, precio, estado FROM producto "
+        String sql = " SELECT  idProducto, nombre , stock, precio, estado FROM producto "
                 + "WHERE nombre=? and estado=1";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -130,7 +130,7 @@ public class ProductoData {
                 producto = new Producto();
                 producto.setIdProducto(rs.getInt("idProducto"));
                 producto.setNombre(rs.getString("nombre"));
-                producto.setCantidad(rs.getInt("cantidad"));
+                producto.setStock(rs.getInt("stock"));
                 producto.setPrecio(rs.getDouble("precio"));
 //                producto.setEstado(true);
                 
@@ -148,7 +148,7 @@ public class ProductoData {
        public Producto buscarProductoPorPrecio(Double precio) {
         Producto producto= null;
         
-        String sql = " SELECT  idProducto, nombre , cantidad, precio, estado FROM producto "
+        String sql = " SELECT  idProducto, nombre , stock, precio, estado FROM producto "
                 + "WHERE precio=? and estado=1";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -159,7 +159,7 @@ public class ProductoData {
                 producto = new Producto();
                 producto.setIdProducto(rs.getInt("idProducto"));
                 producto.setNombre(rs.getString("nombre"));
-                producto.setCantidad(rs.getInt("cantidad"));
+                producto.setStock(rs.getInt("stock"));
                 producto.setPrecio(rs.getDouble("precio"));
 //                producto.setEstado(true);
                 
