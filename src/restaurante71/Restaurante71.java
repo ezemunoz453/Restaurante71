@@ -1,10 +1,15 @@
+// www.zdescargas.org/
+
 package restaurante71;
 
 import AccesoADatos.Conexion;
 import AccesoADatos.MesaData;
 import AccesoADatos.ProductoData;
+import AccesoADatos.UsuarioData;
 import Entidades.Mesa;
 import Entidades.Producto;
+import Entidades.Usuario;
+import Vistas.Loggin;
 import java.sql.Connection;
 
 public class Restaurante71 {
@@ -15,6 +20,7 @@ public class Restaurante71 {
 //     con=Conexion.desconectar();
         ProductoData pData = new ProductoData();
         MesaData mData= new MesaData();
+        UsuarioData uData= new UsuarioData();
 
 // Guardar Producto
 //Producto prod= new Producto("Lomito", 100, 2000.0 , true);
@@ -66,6 +72,9 @@ public class Restaurante71 {
 //eliminar mesa
 //mData.eliminarMesa(8);
 
+//eliminar mesa x numero mesa
+//mData.eliminarMesaPorNumeroMesa(2);
+
 
 // listar mesas
 //for(Mesa mesa:mData.listarMesas()){
@@ -76,6 +85,34 @@ public class Restaurante71 {
 //    
 //    System.out.println("");
 //    }
+
+
+// listar mesas libres
+//for(Mesa mesa:mData.listarMesasLibres()){
+//    System.out.println(" id" +mesa.getIdMesa());
+//    System.out.println(" capacidad = "+mesa.getCapacidad());
+//    System.out.println(" numero Mesa =" +mesa.getNumeroMesa());
+//    System.out.println(" Estado libre/ocupado= "+mesa.isEstado());
+//    
+//    System.out.println("");
+//    } 
+//
+//////////Loggin log= new Loggin();
+//////////log.setVisible(true);
+
+// guardar usuario
+//Usuario user= new Usuario("jorgej", "1111", "Administrador", "jorge", "juarez");
+//UsuarioData uData= new UsuarioData();
+//uData.guardarUsuario(user);
+
+// modificar usuario
+//Usuario user= new Usuario("poroto", "3333", "Administrador", "jorge", "juarez aaa");
+//UsuarioData uData= new UsuarioData();
+//uData.modificarUsuario(user);
+
+//eliminar usuario
+//uData.eliminarUsuario("poroto");
+
     }
     
 }

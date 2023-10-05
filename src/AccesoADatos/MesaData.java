@@ -64,23 +64,38 @@ public class MesaData {
 
     }
 
-    public void eliminarMesa(int idMesa) {
-//        String sql = "UPDATE mesa SET estado=0 WHERE idMesa=? ";
-//        try {
-//            PreparedStatement ps = con.prepareStatement(sql);
-//            ps.setInt(1, idMesa);
-//
-//            int exito = ps.executeUpdate();
-//
-//            if (exito == 1) {
-//                JOptionPane.showMessageDialog(null, " Mesa eliminada- Estado inactivo");
-//            }
-//
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Mesa");
-//        }
-// hacer DELETE
+    public void eliminarMesaPorId(int idMesa) {
+        String sql = "DELETE FROM mesa WHERE idMesa=? ";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idMesa);
 
+            int exito = ps.executeUpdate();
+
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, " Mesa eliminada Definitivamente");
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Mesa");
+        }
+    }
+    
+     public void eliminarMesaPorNumeroMesa(int numeroMesa) {
+        String sql = "DELETE FROM mesa WHERE numeroMesa=? ";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, numeroMesa);
+
+            int exito = ps.executeUpdate();
+
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, " Mesa eliminada Definitivamente");
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Mesa");
+        }
     }
 
     public List<Mesa> listarMesas() {
@@ -139,5 +154,32 @@ public class MesaData {
         return mesas;
     }
 
+    public List<Mesa> listarMesasOcupadas() {
+
+        String sql = " SELECT idMesa,numeroMesa, capacidad, estado FROM mesa WHERE estado=0  ";
+                //1 true libre- 0 false ocupado
+        
+        ArrayList<Mesa> mesas = new ArrayList<>();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Mesa mesa = new Mesa();
+                mesa.setIdMesa(rs.getInt("idMesa"));
+                mesa.setNumeroMesa(rs.getInt("numeroMesa"));
+                mesa.setCapacidad(rs.getInt("capacidad"));
+                mesa.setEstado(rs.getBoolean("estado"));
+                
+                mesas.add(mesa);
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla mesa");
+        }
+        return mesas;
+    }
     
 }
