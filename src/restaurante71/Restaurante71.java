@@ -97,8 +97,8 @@ public class Restaurante71 {
 //    System.out.println("");
 //    } 
 //
-//////////Loggin log= new Loggin();
-//////////log.setVisible(true);
+//Loggin log= new Loggin();
+//log.setVisible(true);
 
 // guardar usuario
 //Usuario user= new Usuario("jorgej", "1111", "Administrador", "jorge", "juarez");
@@ -113,6 +113,18 @@ public class Restaurante71 {
 //eliminar usuario
 //uData.eliminarUsuario("poroto");
 
+
+// listar usuarios
+//for(Usuario usuario:uData.listarUsuarios()){
+//    System.out.println(usuario.getUsername());
+//    System.out.println(usuario.getContrasena());
+//    System.out.println(usuario.getNivel());
+//    System.out.println(usuario.getNombre());
+//    System.out.println(usuario.getApellido());
+//    
+//    System.out.println("");
+//    }
+    
     }
     
 }
