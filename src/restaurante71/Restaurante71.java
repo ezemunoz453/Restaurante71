@@ -7,10 +7,13 @@ import AccesoADatos.MesaData;
 import AccesoADatos.ProductoData;
 import AccesoADatos.UsuarioData;
 import Entidades.Mesa;
+import Entidades.Pedido;
+import Entidades.PedidoProducto;
 import Entidades.Producto;
 import Entidades.Usuario;
 import Vistas.Loggin;
 import java.sql.Connection;
+import java.time.LocalDateTime;
 
 public class Restaurante71 {
 
@@ -22,6 +25,10 @@ public class Restaurante71 {
         MesaData mData= new MesaData();
         UsuarioData uData= new UsuarioData();
 
+//////////        Loggin log= new Loggin();
+//////////        log.setVisible(true);
+        
+        
 // Guardar Producto
 //Producto prod= new Producto("Lomito", 100, 2000.0 , true);
 //pData.guardarProducto(prod);
@@ -97,8 +104,7 @@ public class Restaurante71 {
 //    System.out.println("");
 //    } 
 //
-//Loggin log= new Loggin();
-//log.setVisible(true);
+
 
 // guardar usuario
 //Usuario user= new Usuario("jorgej", "1111", "Administrador", "jorge", "juarez");
@@ -125,6 +131,30 @@ public class Restaurante71 {
 //    System.out.println("");
 //    }
     
+
+
+//for(Usuario usuario:uData.listarUsuariosPorNivel("Administrador")){
+//    System.out.println(usuario.getUsername());
+//    System.out.println(usuario.getContrasena());
+//    System.out.println(usuario.getNivel());
+//    System.out.println(usuario.getNombre());
+//    System.out.println(usuario.getApellido());
+//    
+//    System.out.println("");
+//    }
+
+//Mesa mesa= new Mesa(5, 4, true);
+//mData.guardarMesa(mesa);
+//
+//Producto prod= new Producto("pap", 100, 100, true);
+//pData.guardarProducto(prod);
+//
+//Pedido pedido= new Pedido(mesa, "pepe", LocalDateTime.now(), 1000, true);
+//PedidoProducto pedProd= new PedidoProducto(pedido, prod, 0);
+//
+
+
+
     }
     
 }

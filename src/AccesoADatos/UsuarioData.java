@@ -109,5 +109,33 @@ public class UsuarioData {
         }
         return usuarios;
     }
+    
+    public List<Usuario> listarUsuariosPorNivel(String Nivel) {
+
+        String sql = " SELECT username, contrasena, Nivel, nombre, apellido FROM usuario WHERE Nivel=? ";
+                
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, Nivel);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Usuario usuario = new Usuario();
+                usuario.setUsername(rs.getString("username"));
+                usuario.setContrasena(rs.getString("contrasena"));
+                usuario.setNivel(rs.getString("Nivel"));
+                usuario.setNombre(rs.getString("nombre"));
+                usuario.setApellido(rs.getString("apellido"));
+
+                usuarios.add(usuario);
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla usuario");
+        }
+        return usuarios;
+    }
 
 }
