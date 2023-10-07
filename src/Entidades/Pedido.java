@@ -12,6 +12,7 @@ public class Pedido {
     private LocalDateTime fechaHora;
     private double importe;
     private boolean estado;
+    List<PedidoProducto> productos;
 
     private ArrayList<PedidoProducto> pedProd = new ArrayList<PedidoProducto>();
 
@@ -104,4 +105,5 @@ public class Pedido {
           } return suma;
        
    }
+       
 }

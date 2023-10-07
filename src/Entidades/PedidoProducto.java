@@ -55,13 +55,11 @@ public class PedidoProducto {
 
     public void setSubtotal(double subtotal) {
         this.subtotal = subtotal;
-    }
-
-    
+    }    
     
     public double calcularSubtotal(){
       double st= cantidad * producto.getPrecio();
       return st;
   }
-
+   
 }

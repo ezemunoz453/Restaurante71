@@ -1,12 +1,16 @@
 
 package Entidades;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Mesa {
     private int idMesa;
     private int numeroMesa;
     private int capacidad;
     private boolean estado;
+    List<Pedido> pedidos;
 
     public Mesa() {
     }
@@ -60,8 +64,12 @@ public class Mesa {
     public String toString() {
         return "Mesa{" + "idMesa=" + idMesa + ", numeroMesa=" + numeroMesa + ", capacidad=" + capacidad + ", estado=" + estado + '}';
     }
-
-    
-    
+    public double calcularImporteTotal() {
+        double importeTotal = 0;
+        for (Pedido pedido : pedidos) {
+            importeTotal += pedido.obtenerTotal((ArrayList) pedidos);
+        }
+        return importeTotal;
+    }   
     
 }
