@@ -18,8 +18,9 @@ public class PedidoData {
     
     public PedidoData() {
         con = Conexion.getConexion();
+        
     }
-    
+    Mesa mesa = new Mesa();
     
     public void guardarPedidoData( Pedido pedido) {
         LocalDateTime now = LocalDateTime.now();
@@ -101,9 +102,12 @@ public class PedidoData {
             
             if (rs.next()) {
                 pedido = new Pedido();
-                pedido.setidMesa(pedido.mesa.getInt("idMesa"));
+                                
+                mesa.setIdMesa(rs.getInt("idMesa"));  // Asigna el id de la mesa al objeto Mesa
+                pedido.setMesa(mesa);  // Asigna la mesa al pedido
+               
                 pedido.setNombreMesero(rs.getString("nombre mesero"));
-                pedido.setFechaHora(rs.getLocalTime(fechaHora));
+                pedido.setFechaHora(rs.getTimestamp("fechaHora").toLocalDateTime());
                 pedido.setImporte(rs.getDouble("importe"));
                 pedido.setEstado(rs.getBoolean("estado"));
 //                producto.setEstado(true);
@@ -132,8 +136,9 @@ public class PedidoData {
             
             if (rs.next()) {
                 pedido = new Pedido();
-                pedido.setMesa(pedido.mesa.getIdMesa());
-                pedido.setFechaHora(rs.getLocalDate("fechaHora"));
+                mesa.setIdMesa(rs.getInt("idMesa"));  
+                pedido.setMesa(mesa); 
+                pedido.setFechaHora(rs.getTimestamp("fechaHora").toLocalDateTime());
                 pedido.setImporte(rs.getInt("importe"));
                 pedido.setEstado(rs.getBoolean("estado"));
                 
@@ -155,13 +160,13 @@ public class PedidoData {
                 + "WHERE idMesa=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, mesa);
+            ps.setInt(1, mesa.getIdMesa()); 
             ResultSet rs = ps.executeQuery();
             
             if (rs.next()) {
                 pedido = new Pedido();
                 pedido.setNombreMesero(rs.getString("nombre mesero"));
-                pedido.setFechaHora(rs.getLocalDateTime("fecha hora"));
+                pedido.setFechaHora(rs.getTimestamp("fechaHora").toLocalDateTime());
                 pedido.setImporte(rs.getDouble("importe"));
                 pedido.setEstado(rs.getBoolean("estado"));
 
@@ -176,6 +181,8 @@ public class PedidoData {
         }
         return pedido;
     }
+       
+         
     
 }
 

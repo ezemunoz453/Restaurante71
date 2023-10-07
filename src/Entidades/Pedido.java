@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 public class Pedido {
     
    private int idPedido;
-   private Mesa mesa;
+   public Mesa mesa;
    private String nombreMesero;
    private LocalDateTime fechaHora;
    private double importe;
