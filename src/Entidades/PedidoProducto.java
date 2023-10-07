@@ -4,24 +4,25 @@ package Entidades;
 
 public class PedidoProducto {
     private int idPedidoProducto;
-    private Pedido pedido;
+//    private Pedido pedido;
     private Producto producto;
     private int cantidad;
+    private double subtotal;
 
     public PedidoProducto() {
     }
 
-    public PedidoProducto(Pedido pedido, Producto producto, int cantidad) {
-        this.pedido = pedido;
+    public PedidoProducto(Producto producto, int cantidad) {
         this.producto = producto;
         this.cantidad = cantidad;
+        this.subtotal = calcularSubtotal();
     }
 
-    public PedidoProducto(int idPedidoProducto, Pedido pedido, Producto producto, int cantidad) {
+    public PedidoProducto(int idPedidoProducto, Producto producto, int cantidad) {
         this.idPedidoProducto = idPedidoProducto;
-        this.pedido = pedido;
         this.producto = producto;
         this.cantidad = cantidad;
+        this.subtotal = calcularSubtotal();
     }
 
     public int getIdPedidoProducto() {
@@ -30,14 +31,6 @@ public class PedidoProducto {
 
     public void setIdPedidoProducto(int idPedidoProducto) {
         this.idPedidoProducto = idPedidoProducto;
-    }
-
-    public Pedido getPedido() {
-        return pedido;
-    }
-
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
     }
 
     public Producto getProducto() {
@@ -56,14 +49,19 @@ public class PedidoProducto {
         this.cantidad = cantidad;
     }
 
-    @Override
-    public String toString() {
-        return "PedidoProducto{" + "idPedidoProducto=" + idPedidoProducto + ", pedido=" + pedido + ", producto=" + producto + ", cantidad=" + cantidad + '}';
+    public double getSubtotal() {
+        return subtotal;
     }
-    
-    
-    
 
-  
+    public void setSubtotal(double subtotal) {
+        this.subtotal = subtotal;
+    }
+
+    
+    
+    public double calcularSubtotal(){
+      double st= cantidad * producto.getPrecio();
+      return st;
+  }
 
 }

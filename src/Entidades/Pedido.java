@@ -1,35 +1,37 @@
-
 package Entidades;
 
 import java.time.LocalDateTime;
-
+import java.util.ArrayList;
+import java.util.List;
 
 public class Pedido {
-    
-   private int idPedido;
-   public Mesa mesa;
-   private String nombreMesero;
-   private LocalDateTime fechaHora;
-   private double importe;
-   private boolean estado;
+
+    private int idPedido;
+    public Mesa mesa;
+    private String nombreMesero;
+    private LocalDateTime fechaHora;
+    private double importe;
+    private boolean estado;
+
+    private ArrayList<PedidoProducto> pedProd = new ArrayList<PedidoProducto>();
 
     public Pedido() {
     }
 
-    public Pedido(int idPedido, Mesa mesa, String nombreMesero, LocalDateTime fechaHora, double importe, boolean estado) {
+    public Pedido(Mesa mesa, String nombreMesero, LocalDateTime fechaHora,  boolean estado) {
+        this.mesa = mesa;
+        this.nombreMesero = nombreMesero;
+        this.fechaHora = fechaHora;
+        this.importe = obtenerTotal(pedProd);
+        this.estado = estado;
+    }
+
+    public Pedido(int idPedido, Mesa mesa, String nombreMesero, LocalDateTime fechaHora,  boolean estado) {
         this.idPedido = idPedido;
         this.mesa = mesa;
         this.nombreMesero = nombreMesero;
         this.fechaHora = fechaHora;
-        this.importe = importe;
-        this.estado = estado;
-    }
-
-    public Pedido(Mesa mesa, String nombreMesero, LocalDateTime fechaHora, double importe, boolean estado) {
-        this.mesa = mesa;
-        this.nombreMesero = nombreMesero;
-        this.fechaHora = fechaHora;
-        this.importe = importe;
+        this.importe = obtenerTotal(pedProd);
         this.estado = estado;
     }
 
@@ -77,18 +79,29 @@ public class Pedido {
         return estado;
     }
 
-    public void setEstado(boolean cobrada) {
+    public void setEstado(boolean estado) {
         this.estado = estado;
     }
 
-    @Override
-    public String toString() {
-        return "Pedido{" + "idPedido=" + idPedido + ", mesa=" + mesa + ", nombreMesero=" + nombreMesero + ", fechaHora=" + fechaHora + ", importe=" + importe + ", estado=" + estado + '}';
+    public ArrayList<PedidoProducto> getPedProd() {
+        return pedProd;
     }
-   
-   
-   
-           
-           
-           
+
+    public void setPedProd(ArrayList<PedidoProducto> pedProd) {
+        this.pedProd = pedProd;
+    }
+
+
+    public void cargarPprodAPedido(PedidoProducto pedP) {
+        pedProd.add(pedP);
+    }
+    
+       public double obtenerTotal(ArrayList ped){
+           pedProd= ped;
+       double suma= 0;
+       for (PedidoProducto pedidoProducto : pedProd) {
+           suma= suma + pedidoProducto.getSubtotal();
+          } return suma;
+       
+   }
 }

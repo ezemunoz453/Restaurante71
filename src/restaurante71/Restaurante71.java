@@ -4,6 +4,7 @@ package restaurante71;
 
 import AccesoADatos.Conexion;
 import AccesoADatos.MesaData;
+import AccesoADatos.PedidoProductoData;
 import AccesoADatos.ProductoData;
 import AccesoADatos.UsuarioData;
 import Entidades.Mesa;
@@ -14,6 +15,8 @@ import Entidades.Usuario;
 import Vistas.Loggin;
 import java.sql.Connection;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Restaurante71 {
 
@@ -25,8 +28,8 @@ public class Restaurante71 {
         MesaData mData= new MesaData();
         UsuarioData uData= new UsuarioData();
 
-//////////        Loggin log= new Loggin();
-//////////        log.setVisible(true);
+//        Loggin log= new Loggin();
+//        log.setVisible(true);
         
         
 // Guardar Producto
@@ -132,7 +135,7 @@ public class Restaurante71 {
 //    }
     
 
-
+//listar usuarios x nivel
 //for(Usuario usuario:uData.listarUsuariosPorNivel("Administrador")){
 //    System.out.println(usuario.getUsername());
 //    System.out.println(usuario.getContrasena());
@@ -143,18 +146,70 @@ public class Restaurante71 {
 //    System.out.println("");
 //    }
 
+
 //Mesa mesa= new Mesa(5, 4, true);
 //mData.guardarMesa(mesa);
-//
-//Producto prod= new Producto("pap", 100, 100, true);
+
+// calcular subtotal- metodo de pedido producto
+//Producto prod= new Producto("pepsi", 1500, 750, true);
 //pData.guardarProducto(prod);
-//
-//Pedido pedido= new Pedido(mesa, "pepe", LocalDateTime.now(), 1000, true);
-//PedidoProducto pedProd= new PedidoProducto(pedido, prod, 0);
-//
+//PedidoProducto pedProd= new PedidoProducto(prod, 3) ;
+//pedProd.calcularSubtotal();
 
 
+////////////////// calcular total- no usar
+//Producto prod= new Producto("pepsi", 1500, 800, true);
+//Producto prod1= new Producto("brhama lata", 2400, 700, true);
+//Producto prod2= new Producto("hamburguesa con chedar", 100, 2800, true);
+//Producto prod3= new Producto("empanada carne salada", 500, 400, true);
 
-    }
+//pData.guardarProducto(prod);
+//pData.guardarProducto(prod1);
+//pData.guardarProducto(prod2);
+//pData.guardarProducto(prod3);
+
+//PedidoProducto pedProd= new PedidoProducto(prod, 1) ;
+//PedidoProducto pedProd1= new PedidoProducto(prod1, 1) ;
+//PedidoProducto pedProd2= new PedidoProducto(prod2, 1) ;
+//PedidoProducto pedProd3= new PedidoProducto(prod3, 4) ;
+
+////        System.out.println(" subtotal= "+pedProd.calcularSubtotal());
+////        System.out.println(" subtotal= "+pedProd1.calcularSubtotal());
+////        System.out.println(" subtotal= "+pedProd2.calcularSubtotal());
+////        System.out.println(" subtotal= "+pedProd3.calcularSubtotal());
+////
+
+//List<PedidoProducto> pedidos = new ArrayList<PedidoProducto>();
+//pedidos.add(pedProd);
+//pedidos.add(pedProd1);
+//pedidos.add(pedProd2);
+//pedidos.add(pedProd3);
+//double suma =0;
+// for (PedidoProducto pedidoProducto : pedidos) {
+//           suma= suma+ pedidoProducto.getSubtotal();
+// }
+//           System.out.println(" suma "+ suma);
+           
+// guardar pedido producto
+//Producto prod= new Producto("coca cola", 1000, 850, true);
+//pData.guardarProducto(prod);
+//PedidoProducto pp= new PedidoProducto(prod, 4);
+//PedidoProductoData ppd= new PedidoProductoData();
+//ppd.guardarPedidoProducto(pp);
+
+// modificar pedido producto
+//Producto prod1= new Producto("Pepsi", 1000, 700, true);
+//pData.guardarProducto(prod1);
+//PedidoProducto pp= new PedidoProducto(1,prod1, 5);
+//PedidoProductoData ppd= new PedidoProductoData();
+//ppd.modificarPedidoProducto(pp);
+
+//eliminar pedido producto
+//PedidoProductoData ppd= new PedidoProductoData();
+//ppd.eliminarPedidoProducto(1);
+
+ }
+ 
+    
     
 }
