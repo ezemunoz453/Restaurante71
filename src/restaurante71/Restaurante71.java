@@ -4,6 +4,7 @@ package restaurante71;
 
 import AccesoADatos.Conexion;
 import AccesoADatos.MesaData;
+import AccesoADatos.PedidoData;
 import AccesoADatos.PedidoProductoData;
 import AccesoADatos.ProductoData;
 import AccesoADatos.UsuarioData;
@@ -27,6 +28,7 @@ public class Restaurante71 {
         ProductoData pData = new ProductoData();
         MesaData mData= new MesaData();
         UsuarioData uData= new UsuarioData();
+        PedidoData peData= new PedidoData();
 
 //        Loggin log= new Loggin();
 //        log.setVisible(true);
@@ -208,8 +210,16 @@ public class Restaurante71 {
 //PedidoProductoData ppd= new PedidoProductoData();
 //ppd.eliminarPedidoProducto(1);
 
+
+//pedidoData
+
+
+//Pedido pedido= new Pedido(2, mesa , "Mariano", LocalDateTime.of(2023, 10, 7, 23, 55), true);
+//peData.guardarPedidoData(pedido);
+
  }
  
+    
     
     
 }
