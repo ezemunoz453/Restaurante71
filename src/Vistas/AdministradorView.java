@@ -25,7 +25,7 @@ public class AdministradorView extends javax.swing.JFrame {
         initComponents();
         this.setContentPane(fondo);
         initComponents();
-        setSize(500, 550);
+        setSize(1000, 700);
         setResizable(false);
         setLocationRelativeTo(null);
     }

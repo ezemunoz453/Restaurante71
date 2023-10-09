@@ -30,8 +30,8 @@ public class Restaurante71 {
         UsuarioData uData= new UsuarioData();
         PedidoData peData= new PedidoData();
 
-//        Loggin log= new Loggin();
-//        log.setVisible(true);
+        Loggin log= new Loggin();
+        log.setVisible(true);
         
         
 // Guardar Producto
@@ -193,9 +193,9 @@ public class Restaurante71 {
 //           System.out.println(" suma "+ suma);
            
 // guardar pedido producto
-//Producto prod= new Producto("coca cola", 1000, 850, true);
+//Producto prod= new Producto("sheppes", 1000, 850, true);
 //pData.guardarProducto(prod);
-//PedidoProducto pp= new PedidoProducto(prod, 4);
+//PedidoProducto pp= new PedidoProducto(prod, 100);
 //PedidoProductoData ppd= new PedidoProductoData();
 //ppd.guardarPedidoProducto(pp);
 

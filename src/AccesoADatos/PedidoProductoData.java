@@ -1,11 +1,14 @@
 package AccesoADatos;
 
 import Entidades.PedidoProducto;
+import Entidades.Producto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class PedidoProductoData {
@@ -15,6 +18,9 @@ public class PedidoProductoData {
     public PedidoProductoData() {
         con = Conexion.getConexion();
     }
+    
+    Producto producto= new Producto();
+    ProductoData pData= new ProductoData();
 
     public void guardarPedidoProducto(PedidoProducto pp) {
         String sql = "INSERT INTO pedidoproducto (idProducto, cantidad, subtotal) VALUES (?,?,?)";
@@ -30,12 +36,14 @@ public class PedidoProductoData {
                 pp.setIdPedidoProducto(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "Pedido Producto generado con exito ");
             }
-            ps.close();
-
+            
+            
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Pedido Producto");
         }
+        
 
+           
     }
 
     public void modificarPedidoProducto(PedidoProducto pp) {
