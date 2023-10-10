@@ -22,7 +22,7 @@ public class PedidoData {
     }
     Mesa mesa = new Mesa();
     
-    public void guardarPedidoData( Pedido pedido) {
+    public void guardarPedido( Pedido pedido) {
         LocalDateTime now = LocalDateTime.now();
         String sql = "INSERT INTO pedido(idMesa,nombreMesero,fechaHora,importe,estado) VALUES (?,?,?,?,?)";
         try {

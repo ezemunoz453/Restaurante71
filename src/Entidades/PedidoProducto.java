@@ -4,7 +4,7 @@ package Entidades;
 
 public class PedidoProducto {
     private int idPedidoProducto;
-//    private Pedido pedido;
+
     private Producto producto;
     private int cantidad;
     private double subtotal;

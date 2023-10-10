@@ -23,6 +23,7 @@ public class ProductoData {
     public void guardarProducto( Producto producto) {
         String sql = "INSERT INTO producto (nombre, stock ,precio, estado) VALUES (?,?,?,?)";
         try {
+            
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, producto.getNombre());
             ps.setInt(2, producto.getStock());
@@ -39,7 +40,7 @@ public class ProductoData {
             ps.close();
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Producto");
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Producto- No puede duplicar producto");
         
         }
         
