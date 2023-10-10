@@ -11,6 +11,8 @@ import java.sql.Timestamp;
 import javax.swing.JOptionPane;
 import java.time.LocalDateTime;
 import Entidades.Mesa;
+import Entidades.PedidoProducto;
+import static java.lang.Character.UnicodeScript.UNKNOWN;
 
 public class PedidoData {
     
@@ -18,57 +20,61 @@ public class PedidoData {
     
     public PedidoData() {
         con = Conexion.getConexion();
-        
-    }
+        }
+    
+    PedidoProducto pp= new PedidoProducto();
     Mesa mesa = new Mesa();
     
-    public void guardarPedido( Pedido pedido) {
+    public void guardarPedido(Pedido pedido) {
         LocalDateTime now = LocalDateTime.now();
-        String sql = "INSERT INTO pedido(idMesa,nombreMesero,fechaHora,importe,estado) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO pedido(nombreMesero,fechaHora,importe,idMesa,estado) VALUES (?,?,?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, pedido.mesa.getIdMesa());
-            ps.setString(2, pedido.getNombreMesero());
-           ps.setTimestamp(3, Timestamp.valueOf(now));
-            ps.setDouble(4, pedido.getImporte());
+
+            ps.setString(1, pedido.getNombreMesero());
+            ps.setTimestamp(2, Timestamp.valueOf(now));
+            ps.setDouble(3, pedido.getImporte());
+            ps.setInt(4, pedido.getMesa().getIdMesa());
             ps.setBoolean(5, pedido.isEstado());
-            
+
             ps.executeUpdate();
-            
+
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
-                pedido.getIdPedido();
+                pedido.setIdPedido(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "Pedido añadido con exito ");
             }
             ps.close();
-            
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Pedido");
-        
+
         }
         
     }
     
-    public void modificarPedido(Pedido pedido) {
-        String sql = "UPDATE pedido SET numeroMesa=? , nombreMesero=?, estado=? WHERE idMesa=? ";
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, pedido.mesa.getIdMesa());
-            ps.setString(2, pedido.getNombreMesero());
-            ps.setBoolean(3, pedido.isEstado());
-            
-                      
-            int exito = ps.executeUpdate();
-            
-            if (exito == 1) {
-                JOptionPane.showMessageDialog(null, " Producto modificado");
-            }
-            
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Producto");
-        }
-        
-    }
+//    public void modificarEstadoPedido(Pedido pedido) {
+//        String sql = "UPDATE pedido SET  estado=?  WHERE idPedido=? ";
+//       
+//        try {
+//            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+//            ps.setInt(2, insc.getAlumno().getIdAlumno());
+//            ps.setInt(3, insc.getMateria().getIdMateria());
+//
+//            ps.executeUpdate();
+//            ResultSet rs = ps.getGeneratedKeys();
+//            if (rs.next()) {
+//                insc.setIdInscripcion(rs.getInt(1));
+//                JOptionPane.showMessageDialog(null, "Alumno inscripto con exito ");
+//            }
+//            ps.close();
+//
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla inscripcion");
+//        }
+//
+//        
+//    }
     
     
     public void eliminarPedido(int idPedido) {

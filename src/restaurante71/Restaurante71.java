@@ -31,8 +31,8 @@ public class Restaurante71 {
         PedidoData peData= new PedidoData();
         PedidoProductoData ppd= new PedidoProductoData();
 
-//        Loggin log= new Loggin();
-//        log.setVisible(true);
+        Loggin log= new Loggin();
+        log.setVisible(true);
 //        
         
 // Guardar Producto
@@ -218,23 +218,24 @@ public class Restaurante71 {
 //Pedido pedido= new Pedido(2, mesa , "Mariano", LocalDateTime.of(2023, 10, 7, 23, 55), true);
 //peData.guardarPedidoData(pedido);
 
-//// adicionar pedido/ sin cargar base
-//Producto prod= new Producto("lomito atun ", 50, 3000, true);
-//pData.guardarProducto(prod);
-//Producto prod1= new Producto("cervecita 14 ", 2000, 1800, true);
-//pData.guardarProducto(prod1);
-//Mesa mesa= new Mesa(10, 2, true);
-//mData.guardarMesa(mesa);
-//PedidoProducto pp= new PedidoProducto(prod, 2);
-//PedidoProducto pp1= new PedidoProducto(prod1, 1);
-//ppd.guardarPedidoProducto(pp);
-//ppd.guardarPedidoProducto(pp1);
-//Pedido pedido1= new Pedido();
-//pedido1.agregarPedidoProducto(pp);
-//pedido1.agregarPedidoProducto(pp1);
-//        System.out.println(pedido1.getImporte());
-
-        
+//// adicionar pedido
+//Producto prod= new Producto("lomito super50 ", 3, 2900, true);// genero producto
+//pData.guardarProducto(prod);// cargo producto
+//Producto prod1= new Producto("cervecita 28 ", 500, 1000, true);// genero producto 2
+//pData.guardarProducto(prod1);// cargo producto 2
+//Mesa mesa= new Mesa(14, 2, true); // genero mesa
+//mData.guardarMesa(mesa);// cargo mesa a bd
+//PedidoProducto pp= new PedidoProducto(prod, 1); // genero pedidoproducto 1
+//PedidoProducto pp1= new PedidoProducto(prod1, 1);// genero pedido producto 2
+//ppd.guardarPedidoProducto(pp); // cargo pd 1
+//ppd.guardarPedidoProducto(pp1);// cargo pd 2
+//List<PedidoProducto> pedidosP= new ArrayList<PedidoProducto>();
+//pedidosP.add(pp); // agredo pedido producto a array
+//pedidosP.add(pp1);// agredo pedido producto 2 a array
+//Pedido pedido2= new Pedido(mesa, "jorge", LocalDateTime.now(), true, pedidosP); // genero pedido y cargo dentro el array
+//PedidoData pedData= new PedidoData();
+//pedData.guardarPedido(pedido2);// guardo pedido en bdatos
+ 
 
 
 

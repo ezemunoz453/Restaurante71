@@ -149,6 +149,15 @@ import Entidades.PedidoProducto;
         this.estado = estado;
     }
 
+    public Pedido(Mesa mesa, String nombreMesero, LocalDateTime fechaHora, boolean estado) {
+        this.mesa = mesa;
+        this.nombreMesero = nombreMesero;
+        this.fechaHora = fechaHora;
+        this.estado = estado;
+    }
+    
+    
+
     public int getIdPedido() {
         return idPedido;
     }
@@ -220,5 +229,6 @@ import Entidades.PedidoProducto;
         return total;
     }
     
+  
  
 }
