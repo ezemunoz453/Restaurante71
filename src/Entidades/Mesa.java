@@ -62,7 +62,7 @@ public class Mesa {
 
     @Override
     public String toString() {
-        return "Mesa{" + "idMesa=" + idMesa + ", numeroMesa=" + numeroMesa + ", capacidad=" + capacidad + ", estado=" + estado + '}';
+        return "Mesa{  Numero =" + numeroMesa + ", Capacidad =" + capacidad + ", Estado=" + estado + '}';
     }
 //    public double calcularImporteTotal() {
 //        double importeTotal = 0;

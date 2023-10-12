@@ -182,4 +182,30 @@ public class MesaData {
         return mesas;
     }
     
+     public Mesa buscarMesa(int idMesa) {
+        Mesa mesa = new Mesa();
+        String sql = " SELECT * FROM mesa "
+                + "WHERE idMesa=? ";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idMesa);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                mesa.setIdMesa(idMesa);
+                mesa.setNumeroMesa(rs.getInt("numeroMesa"));
+                mesa.setCapacidad(rs.getInt("capacidad"));
+                mesa.setEstado(rs.getBoolean("estado"));
+               ;
+            } else {
+                JOptionPane.showMessageDialog(null, " No existe Mesa con ese id");
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla mesa");
+        }
+        return mesa;
+    }
+    
 }

@@ -30,9 +30,10 @@ public class Restaurante71 {
         UsuarioData uData= new UsuarioData();
         PedidoData peData= new PedidoData();
         PedidoProductoData ppd= new PedidoProductoData();
+        PedidoData pedData= new PedidoData();
 
-        Loggin log= new Loggin();
-        log.setVisible(true);
+//        Loggin log= new Loggin();
+//        log.setVisible(true);
 //        
         
 // Guardar Producto
@@ -217,13 +218,13 @@ public class Restaurante71 {
 
 //Pedido pedido= new Pedido(2, mesa , "Mariano", LocalDateTime.of(2023, 10, 7, 23, 55), true);
 //peData.guardarPedidoData(pedido);
-
-//// adicionar pedido
-//Producto prod= new Producto("lomito super50 ", 3, 2900, true);// genero producto
+//
+////// adicionar pedido
+//Producto prod= new Producto("Pepsi 500 cm3 ", 5000, 800, true);// genero producto
 //pData.guardarProducto(prod);// cargo producto
-//Producto prod1= new Producto("cervecita 28 ", 500, 1000, true);// genero producto 2
+//Producto prod1= new Producto("Hamburguesa Ceb ", 500, 3000, true);// genero producto 2
 //pData.guardarProducto(prod1);// cargo producto 2
-//Mesa mesa= new Mesa(14, 2, true); // genero mesa
+//Mesa mesa= new Mesa(2, 2, true); // genero mesa
 //mData.guardarMesa(mesa);// cargo mesa a bd
 //PedidoProducto pp= new PedidoProducto(prod, 1); // genero pedidoproducto 1
 //PedidoProducto pp1= new PedidoProducto(prod1, 1);// genero pedido producto 2
@@ -232,17 +233,44 @@ public class Restaurante71 {
 //List<PedidoProducto> pedidosP= new ArrayList<PedidoProducto>();
 //pedidosP.add(pp); // agredo pedido producto a array
 //pedidosP.add(pp1);// agredo pedido producto 2 a array
-//Pedido pedido2= new Pedido(mesa, "jorge", LocalDateTime.now(), true, pedidosP); // genero pedido y cargo dentro el array
+//Pedido pedido2= new Pedido(mesa, "jorge", LocalDateTime.now(), 1, pedidosP); // genero pedido y cargo dentro el array
 //PedidoData pedData= new PedidoData();
 //pedData.guardarPedido(pedido2);// guardo pedido en bdatos
+
+// buscar pedido x id
+//        System.out.println(pedData.buscarPedidoPorId(9));
  
 
 
+////// eliminar pedido
+//PedidoData pedData= new PedidoData();
+//pedData.eliminarPedido(6);
 
 
- }
+// buscar pedido x numeroMesa
+//  System.out.println(pedData.buscarPedidoPorNumeroMesa(2));
+
+
+// Listar pedidos x mesero
+//for(Pedido pedido:pedData.ListarPedidosPorMesero("jorge")){
+//    System.out.println(pedido.getIdPedido());
+//    System.out.println(pedido.getImporte());
+//    System.out.println(pedido.getMesa());
+//    System.out.println(pedido.getIdPedido());
+//     System.out.println("");
+// }
  
+/////// NO DA
+// Listar pedidos x mesero x dia y estado cobrado 2
+//for(Pedido pedido:pedData.ListarPedidosPorMeseroPorDia("jorge", 2023-10-12)){
+//    System.out.println(pedido.getIdPedido());
+//    System.out.println(pedido.getImporte());
+//    System.out.println(pedido.getMesa());
+//    System.out.println(pedido.getIdPedido());
+//     System.out.println("");
+// }
     
     
+    }
     
 }

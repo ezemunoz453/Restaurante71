@@ -61,5 +61,11 @@ public class PedidoProducto {
       double st= cantidad * producto.getPrecio();
       return st;
   }
+
+    @Override
+    public String toString() {
+        return  ", Producto=" + producto + ", Cantidad=" + cantidad + ", Subtotal=" + subtotal ;
+    }
    
+    
 }
