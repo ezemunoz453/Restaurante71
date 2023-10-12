@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import Entidades.PedidoProducto;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
   
 
@@ -13,7 +15,9 @@ import Entidades.PedidoProducto;
     private int idPedido;
     public Mesa mesa;
     private String nombreMesero;
-    private LocalDateTime fechaHora;
+//    private LocalDateTime fechaHora;
+    private LocalDate fecha;
+    private LocalTime hora;
     private double importe;
     private int estado;//0 pendiente, 1 entregado , 2 pagado
     private List<PedidoProducto> pedidosP;
@@ -22,20 +26,24 @@ import Entidades.PedidoProducto;
         pedidosP = new ArrayList<>();
     }
 
-    public Pedido(Mesa mesa, String nombreMesero, LocalDateTime fechaHora, int estado, List<PedidoProducto> pedidosP) {
+    public Pedido(Mesa mesa, String nombreMesero, LocalDate fecha, LocalTime hora, int estado, List<PedidoProducto> pedidosP) {
         this.mesa = mesa;
         this.nombreMesero = nombreMesero;
-        this.fechaHora = fechaHora;
+        this.fecha= fecha;
+        this.hora = hora;
+//        this.fechaHora = fechaHora;
         this.pedidosP = new ArrayList<>();
         this.pedidosP.addAll(pedidosP); // Copiar la lista de productos
         this.importe = calcularTotal(); // Calcular el importe total
         this.estado = estado;
     }
 
-    public Pedido(Mesa mesa, String nombreMesero, LocalDateTime fechaHora, int estado) {
+    public Pedido(Mesa mesa, String nombreMesero, LocalDate fecha, LocalTime hora, int estado) {
         this.mesa = mesa;
         this.nombreMesero = nombreMesero;
-        this.fechaHora = fechaHora;
+        this.fecha= fecha;
+        this.hora = hora;
+//        this.fechaHora = fechaHora;
         this.estado = estado;
     }
     
@@ -65,13 +73,31 @@ import Entidades.PedidoProducto;
         this.nombreMesero = nombreMesero;
     }
 
-    public LocalDateTime getFechaHora() {
-        return fechaHora;
+    public LocalDate getFecha() {
+        return fecha;
     }
 
-    public void setFechaHora(LocalDateTime fechaHora) {
-        this.fechaHora = fechaHora;
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
     }
+
+    public LocalTime getHora() {
+        return hora;
+    }
+
+    public void setHora(LocalTime hora) {
+        this.hora = hora;
+    }
+    
+    
+
+//    public LocalDateTime getFechaHora() {
+//        return fechaHora;
+//    }
+//
+//    public void setFechaHora(LocalDateTime fechaHora) {
+//        this.fechaHora = fechaHora;
+//    }
 
     public double getImporte() {
         return importe;
@@ -117,8 +143,10 @@ import Entidades.PedidoProducto;
 
     @Override
     public String toString() {
-        return "Id Pedido=" + idPedido + ", Mesa=" + mesa + ", Mesero =" + nombreMesero + ", Fecha Hora=" + fechaHora + ", Importe total =" + importe + ", estado=" + estado + ", pedidosP=" + pedidosP + '}';
+        return  "idPedido=" + idPedido + ", mesa=" + mesa + ", nombreMesero=" + nombreMesero + ", fecha=" + fecha + ", hora=" + hora + ", importe=" + importe + ", estado=" + estado + ", pedidosP=" + pedidosP ;
     }
+
+  
     
   
  
