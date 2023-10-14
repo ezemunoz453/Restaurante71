@@ -21,7 +21,7 @@ public class Login extends javax.swing.JFrame {
 
     public Login() {
         initComponents();
-         this.setSize(910, 650);
+         this.setSize(910, 685 );
         setResizable(false);
 
         // cargar a jlabel una imagen
