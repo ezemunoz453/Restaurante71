@@ -13,7 +13,7 @@ import Entidades.Pedido;
 import Entidades.PedidoProducto;
 import Entidades.Producto;
 import Entidades.Usuario;
-import Vistas.Loggin;
+import Vistas.Login;
 import java.sql.Connection;
 import java.time.LocalDate;
 
@@ -37,10 +37,17 @@ public class Restaurante71 {
         PedidoProductoData ppd= new PedidoProductoData();
         PedidoData pedData= new PedidoData();
 
-//        Loggin log= new Loggin();
-//        log.setVisible(true);
-//        
+        Login log= new Login();
+        log.setVisible(true);
+        log.setLocationRelativeTo(null);
         
+     
+
+
+
+
+/////* PRUEBAS MAIN*/////////
+
 // Guardar Producto
 //Producto prod= new Producto("Lomito", 100, 2000.0 , true);
 //pData.guardarProducto(prod);

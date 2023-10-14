@@ -5,7 +5,7 @@
  */
 package Vistas;
 
-import Vistas.Loggin.FondoPanel;
+
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
