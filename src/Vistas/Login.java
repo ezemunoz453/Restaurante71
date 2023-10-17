@@ -83,6 +83,11 @@ public class Login extends javax.swing.JFrame {
                 jtUsuarioMousePressed(evt);
             }
         });
+        jtUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtUsuarioActionPerformed(evt);
+            }
+        });
         jPanel1.add(jtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 410, 50));
 
         jSeparator2.setForeground(new java.awt.Color(51, 51, 51));
@@ -292,6 +297,10 @@ public class Login extends javax.swing.JFrame {
     private void jbtnIngresarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnIngresarMouseExited
           jbtnIngresar.setBackground(new Color(201, 162, 123));
     }//GEN-LAST:event_jbtnIngresarMouseExited
+
+    private void jtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtUsuarioActionPerformed
+        jtUsuario.setText("");
+    }//GEN-LAST:event_jtUsuarioActionPerformed
 
     // metodo para cargar a label una imagen segun tamaño de label
     public void AgregarImagenALabel(JLabel labelName, String root) {
