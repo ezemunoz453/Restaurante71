@@ -138,4 +138,34 @@ public class UsuarioData {
         return usuarios;
     }
 
+    
+      public Usuario buscarUsuario(String userName) {
+        Usuario us = new Usuario();
+        String sql = " SELECT username, contrasena, Nivel, nombre, apellido FROM usuario "
+                + "WHERE username=? and estado=1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, userName);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+            
+                us.setUsername(userName);
+                us.setContrasena(rs.getString("contrasena"));
+                us.setNivel(rs.getString("nivel"));
+                us.setNombre(rs.getString("nombre"));
+                us.setApellido(rs.getString("apellido"));
+                
+                
+            } else {
+                JOptionPane.showMessageDialog(null, " No existe Usuario con ese Nombre de Usuario");
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Usuario");
+        }
+        return us;
+    }
+    
 }

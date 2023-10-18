@@ -264,7 +264,7 @@ public class Login extends javax.swing.JFrame {
 
                     if (Nivel.equalsIgnoreCase("Administrador")) {
                         dispose();
-                        new AdministradorView().setVisible(true);
+                        new AdministradorView1().setVisible(true);
                     } else if (Nivel.equalsIgnoreCase("Mesero")) {
                         dispose();
                         new MeseroView().setVisible(true);

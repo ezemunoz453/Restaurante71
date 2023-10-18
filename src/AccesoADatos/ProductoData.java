@@ -23,7 +23,7 @@ public class ProductoData {
     
     
     public void guardarProducto( Producto producto) {
-        String sql = "INSERT INTO producto (nombre, stock ,precio, estado) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO producto (nombre, stock ,precio, estado, tipo) VALUES (?,?,?,?, ?)";
         try {
             
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -31,6 +31,7 @@ public class ProductoData {
             ps.setInt(2, producto.getStock());
             ps.setDouble(3, producto.getPrecio());
             ps.setBoolean(4, producto.isEstado());
+            ps.setInt(5, producto.getTipo());
             
             ps.executeUpdate();
             
@@ -49,13 +50,14 @@ public class ProductoData {
     }
     
     public void modificarProducto(Producto producto) {
-        String sql = "UPDATE producto SET nombre=?, stock=?, precio=? WHERE idProducto=? ";
+        String sql = "UPDATE producto SET nombre=?, stock=?, precio=?, tipo=? WHERE idProducto=? ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, producto.getNombre());
             ps.setInt(2, producto.getStock());
             ps.setDouble(3, producto.getPrecio());
-            ps.setDouble(4, producto.getIdProducto());
+             ps.setInt(4, producto.getTipo());
+             ps.setDouble(5, producto.getIdProducto());
                       
             int exito = ps.executeUpdate();
             
@@ -119,10 +121,40 @@ public class ProductoData {
     }
     
     
+    public Producto buscarProductoPorTipo(int tipo) {
+        Producto producto= null;
+        
+        String sql = " SELECT  idProducto, nombre , stock, precio, estado, tipo FROM producto "
+                + "WHERE tipo=? and estado=1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, tipo);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                producto = new Producto();
+                producto.setIdProducto(rs.getInt("idProducto"));
+                producto.setNombre(rs.getString("nombre"));
+                producto.setStock(rs.getInt("stock"));
+                producto.setPrecio(rs.getDouble("precio"));
+                producto.setTipo(rs.getInt("tipo"));
+//                producto.setEstado(true);
+                
+            } else {
+                JOptionPane.showMessageDialog(null, " No existe El tipo de producto");
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Producto");
+        }
+        return producto;
+    }
+    
     public Producto buscarProductoPorNombre(String nombreProd) {
         Producto producto= null;
         
-        String sql = " SELECT  idProducto, nombre , stock, precio, estado FROM producto "
+        String sql = " SELECT  idProducto, nombre , stock, precio, estado, tipo FROM producto "
                 + "WHERE nombre=? and estado=1";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -135,6 +167,7 @@ public class ProductoData {
                 producto.setNombre(rs.getString("nombre"));
                 producto.setStock(rs.getInt("stock"));
                 producto.setPrecio(rs.getDouble("precio"));
+                 producto.setTipo(rs.getInt("tipo"));
 //                producto.setEstado(true);
                 
             } else {
@@ -151,7 +184,7 @@ public class ProductoData {
        public Producto buscarProductoPorPrecio(Double precio) {
         Producto producto= null;
         
-        String sql = " SELECT  idProducto, nombre , stock, precio, estado FROM producto "
+        String sql = " SELECT  idProducto, nombre , stock, precio, estado, tipo FROM producto "
                 + "WHERE precio=? and estado=1";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -164,6 +197,7 @@ public class ProductoData {
                 producto.setNombre(rs.getString("nombre"));
                 producto.setStock(rs.getInt("stock"));
                 producto.setPrecio(rs.getDouble("precio"));
+                 producto.setTipo(rs.getInt("tipo"));
 //                producto.setEstado(true);
                 
             } else {
@@ -179,7 +213,7 @@ public class ProductoData {
        
        public List<Producto> listarProductos() {
 
-        String sql = " SELECT idProducto, nombre , stock, precio, estado FROM producto ";
+        String sql = " SELECT idProducto, nombre , stock, precio, estado, tipo FROM producto ";
                 
         ArrayList<Producto> productos = new ArrayList<>();
         try {
@@ -194,6 +228,7 @@ public class ProductoData {
                 producto.setStock(rs.getInt("stock"));
                 producto.setPrecio(rs.getDouble("precio"));
                 producto.setEstado(rs.getBoolean("estado"));
+                 producto.setTipo(rs.getInt("tipo"));
 
                 productos.add(producto);
             }

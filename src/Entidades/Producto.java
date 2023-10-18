@@ -8,24 +8,37 @@ public class Producto {
     private int stock;
     private double precio;
     private boolean estado;
+    private int tipo;
 
     public Producto() {
     }
 
-    public Producto(String nombre, int stock, double precio, boolean estado) {
+    public Producto(String nombre, int stock, double precio, boolean estado, int tipo) {
         this.nombre = nombre;
         this.stock = stock;
         this.precio = precio;
         this.estado = estado;
+        this.tipo = tipo;
     }
 
-    public Producto(int idProducto, String nombre, int stock, double precio, boolean estado) {
+    public Producto(int idProducto, String nombre, int stock, double precio, boolean estado, int tipo) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.stock = stock;
         this.precio = precio;
         this.estado = estado;
+        this.tipo = tipo;
     }
+
+    public int getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
+    }
+
+   
 
     public int getIdProducto() {
         return idProducto;
@@ -69,8 +82,10 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "Producto{" + "idProducto=" + idProducto + ", nombre=" + nombre + ", stock=" + stock + ", precio=" + precio + ", estado=" + estado + '}';
+        return "Producto{" + "idProducto=" + idProducto + ", nombre=" + nombre + ", stock=" + stock + ", precio=" + precio + ", estado=" + estado + ", tipo=" + tipo + '}';
     }
+
+  
 
 
     

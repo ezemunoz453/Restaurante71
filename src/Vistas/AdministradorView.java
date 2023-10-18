@@ -24,9 +24,7 @@ public class AdministradorView extends javax.swing.JFrame {
         // cargar a jlabel una imagen
         this.setLocationRelativeTo(this);
         AgregarImagenALabel(jLabelLogo1, "src/imagenes/Logog71 resto.png");
-        AgregarImagenALabel(jLabelUsuario1, "src/imagenes/gestion de usuario.png");
         
-        AgregarImagenALabel(jLabelAdicionMesas, "src/imagenes/mesa.png");
         
         
     }
@@ -44,8 +42,6 @@ public class AdministradorView extends javax.swing.JFrame {
         jLabelLogo1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabelAdicionMesas = new javax.swing.JLabel();
-        jLabelUsuario1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,28 +49,17 @@ public class AdministradorView extends javax.swing.JFrame {
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         bg.add(jLabelLogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, 180, 130));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton1.setText("Cambiar Usuario");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        bg.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 160, 70));
+        bg.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 160, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoLoggin.jpg"))); // NOI18N
         bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 680));
-
-        jLabelAdicionMesas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLabelAdicionMesas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelAdicionMesasMouseClicked(evt);
-            }
-        });
-        bg.add(jLabelAdicionMesas, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, 160, 130));
-
-        jLabelUsuario1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        bg.add(jLabelUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 160, 130));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -96,12 +81,6 @@ public class AdministradorView extends javax.swing.JFrame {
          dispose();
        new Login().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jLabelAdicionMesasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAdicionMesasMouseClicked
-//       dispose();
-       new AdicionMesaView ().setVisible(true);
-       
-    }//GEN-LAST:event_jLabelAdicionMesasMouseClicked
 
     /**
      * @param args the command line arguments
@@ -161,9 +140,7 @@ public class AdministradorView extends javax.swing.JFrame {
     private javax.swing.JPanel bg;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabelAdicionMesas;
     private javax.swing.JLabel jLabelLogo1;
-    private javax.swing.JLabel jLabelUsuario1;
     // End of variables declaration//GEN-END:variables
 
   public void AgregarImagenALabel(JLabel labelName, String root) {

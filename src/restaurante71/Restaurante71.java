@@ -49,7 +49,7 @@ public class Restaurante71 {
 /////* PRUEBAS MAIN*/////////
 
 // Guardar Producto
-//Producto prod= new Producto("Lomito", 100, 2000.0 , true);
+//Producto prod= new Producto("Lomito completo s", 100, 2000.0 , true, 1);
 //pData.guardarProducto(prod);
 
 
