@@ -36,6 +36,8 @@ public class Restaurante71 {
         PedidoData peData= new PedidoData();
         PedidoProductoData ppd= new PedidoProductoData();
         PedidoData pedData= new PedidoData();
+        Usuario usuario= new Usuario();
+       
 
         Login log= new Login();
         log.setVisible(true);
@@ -310,7 +312,13 @@ public class Restaurante71 {
 //    
 //     System.out.println("");}
 
-
+ //  Buscar usaurio por username
+//       Usuario encontrado = uData.buscarUsuario("jorgejuarez");
+//        System.out.println(" user = " + encontrado.getUsername());
+//        System.out.println(" cont = " + encontrado.getContrasena());
+//        System.out.println(" nombre = " + encontrado.getNombre());
+//        System.out.println(" apellido = " + encontrado.getApellido());
+//        System.out.println(" nivel = " + encontrado.getNivel());
 
 
 

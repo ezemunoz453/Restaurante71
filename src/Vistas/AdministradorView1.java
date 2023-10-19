@@ -1,29 +1,43 @@
 package Vistas;
 
+import AccesoADatos.UsuarioData;
+import Entidades.Usuario;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.sql.Date;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 public class AdministradorView1 extends javax.swing.JFrame {
 
+    Usuario usuario = new Usuario();
+    UsuarioData uData = new UsuarioData();
+
     public AdministradorView1() {
         initComponents();
 
-        this.setSize(1700, 1000);
-//        setResizable(false);
+        this.setSize(1920,1080);
+       
+//        this.setSize(1700, 1000);
+        setResizable(false);
 
         this.setLocationRelativeTo(this);
         AgregarImagenALabel(jLFondoBotones, "src/imagenes/fondobotones.jpg");
         AgregarImagenALabel(jLabelLogo, "src/imagenes/Logog71 resto.png");
         AgregarImagenALabel(jlLogoUser, "src/imagenes/username.png");
         AgregarImagenALabel(jlLogoMesa, "src/imagenes/mesa1.png");
-         AgregarImagenALabel(jlLogoProducto, "src/imagenes/stock1.png");
+        AgregarImagenALabel(jlLogoProducto, "src/imagenes/stock1.png");
+
+        cargarComboNivel();
+        jcbNivel.setSelectedItem(null);
+        jbModificar.setEnabled(false);
+        jbEliminar.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -55,15 +69,15 @@ public class AdministradorView1 extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        jtNombre = new javax.swing.JTextField();
+        jtNombreUsuario = new javax.swing.JTextField();
+        jtApellido = new javax.swing.JTextField();
+        jtContraseña = new javax.swing.JTextField();
+        jbBuscar = new javax.swing.JButton();
+        jbModificar = new javax.swing.JButton();
+        jbEliminar = new javax.swing.JButton();
+        jbGuardar = new javax.swing.JButton();
+        jcbNivel = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
         jlLogoMesa = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -233,32 +247,52 @@ public class AdministradorView1 extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Nivel");
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jtNombre.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
-        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jtNombreUsuario.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
-        jTextField3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jtApellido.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
-        jTextField4.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jtContraseña.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
-        jTextField5.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jbBuscar.setBackground(new java.awt.Color(255, 255, 255));
+        jbBuscar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
+        jbBuscar.setText("BUSCAR");
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarActionPerformed(evt);
+            }
+        });
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
-        jButton1.setText("BUSCAR");
+        jbModificar.setBackground(new java.awt.Color(255, 255, 255));
+        jbModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar.png"))); // NOI18N
+        jbModificar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jbModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbModificarActionPerformed(evt);
+            }
+        });
 
-        jButton4.setBackground(new java.awt.Color(255, 255, 255));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar.png"))); // NOI18N
-        jButton4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jbEliminar.setBackground(new java.awt.Color(255, 255, 255));
+        jbEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar.png"))); // NOI18N
+        jbEliminar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEliminarActionPerformed(evt);
+            }
+        });
 
-        jButton5.setBackground(new java.awt.Color(255, 255, 255));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar.png"))); // NOI18N
-        jButton5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jbGuardar.setBackground(new java.awt.Color(255, 255, 255));
+        jbGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png"))); // NOI18N
+        jbGuardar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
 
-        jButton7.setBackground(new java.awt.Color(255, 255, 255));
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png"))); // NOI18N
-        jButton7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jcbNivel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -272,28 +306,28 @@ public class AdministradorView1 extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                         .addGap(169, 169, 169)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jcbNivel, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 609, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 609, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jbBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jtNombre, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jtContraseña, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jbGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(261, 261, 261)
+                                .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jbEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel9)
                                     .addComponent(jLabel8)
                                     .addComponent(jLabel6)
                                     .addComponent(jLabel5)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 818, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 818, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel7))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(261, 261, 261)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(156, 156, 156))
         );
         jPanel4Layout.setVerticalGroup(
@@ -304,35 +338,30 @@ public class AdministradorView1 extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(54, 54, 54)
-                        .addComponent(jLabel6)
-                        .addGap(2, 2, 2)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel7)
-                        .addGap(8, 8, 8)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabel8)
-                        .addGap(2, 2, 2)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(39, 39, 39)
-                                .addComponent(jLabel9)
-                                .addGap(2, 2, 2)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(61, 61, 61)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(54, 54, 54)
+                .addComponent(jLabel6)
+                .addGap(2, 2, 2)
+                .addComponent(jtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(jLabel7)
+                .addGap(8, 8, 8)
+                .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(jLabel8)
+                .addGap(2, 2, 2)
+                .addComponent(jtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(jLabel9)
+                .addGap(2, 2, 2)
+                .addComponent(jcbNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(63, Short.MAX_VALUE))
         );
 
@@ -364,7 +393,9 @@ public class AdministradorView1 extends javax.swing.JFrame {
 
         jTextField9.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
         jButton2.setText("BUSCAR");
 
         jButton8.setBackground(new java.awt.Color(255, 255, 255));
@@ -468,7 +499,9 @@ public class AdministradorView1 extends javax.swing.JFrame {
 
         jTextField15.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
+        jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
         jButton3.setText("BUSCAR");
 
         jLabel14.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
@@ -669,63 +702,133 @@ public class AdministradorView1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jbProductosActionPerformed
 
     private void jdUsuariosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jdUsuariosMouseEntered
-       jdUsuarios.setBackground(new Color(201,162,123));
-       jdUsuarios.setForeground(Color.white);
+        jdUsuarios.setBackground(new Color(201, 162, 123));
+        jdUsuarios.setForeground(Color.white);
     }//GEN-LAST:event_jdUsuariosMouseEntered
 
     private void jdUsuariosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jdUsuariosMouseExited
         jdUsuarios.setBackground(Color.white);
-       jdUsuarios.setForeground(new Color(201,162,123));
+        jdUsuarios.setForeground(new Color(201, 162, 123));
     }//GEN-LAST:event_jdUsuariosMouseExited
 
     private void jbMesasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbMesasMouseEntered
-         jbMesas.setBackground(new Color(201,162,123));
-       jbMesas.setForeground(Color.white);
+        jbMesas.setBackground(new Color(201, 162, 123));
+        jbMesas.setForeground(Color.white);
     }//GEN-LAST:event_jbMesasMouseEntered
 
     private void jbMesasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbMesasMouseExited
-         jbMesas.setBackground(Color.white);
-       jbMesas.setForeground(new Color(201,162,123));
+        jbMesas.setBackground(Color.white);
+        jbMesas.setForeground(new Color(201, 162, 123));
     }//GEN-LAST:event_jbMesasMouseExited
 
     private void jbProductosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbProductosMouseEntered
-        jbProductos.setBackground(new Color(201,162,123));
-       jbProductos.setForeground(Color.white);
+        jbProductos.setBackground(new Color(201, 162, 123));
+        jbProductos.setForeground(Color.white);
     }//GEN-LAST:event_jbProductosMouseEntered
 
     private void jbProductosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbProductosMouseExited
-          jbProductos.setBackground(Color.white);
-       jbProductos.setForeground(new Color(201,162,123));
+        jbProductos.setBackground(Color.white);
+        jbProductos.setForeground(new Color(201, 162, 123));
     }//GEN-LAST:event_jbProductosMouseExited
 
     private void jbReportesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbReportesMouseEntered
-        jbReportes.setBackground(new Color(201,162,123));
-       jbReportes.setForeground(Color.white);
+        jbReportes.setBackground(new Color(201, 162, 123));
+        jbReportes.setForeground(Color.white);
     }//GEN-LAST:event_jbReportesMouseEntered
 
     private void jbReportesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbReportesMouseExited
-         jbReportes.setBackground(Color.white);
-       jbReportes.setForeground(new Color(201,162,123));
+        jbReportes.setBackground(Color.white);
+        jbReportes.setForeground(new Color(201, 162, 123));
     }//GEN-LAST:event_jbReportesMouseExited
 
     private void jbCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCerrarSesionActionPerformed
-           dispose();
-       new Login().setVisible(true);
+        dispose();
+        new Login().setVisible(true);
     }//GEN-LAST:event_jbCerrarSesionActionPerformed
+
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+        try {
+            if (jtNombreUsuario.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "El campo Nombre de Usuario no puede estar vacio ");
+            } else {
+                usuario = uData.buscarUsuario(jtNombreUsuario.getText());
+                if (usuario != null) {
+
+                    jtApellido.setText(usuario.getApellido());
+                    jtNombre.setText(usuario.getNombre());
+                    jtContraseña.setText(usuario.getContrasena());
+                    jcbNivel.setSelectedItem(usuario.getNivel());
+
+                    jbGuardar.setEnabled(false);
+                    jbModificar.setEnabled(true);
+                    jbEliminar.setEnabled(true);
+                } else {
+                    limpiarCampos();
+
+                }
+            }
+        } catch (NumberFormatException e) {
+//            JOptionPane.showMessageDialog(this, "El campo documento solo admite numeros");
+        } catch (NullPointerException e) {
+//            JOptionPane.showMessageDialog(this, "El alumno no existe" );
+        }
+    }//GEN-LAST:event_jbBuscarActionPerformed
+
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+        if (jtNombreUsuario.getText().isEmpty() || jtNombre.getText().isEmpty() || jtApellido.getText().isEmpty() || jtContraseña.getText().isEmpty() || jcbNivel.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(this, "Los campos no pueden estar vacios al crear un USUARIO");
+            return;
+        } else {
+            usuario.setUsername(jtNombreUsuario.getText());
+            usuario.setNombre(jtNombre.getText());
+            usuario.setApellido(jtApellido.getText());
+            usuario.setContrasena(jtContraseña.getText());
+            usuario.setNivel(jcbNivel.getSelectedItem().toString());
+
+            uData.guardarUsuario(usuario);
+        }
+
+        limpiarCampos();
+    }//GEN-LAST:event_jbGuardarActionPerformed
+
+    private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
+        if (jtNombreUsuario.getText().isEmpty() || jtNombre.getText().isEmpty() || jtApellido.getText().isEmpty() || jtContraseña.getText().isEmpty() || jcbNivel.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(this, "Los campos no pueden estar vacios al modificar un USUARIO ");
+            return;
+        }
+            usuario.setUsername(jtNombreUsuario.getText());
+            usuario.setNombre(jtNombre.getText());
+            usuario.setApellido(jtApellido.getText());
+            usuario.setContrasena(jtContraseña.getText());
+            usuario.setNivel(jcbNivel.getSelectedItem().toString());
+
+        uData.modificarUsuario(usuario);
+
+        limpiarCampos();
+    }//GEN-LAST:event_jbModificarActionPerformed
+
+    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
+         if (jtNombreUsuario.getText().isEmpty()) {
+              
+            JOptionPane.showMessageDialog(this, "No existe USUARIO a eliminar , indique un NOMBRE DE USUARIO para su busqueda ");
+        } else {
+           uData.eliminarUsuario(jtNombreUsuario.getText());
+            limpiarCampos();
+        }
+        
+        
+        
+    }//GEN-LAST:event_jbEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane MiEscritorio;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLFondoBotones;
@@ -752,36 +855,59 @@ public class AdministradorView1 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbCerrarSesion;
+    private javax.swing.JButton jbEliminar;
+    private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbMesas;
+    private javax.swing.JButton jbModificar;
     private javax.swing.JButton jbProductos;
     private javax.swing.JButton jbReportes;
+    private javax.swing.JComboBox<String> jcbNivel;
     private javax.swing.JButton jdUsuarios;
     private javax.swing.JLabel jlLogoMesa;
     private javax.swing.JLabel jlLogoProducto;
     private javax.swing.JLabel jlLogoUser;
+    private javax.swing.JTextField jtApellido;
+    private javax.swing.JTextField jtContraseña;
+    private javax.swing.JTextField jtNombre;
+    private javax.swing.JTextField jtNombreUsuario;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarComboNivel() {
+        jcbNivel.addItem("ADMINISTRADOR");
+        jcbNivel.addItem("MESERO");
+
+    }
 
     public void AgregarImagenALabel(JLabel labelName, String root) {
         ImageIcon image = new ImageIcon(root);
         Icon icon = new ImageIcon(image.getImage().getScaledInstance(labelName.getWidth(), labelName.getHeight(), Image.SCALE_DEFAULT));
         labelName.setIcon(icon);
         this.repaint();
+    }
+
+    public void limpiarCampos() {
+        jtNombreUsuario.setText("");
+        jtApellido.setText("");
+        jtNombre.setText("");
+        jtContraseña.setText("");
+        jcbNivel.setSelectedItem(null);
+
+        jbModificar.setEnabled(false);
+        jbGuardar.setEnabled(true);
+        jbEliminar.setEnabled(false);
+
     }
 
 }
