@@ -224,7 +224,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
                       <Component id="jTabbedPane1" min="-2" pref="1148" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -232,9 +232,9 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
                       <Component id="jTabbedPane1" min="-2" pref="908" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -282,16 +282,16 @@
                                           <Group type="102" alignment="1" attributes="0">
                                               <Component id="jtNombreUsuario" min="-2" pref="609" max="-2" attributes="0"/>
                                               <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="jbBuscar" min="-2" pref="173" max="-2" attributes="0"/>
+                                              <Component id="jbBuscarUsuario" min="-2" pref="173" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="jtNombre" alignment="1" max="32767" attributes="0"/>
                                           <Component id="jtContraseña" alignment="1" max="32767" attributes="0"/>
                                           <Group type="102" attributes="0">
-                                              <Component id="jbGuardar" min="-2" pref="93" max="-2" attributes="0"/>
+                                              <Component id="jbGuardarUsuario" min="-2" pref="93" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="261" max="-2" attributes="0"/>
-                                              <Component id="jbModificar" min="-2" pref="93" max="-2" attributes="0"/>
+                                              <Component id="jbModificarUsuario" min="-2" pref="93" max="-2" attributes="0"/>
                                               <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="jbEliminar" min="-2" pref="93" max="-2" attributes="0"/>
+                                              <Component id="jbEliminarUsuario" min="-2" pref="93" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
@@ -321,7 +321,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jtNombreUsuario" alignment="0" min="-2" pref="49" max="-2" attributes="0"/>
-                                  <Component id="jbBuscar" min="-2" pref="49" max="-2" attributes="0"/>
+                                  <Component id="jbBuscarUsuario" min="-2" pref="49" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
@@ -341,9 +341,9 @@
                               <Component id="jcbNivel" min="-2" pref="50" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jbGuardar" min="-2" pref="82" max="-2" attributes="0"/>
-                                  <Component id="jbEliminar" min="-2" pref="82" max="-2" attributes="0"/>
-                                  <Component id="jbModificar" min="-2" pref="82" max="-2" attributes="0"/>
+                                  <Component id="jbGuardarUsuario" min="-2" pref="82" max="-2" attributes="0"/>
+                                  <Component id="jbEliminarUsuario" min="-2" pref="82" max="-2" attributes="0"/>
+                                  <Component id="jbModificarUsuario" min="-2" pref="82" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="63" max="32767" attributes="0"/>
                           </Group>
@@ -444,7 +444,7 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jbBuscar">
+                    <Component class="javax.swing.JButton" name="jbBuscarUsuario">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -458,10 +458,10 @@
                         <Property name="text" type="java.lang.String" value="BUSCAR"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbBuscarActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbBuscarUsuarioActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jbModificar">
+                    <Component class="javax.swing.JButton" name="jbModificarUsuario">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -476,10 +476,10 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbModificarActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbModificarUsuarioActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jbEliminar">
+                    <Component class="javax.swing.JButton" name="jbEliminarUsuario">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -494,10 +494,10 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbEliminarActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbEliminarUsuarioActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jbGuardar">
+                    <Component class="javax.swing.JButton" name="jbGuardarUsuario">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -512,7 +512,7 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbGuardarActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbGuardarUsuarioActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JComboBox" name="jcbNivel">
@@ -557,40 +557,36 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="157" pref="157" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jTextField7" alignment="1" max="32767" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jTextField6" min="-2" pref="642" max="-2" attributes="0"/>
+                                              <Component id="jtNumeroMesa" min="-2" pref="642" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                              <Component id="jButton2" pref="150" max="32767" attributes="0"/>
+                                              <Component id="jbBuscarMesa" pref="150" max="32767" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jTextField8" max="32767" attributes="0"/>
                                                   <Group type="102" attributes="0">
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="0" pref="765" max="32767" attributes="0"/>
                                                   </Group>
-                                                  <Component id="jTextField9" alignment="0" max="32767" attributes="0"/>
                                                   <Group type="102" attributes="0">
-                                                      <Component id="jButton8" min="-2" pref="93" max="-2" attributes="0"/>
+                                                      <Component id="jbGuardarMesa" min="-2" pref="93" max="-2" attributes="0"/>
                                                       <EmptySpace min="-2" pref="261" max="-2" attributes="0"/>
-                                                      <Component id="jButton6" min="-2" pref="93" max="-2" attributes="0"/>
+                                                      <Component id="jbModificarMesa" min="-2" pref="93" max="-2" attributes="0"/>
                                                       <EmptySpace max="32767" attributes="0"/>
-                                                      <Component id="jButton9" min="-2" pref="93" max="-2" attributes="0"/>
+                                                      <Component id="jbEliminarMesa" min="-2" pref="93" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
+                                          <Component id="jcbEstado" alignment="0" max="32767" attributes="0"/>
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
+                                          <Component id="jtCapacidad" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -607,28 +603,24 @@
                               <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jButton2" min="-2" pref="49" max="-2" attributes="0"/>
-                                  <Component id="jTextField6" alignment="0" min="-2" pref="49" max="-2" attributes="0"/>
+                                  <Component id="jbBuscarMesa" min="-2" pref="49" max="-2" attributes="0"/>
+                                  <Component id="jtNumeroMesa" alignment="0" min="-2" pref="49" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                              <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField7" min="-2" pref="49" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
                               <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField8" min="-2" pref="49" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jtCapacidad" min="-2" pref="49" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
                               <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField9" min="-2" pref="49" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
+                              <Component id="jcbEstado" min="-2" pref="50" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                      <Component id="jButton9" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
-                                      <Component id="jButton6" alignment="1" min="-2" pref="82" max="-2" attributes="0"/>
+                                      <Component id="jbEliminarMesa" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                                      <Component id="jbModificarMesa" alignment="1" min="-2" pref="82" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jButton8" alignment="1" min="-2" pref="82" max="-2" attributes="0"/>
+                                  <Component id="jbGuardarMesa" alignment="1" min="-2" pref="82" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="117" max="32767" attributes="0"/>
                           </Group>
@@ -639,17 +631,6 @@
                     <Component class="javax.swing.JLabel" name="jlLogoMesa">
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel10">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Trebuchet MS" size="18" style="0"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Id Mesa"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel11">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Trebuchet MS" size="18" style="0"/>
@@ -682,35 +663,21 @@
                         <Property name="text" type="java.lang.String" value="Estado"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField6">
+                    <Component class="javax.swing.JTextField" name="jtNumeroMesa">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="16" style="0"/>
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField7">
+                    <Component class="javax.swing.JTextField" name="jtCapacidad">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="16" style="0"/>
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField8">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Tahoma" size="16" style="0"/>
-                        </Property>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField9">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Tahoma" size="16" style="0"/>
-                        </Property>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="jButton2">
+                    <Component class="javax.swing.JButton" name="jbBuscarMesa">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -723,8 +690,11 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="BUSCAR"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbBuscarMesaActionPerformed"/>
+                      </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton8">
+                    <Component class="javax.swing.JButton" name="jbGuardarMesa">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -738,8 +708,11 @@
                           </Border>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbGuardarMesaActionPerformed"/>
+                      </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton6">
+                    <Component class="javax.swing.JButton" name="jbModificarMesa">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -754,7 +727,7 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton9">
+                    <Component class="javax.swing.JButton" name="jbEliminarMesa">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -768,6 +741,19 @@
                           </Border>
                         </Property>
                       </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="jcbEstado">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="18" style="0"/>
+                        </Property>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="0"/>
+                        </Property>
+                      </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>

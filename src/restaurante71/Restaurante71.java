@@ -45,9 +45,6 @@ public class Restaurante71 {
         
      
 
-
-
-
 /////* PRUEBAS MAIN*/////////
 
 // Guardar Producto
@@ -90,7 +87,7 @@ public class Restaurante71 {
 
 
 // Guardar Mesa
-//Mesa mesa= new Mesa(25, 8, true);
+//Mesa mesa= new Mesa(10, 3, "LIBRE");
 //mData.guardarMesa(mesa);
 
 // modificar mesa

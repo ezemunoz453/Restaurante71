@@ -25,7 +25,7 @@ public class MesaData {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, mesa.getNumeroMesa());
             ps.setInt(2, mesa.getCapacidad());
-            ps.setBoolean(3, mesa.isEstado());
+            ps.setString(3, mesa.getEstado());
 
             ps.executeUpdate();
 
@@ -49,7 +49,7 @@ public class MesaData {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, mesa.getNumeroMesa());
             ps.setInt(2, mesa.getCapacidad());
-            ps.setBoolean(3, mesa.isEstado());
+            ps.setString(3, mesa.getEstado());
             ps.setInt(4, mesa.getIdMesa());
 
             int exito = ps.executeUpdate();
@@ -114,7 +114,7 @@ public class MesaData {
                 mesa.setIdMesa(rs.getInt("idMesa"));
                 mesa.setNumeroMesa(rs.getInt("numeroMesa"));
                 mesa.setCapacidad(rs.getInt("capacidad"));
-                mesa.setEstado(rs.getBoolean("estado"));
+                mesa.setEstado(rs.getString("estado"));
                 
                 mesas.add(mesa);
             }
@@ -142,7 +142,7 @@ public class MesaData {
                 mesa.setIdMesa(rs.getInt("idMesa"));
                 mesa.setNumeroMesa(rs.getInt("numeroMesa"));
                 mesa.setCapacidad(rs.getInt("capacidad"));
-                mesa.setEstado(rs.getBoolean("estado"));
+                mesa.setEstado(rs.getString("estado"));
                 
                 mesas.add(mesa);
             }
@@ -170,7 +170,7 @@ public class MesaData {
                 mesa.setIdMesa(rs.getInt("idMesa"));
                 mesa.setNumeroMesa(rs.getInt("numeroMesa"));
                 mesa.setCapacidad(rs.getInt("capacidad"));
-                mesa.setEstado(rs.getBoolean("estado"));
+                mesa.setEstado(rs.getString("estado"));
                 
                 mesas.add(mesa);
             }
@@ -195,10 +195,36 @@ public class MesaData {
                 mesa.setIdMesa(idMesa);
                 mesa.setNumeroMesa(rs.getInt("numeroMesa"));
                 mesa.setCapacidad(rs.getInt("capacidad"));
-                mesa.setEstado(rs.getBoolean("estado"));
+                mesa.setEstado(rs.getString("estado"));
                ;
             } else {
                 JOptionPane.showMessageDialog(null, " No existe Mesa con ese id");
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla mesa");
+        }
+        return mesa;
+    }
+     
+      public Mesa buscarMesaPorNumero(int numeroMesa) {
+        Mesa mesa = new Mesa();
+        String sql = " SELECT * FROM mesa "
+                + "WHERE numeroMesa=? ";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, numeroMesa);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                mesa.setIdMesa(rs.getInt("idMesa"));
+                mesa.setNumeroMesa(numeroMesa);
+                mesa.setCapacidad(rs.getInt("capacidad"));
+                mesa.setEstado(rs.getString("estado"));
+               ;
+            } else {
+                JOptionPane.showMessageDialog(null, " No existe Mesa con ese Numero");
             }
             ps.close();
             

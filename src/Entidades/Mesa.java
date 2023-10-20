@@ -9,10 +9,33 @@ public class Mesa {
     private int idMesa;
     private int numeroMesa;
     private int capacidad;
-    private boolean estado;
-    List<Pedido> pedidos;
+    private String estado;
+    
+
+    
+    
+//    public double calcularImporteTotal() {
+//        double importeTotal = 0;
+//        for (Pedido pedido : pedidos) {
+//            importeTotal += pedido.obtenerTotal((ArrayList) pedidos);
+//        }
+//        return importeTotal;
+//    }   
 
     public Mesa() {
+    }
+
+    public Mesa(int numeroMesa, int capacidad, String estado) {
+        this.numeroMesa = numeroMesa;
+        this.capacidad = capacidad;
+        this.estado = estado;
+    }
+
+    public Mesa(int idMesa, int numeroMesa, int capacidad, String estado) {
+        this.idMesa = idMesa;
+        this.numeroMesa = numeroMesa;
+        this.capacidad = capacidad;
+        this.estado = estado;
     }
 
     public int getIdMesa() {
@@ -39,37 +62,21 @@ public class Mesa {
         this.capacidad = capacidad;
     }
 
-    public boolean isEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
-        this.estado = estado;
-    }
-
-    public Mesa(int numeroMesa, int capacidad, boolean estado) {
-        this.numeroMesa = numeroMesa;
-        this.capacidad = capacidad;
-        this.estado = estado;
-    }
-
-    public Mesa(int idMesa, int numeroMesa, int capacidad, boolean estado) {
-        this.idMesa = idMesa;
-        this.numeroMesa = numeroMesa;
-        this.capacidad = capacidad;
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 
     @Override
     public String toString() {
-        return "Mesa{  Numero =" + numeroMesa + ", Capacidad =" + capacidad + ", Estado=" + estado + '}';
+        return "Mesa{" + "idMesa=" + idMesa + ", numeroMesa=" + numeroMesa + ", capacidad=" + capacidad + ", estado=" + estado + '}';
     }
-//    public double calcularImporteTotal() {
-//        double importeTotal = 0;
-//        for (Pedido pedido : pedidos) {
-//            importeTotal += pedido.obtenerTotal((ArrayList) pedidos);
-//        }
-//        return importeTotal;
-//    }   
+
+
+    
+    
     
 }
