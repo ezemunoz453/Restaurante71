@@ -68,11 +68,10 @@ public class UsuarioData {
         String sql = "DELETE FROM usuario WHERE username=? ";
       
         
-
-            String respuesta= JOptionPane.showInputDialog("Eliminar? SI/NO");
-            if (respuesta.equalsIgnoreCase("no")){
-               return;
-            } else if (respuesta.equalsIgnoreCase("si")){
+//            String respuesta= JOptionPane.showInputDialog("Eliminar? SI/NO");
+//            if (respuesta.equalsIgnoreCase("no")){
+//               return;
+//            } else if (respuesta.equalsIgnoreCase("si")){
                   try {
                           PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, username);
@@ -85,10 +84,10 @@ public class UsuarioData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Usuario");
         }
-            } else {
-                 JOptionPane.showMessageDialog(null, " La respuesta es incorrecta ");
-                 return;
-            }
+//            } else {
+//                 JOptionPane.showMessageDialog(null, " La respuesta es incorrecta ");
+//                 return;
+//            }
 
     }
 

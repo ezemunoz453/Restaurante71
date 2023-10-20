@@ -75,8 +75,6 @@ public class Login extends javax.swing.JFrame {
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, 410, 10));
 
         jtUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jtUsuario.setForeground(new java.awt.Color(204, 204, 204));
-        jtUsuario.setText("Escriba su nombre de usuario");
         jtUsuario.setBorder(null);
         jtUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -225,8 +223,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnCancelarMouseExited
 
     private void jtUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtUsuarioMousePressed
-        jtUsuario.setText("");
-        jtUsuario.setForeground(Color.BLACK);
+   
     }//GEN-LAST:event_jtUsuarioMousePressed
 
     private void jbtnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnCancelarMouseClicked

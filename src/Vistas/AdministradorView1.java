@@ -117,7 +117,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
 
         MiEscritorio.setPreferredSize(new java.awt.Dimension(1700, 1000));
         MiEscritorio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        MiEscritorio.add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 760, 200, 170));
+        MiEscritorio.add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 830, 200, 170));
 
         jdUsuarios.setBackground(new java.awt.Color(255, 255, 255));
         jdUsuarios.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
@@ -170,7 +170,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
                 jbCerrarSesionActionPerformed(evt);
             }
         });
-        MiEscritorio.add(jbCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 600, 230, 80));
+        MiEscritorio.add(jbCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 710, 230, 80));
 
         jbReportes.setBackground(new java.awt.Color(255, 255, 255));
         jbReportes.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
@@ -215,7 +215,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
         MiEscritorio.add(jbMesas, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 230, 80));
 
         jLFondoBotones.setBackground(new java.awt.Color(0, 51, 204));
-        MiEscritorio.add(jLFondoBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 380, 1000));
+        MiEscritorio.add(jLFondoBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 1160));
 
         jPFondoVentanas.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -669,13 +669,11 @@ public class AdministradorView1 extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(MiEscritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 1688, Short.MAX_VALUE))
+            .addComponent(MiEscritorio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(MiEscritorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(MiEscritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 1078, Short.MAX_VALUE)
         );
 
         pack();
@@ -750,6 +748,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
         try {
             if (jtNombreUsuario.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "El campo Nombre de Usuario no puede estar vacio ");
+                limpiarCampos();
             } else {
                 usuario = uData.buscarUsuario(jtNombreUsuario.getText());
                 if (usuario != null) {
@@ -812,8 +811,15 @@ public class AdministradorView1 extends javax.swing.JFrame {
               
             JOptionPane.showMessageDialog(this, "No existe USUARIO a eliminar , indique un NOMBRE DE USUARIO para su busqueda ");
         } else {
-           uData.eliminarUsuario(jtNombreUsuario.getText());
+             int opcion = JOptionPane.showConfirmDialog(null, "¿Desea eliminar ?", "Confirmación", JOptionPane.YES_NO_OPTION);
+
+        if (opcion == JOptionPane.YES_OPTION) {
+               uData.eliminarUsuario(jtNombreUsuario.getText());
             limpiarCampos();
+        } else {
+             limpiarCampos();
+        }
+        
         }
         
         
