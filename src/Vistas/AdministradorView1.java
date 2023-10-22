@@ -101,13 +101,13 @@ public class AdministradorView1 extends javax.swing.JFrame {
         jcbEstado = new javax.swing.JComboBox<>();
         jPanel6 = new javax.swing.JPanel();
         jlLogoProducto = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
-        jTextField13 = new javax.swing.JTextField();
+        jtIdProducto = new javax.swing.JTextField();
+        jtNombreProducto = new javax.swing.JTextField();
+        jtCantidadProducto = new javax.swing.JTextField();
+        jtPrecioProducto = new javax.swing.JTextField();
         jTextField14 = new javax.swing.JTextField();
-        jTextField15 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        jtEstadoProducto = new javax.swing.JTextField();
+        jbBuscarProductoId = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -117,6 +117,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
+        jbBuscarProductoNombre = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -414,10 +415,20 @@ public class AdministradorView1 extends javax.swing.JFrame {
         jbModificarMesa.setBackground(new java.awt.Color(255, 255, 255));
         jbModificarMesa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar.png"))); // NOI18N
         jbModificarMesa.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jbModificarMesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbModificarMesaActionPerformed(evt);
+            }
+        });
 
         jbEliminarMesa.setBackground(new java.awt.Color(255, 255, 255));
         jbEliminarMesa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar.png"))); // NOI18N
         jbEliminarMesa.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jbEliminarMesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEliminarMesaActionPerformed(evt);
+            }
+        });
 
         jcbEstado.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
@@ -491,22 +502,22 @@ public class AdministradorView1 extends javax.swing.JFrame {
 
         jPanel6.setBackground(new java.awt.Color(229, 195, 157));
 
-        jTextField10.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jtIdProducto.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
-        jTextField11.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jtNombreProducto.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
-        jTextField12.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jtCantidadProducto.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
-        jTextField13.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jtPrecioProducto.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
         jTextField14.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
-        jTextField15.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jtEstadoProducto.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 255));
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
-        jButton3.setText("BUSCAR");
+        jbBuscarProductoId.setBackground(new java.awt.Color(255, 255, 255));
+        jbBuscarProductoId.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbBuscarProductoId.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
+        jbBuscarProductoId.setText("BUSCAR");
 
         jLabel14.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
@@ -544,6 +555,11 @@ public class AdministradorView1 extends javax.swing.JFrame {
         jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar.png"))); // NOI18N
         jButton12.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        jbBuscarProductoNombre.setBackground(new java.awt.Color(255, 255, 255));
+        jbBuscarProductoNombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbBuscarProductoNombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
+        jbBuscarProductoNombre.setText("BUSCAR");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -557,13 +573,8 @@ public class AdministradorView1 extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
                         .addGap(156, 156, 156)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField13, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField12, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(jTextField10)
-                                .addGap(33, 33, 33)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextField11)
+                            .addComponent(jtPrecioProducto, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jtCantidadProducto, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel17)
@@ -576,7 +587,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
                                         .addComponent(jLabel19)))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jtEstadoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(58, 58, 58)
                                 .addComponent(jTextField14))
                             .addGroup(jPanel6Layout.createSequentialGroup()
@@ -584,7 +595,18 @@ public class AdministradorView1 extends javax.swing.JFrame {
                                 .addGap(261, 261, 261)
                                 .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 278, Short.MAX_VALUE)
-                                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jtNombreProducto, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtIdProducto))
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addGap(33, 33, 33)
+                                        .addComponent(jbBuscarProductoId, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jbBuscarProductoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addGap(169, 169, 169))
         );
         jPanel6Layout.setVerticalGroup(
@@ -592,39 +614,41 @@ public class AdministradorView1 extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jlLogoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                    .addComponent(jbBuscarProductoId, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtIdProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(55, 55, 55)
                 .addComponent(jLabel15)
-                .addGap(5, 5, 5)
-                .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
+                .addGap(3, 3, 3)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbBuscarProductoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
                 .addComponent(jLabel16)
                 .addGap(8, 8, 8)
-                .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtCantidadProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
                 .addComponent(jLabel17)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtPrecioProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
                     .addComponent(jLabel19))
                 .addGap(2, 2, 2)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtEstadoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
+                .addGap(84, 84, 84)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("GESTION DE PRODUCTOS", jPanel6);
@@ -790,7 +814,9 @@ public class AdministradorView1 extends javax.swing.JFrame {
         if (jtNombreUsuario.getText().isEmpty() || jtNombre.getText().isEmpty() || jtApellido.getText().isEmpty() || jtContraseña.getText().isEmpty() || jcbNivel.getSelectedItem() == null) {
             JOptionPane.showMessageDialog(this, "Los campos no pueden estar vacios al modificar un USUARIO ");
             return;
-        }
+        } else{
+            
+        
         usuario.setUsername(jtNombreUsuario.getText());
         usuario.setNombre(jtNombre.getText());
         usuario.setApellido(jtApellido.getText());
@@ -799,6 +825,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
 
         uData.modificarUsuario(usuario);
         limpiarCamposUser();
+        }
     }//GEN-LAST:event_jbModificarUsuarioActionPerformed
 
     private void jbEliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarUsuarioActionPerformed
@@ -847,20 +874,19 @@ public class AdministradorView1 extends javax.swing.JFrame {
 
     private void jbGuardarMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarMesaActionPerformed
         try{
-        if (jtNumeroMesa.getText().isEmpty() ||  jtCapacidad.getText().isEmpty() || jcbEstado.getSelectedItem() == null) {
-            JOptionPane.showMessageDialog(this, "Los campos no pueden estar vacios al crear una Mesa");
+        if (jtNumeroMesa.getText().isEmpty() ||  jtCapacidad.getText().isEmpty() ) {
+            JOptionPane.showMessageDialog(this, "Los campos Numero y Capacidad no pueden estar vacios al crear una Mesa");
             return;
         } else {
                        
             mesa.setNumeroMesa(Integer.parseInt(jtNumeroMesa.getText()));
             mesa.setCapacidad(Integer.parseInt(jtCapacidad.getText()));
-            mesa.setEstado(jcbEstado.getSelectedItem().toString());
+            mesa.setEstado("LIBRE");
          
             mData.guardarMesa(mesa);
-        } 
-                
+        }    
                 }catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(this, " os campos deben se numericos");
+            JOptionPane.showMessageDialog(this, " Los campos deben se numericos");
         }
         limpiarCamposMesa();
         
@@ -868,13 +894,46 @@ public class AdministradorView1 extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jbGuardarMesaActionPerformed
 
+    private void jbModificarMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarMesaActionPerformed
+        if (jtNumeroMesa.getText().isEmpty() ||  jtCapacidad.getText().isEmpty() ) {
+            JOptionPane.showMessageDialog(this, "Los campos no pueden estar vacios al modificar una MESA ");
+            return;
+        } else{
+            
+        
+            mesa.setNumeroMesa(Integer.parseInt(jtNumeroMesa.getText()));
+            mesa.setCapacidad(Integer.parseInt(jtCapacidad.getText()));
+            mesa.setEstado("LIBRE");
+        
+        mData.modificarMesa(mesa);
+      
+        limpiarCamposMesa();
+        }
+    }//GEN-LAST:event_jbModificarMesaActionPerformed
+
+    private void jbEliminarMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarMesaActionPerformed
+        if (jtNumeroMesa.getText().isEmpty()) {
+
+            JOptionPane.showMessageDialog(this, "No existe Mesa a eliminar , indique un Numero de Mesa para su busqueda ");
+        } else {
+            int opcion = JOptionPane.showConfirmDialog(null, "¿Desea eliminar ?", "Confirmación", JOptionPane.YES_NO_OPTION);
+
+            if (opcion == JOptionPane.YES_OPTION) {
+                mData.eliminarMesaPorNumeroMesa(Integer.parseInt(jtNumeroMesa.getText()));
+           
+                limpiarCamposMesa();
+            } else {
+                limpiarCamposMesa();
+            }
+        }
+    }//GEN-LAST:event_jbEliminarMesaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane MiEscritorio;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLFondoBotones;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -898,13 +957,10 @@ public class AdministradorView1 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
     private javax.swing.JButton jbBuscarMesa;
+    private javax.swing.JButton jbBuscarProductoId;
+    private javax.swing.JButton jbBuscarProductoNombre;
     private javax.swing.JButton jbBuscarUsuario;
     private javax.swing.JButton jbCerrarSesion;
     private javax.swing.JButton jbEliminarMesa;
@@ -923,11 +979,16 @@ public class AdministradorView1 extends javax.swing.JFrame {
     private javax.swing.JLabel jlLogoProducto;
     private javax.swing.JLabel jlLogoUser;
     private javax.swing.JTextField jtApellido;
+    private javax.swing.JTextField jtCantidadProducto;
     private javax.swing.JTextField jtCapacidad;
     private javax.swing.JTextField jtContraseña;
+    private javax.swing.JTextField jtEstadoProducto;
+    private javax.swing.JTextField jtIdProducto;
     private javax.swing.JTextField jtNombre;
+    private javax.swing.JTextField jtNombreProducto;
     private javax.swing.JTextField jtNombreUsuario;
     private javax.swing.JTextField jtNumeroMesa;
+    private javax.swing.JTextField jtPrecioProducto;
     // End of variables declaration//GEN-END:variables
 
     private void cargarComboNivel() {
@@ -937,7 +998,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
 
     private void cargarComboEstadoMesal() {
         jcbEstado.addItem("LIBRE");
-//        jcbEstado.addItem("OCUPADA");
+        jcbEstado.addItem("OCUPADA");
     }
 
     public void AgregarImagenALabel(JLabel labelName, String root) {
