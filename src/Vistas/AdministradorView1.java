@@ -30,9 +30,9 @@ public class AdministradorView1 extends javax.swing.JFrame {
     public AdministradorView1() {
         initComponents();
         
-        this.setSize(1920, 1080);
+//        this.setSize(1920, 1080);
 
-//        this.setSize(1700, 1000);
+        this.setSize(1700, 1000);
         setResizable(false);
         
         this.setLocationRelativeTo(this);
