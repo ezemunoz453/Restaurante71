@@ -31,7 +31,7 @@ public class ProductoData {
             ps.setInt(2, producto.getStock());
             ps.setDouble(3, producto.getPrecio());
             ps.setBoolean(4, producto.isEstado());
-            ps.setInt(5, producto.getTipo());
+            ps.setString(5, producto.getTipo());
             
             ps.executeUpdate();
             
@@ -56,7 +56,7 @@ public class ProductoData {
             ps.setString(1, producto.getNombre());
             ps.setInt(2, producto.getStock());
             ps.setDouble(3, producto.getPrecio());
-             ps.setInt(4, producto.getTipo());
+             ps.setString(4, producto.getTipo());
              ps.setDouble(5, producto.getIdProducto());
                       
             int exito = ps.executeUpdate();
@@ -92,8 +92,7 @@ public class ProductoData {
     
     
     public Producto buscarProductoPorId(int idProducto) {
-        Producto producto= null;
-        
+        Producto producto= new Producto();
         String sql = " SELECT  idProducto, nombre , stock, precio, estado FROM producto "
                 + "WHERE idProducto=? and estado=1";
         try {
@@ -111,6 +110,7 @@ public class ProductoData {
                 
             } else {
                 JOptionPane.showMessageDialog(null, " No existe Producto con ese Id");
+                producto= null;
             }
             ps.close();
             
@@ -122,7 +122,7 @@ public class ProductoData {
     
     
     public Producto buscarProductoPorTipo(int tipo) {
-        Producto producto= null;
+        Producto producto= new Producto();
         
         String sql = " SELECT  idProducto, nombre , stock, precio, estado, tipo FROM producto "
                 + "WHERE tipo=? and estado=1";
@@ -137,11 +137,12 @@ public class ProductoData {
                 producto.setNombre(rs.getString("nombre"));
                 producto.setStock(rs.getInt("stock"));
                 producto.setPrecio(rs.getDouble("precio"));
-                producto.setTipo(rs.getInt("tipo"));
+                producto.setTipo(rs.getString("tipo"));
 //                producto.setEstado(true);
                 
             } else {
                 JOptionPane.showMessageDialog(null, " No existe El tipo de producto");
+                producto= null;
             }
             ps.close();
             
@@ -155,10 +156,10 @@ public class ProductoData {
         Producto producto= null;
         
         String sql = " SELECT  idProducto, nombre , stock, precio, estado, tipo FROM producto "
-                + "WHERE nombre=? and estado=1";
+                + "WHERE nombre LIKE ? and estado=1";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, nombreProd);
+            ps.setString(1, "%" + nombreProd+ "%");
             ResultSet rs = ps.executeQuery();
             
             if (rs.next()) {
@@ -167,7 +168,7 @@ public class ProductoData {
                 producto.setNombre(rs.getString("nombre"));
                 producto.setStock(rs.getInt("stock"));
                 producto.setPrecio(rs.getDouble("precio"));
-                 producto.setTipo(rs.getInt("tipo"));
+                 producto.setTipo(rs.getString("tipo"));
 //                producto.setEstado(true);
                 
             } else {
@@ -197,7 +198,7 @@ public class ProductoData {
                 producto.setNombre(rs.getString("nombre"));
                 producto.setStock(rs.getInt("stock"));
                 producto.setPrecio(rs.getDouble("precio"));
-                 producto.setTipo(rs.getInt("tipo"));
+                 producto.setTipo(rs.getString("tipo"));
 //                producto.setEstado(true);
                 
             } else {
@@ -228,7 +229,7 @@ public class ProductoData {
                 producto.setStock(rs.getInt("stock"));
                 producto.setPrecio(rs.getDouble("precio"));
                 producto.setEstado(rs.getBoolean("estado"));
-                 producto.setTipo(rs.getInt("tipo"));
+                 producto.setTipo(rs.getString("tipo"));
 
                 productos.add(producto);
             }

@@ -149,7 +149,7 @@ public class UsuarioData {
 
     
       public Usuario buscarUsuario(String userName) {
-        Usuario us = new Usuario();
+        Usuario us= new Usuario();
         String sql = " SELECT username, contrasena, Nivel, nombre, apellido FROM usuario "
                 + "WHERE username=? ";
         try {
@@ -168,6 +168,7 @@ public class UsuarioData {
                 
             } else {
                 JOptionPane.showMessageDialog(null, " No existe Usuario con ese Nombre de Usuario");
+               us= null;
             }
             ps.close();
             

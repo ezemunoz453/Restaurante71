@@ -196,9 +196,10 @@ public class MesaData {
                 mesa.setNumeroMesa(rs.getInt("numeroMesa"));
                 mesa.setCapacidad(rs.getInt("capacidad"));
                 mesa.setEstado(rs.getString("estado"));
-               ;
+               
             } else {
                 JOptionPane.showMessageDialog(null, " No existe Mesa con ese id");
+                mesa= null;
             }
             ps.close();
             
@@ -222,9 +223,10 @@ public class MesaData {
                 mesa.setNumeroMesa(numeroMesa);
                 mesa.setCapacidad(rs.getInt("capacidad"));
                 mesa.setEstado(rs.getString("estado"));
-               ;
+               
             } else {
                 JOptionPane.showMessageDialog(null, " No existe Mesa con ese Numero");
+                mesa= null;
             }
             ps.close();
             
