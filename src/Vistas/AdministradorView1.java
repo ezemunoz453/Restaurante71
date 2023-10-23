@@ -30,10 +30,10 @@ public class AdministradorView1 extends javax.swing.JFrame {
     public AdministradorView1() {
         initComponents();
         
-//        this.setSize(1920, 1080);
+//        this.setSize(1280, 720);
 
         this.setSize(1700, 1000);
-        setResizable(false);
+//        setResizable(false);
         
         this.setLocationRelativeTo(this);
         AgregarImagenALabel(jLFondoBotones, "src/imagenes/fondobotones.jpg");
@@ -126,7 +126,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
         jbBuscarProductoNombre = new javax.swing.JButton();
         jcbTipoProducto = new javax.swing.JComboBox<>();
         jPanel7 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -671,23 +671,28 @@ public class AdministradorView1 extends javax.swing.JFrame {
 
         jPanel7.setBackground(new java.awt.Color(229, 195, 157));
 
-        jLabel4.setText("Stock");
+        jButton1.setText("USUARIO");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(169, 169, 169)
-                .addComponent(jLabel4)
-                .addContainerGap(927, Short.MAX_VALUE))
+                .addGap(110, 110, 110)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(765, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(153, 153, 153)
-                .addComponent(jLabel4)
-                .addContainerGap(707, Short.MAX_VALUE))
+                .addGap(78, 78, 78)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(675, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("REPORTES ", jPanel7);
@@ -1085,9 +1090,16 @@ public class AdministradorView1 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jbEliminarProductoActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ReporteUsuarioView ruv= new ReporteUsuarioView();
+        ruv.setVisible(true);
+       
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane MiEscritorio;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLFondoBotones;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -1097,7 +1109,6 @@ public class AdministradorView1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
