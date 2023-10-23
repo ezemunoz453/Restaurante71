@@ -343,7 +343,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
                                     .addComponent(jtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 818, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel7))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(156, 156, 156))
+                .addGap(135, 135, 135))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -455,13 +455,13 @@ public class AdministradorView1 extends javax.swing.JFrame {
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jtNumeroMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(31, 31, 31)
-                                .addComponent(jbBuscarMesa, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                                .addComponent(jbBuscarMesa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGap(5, 5, 5)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel5Layout.createSequentialGroup()
                                         .addComponent(jLabel13)
-                                        .addGap(0, 765, Short.MAX_VALUE))
+                                        .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(jPanel5Layout.createSequentialGroup()
                                         .addComponent(jbGuardarMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(261, 261, 261)
@@ -605,7 +605,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
                                 .addComponent(jbGuardarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(261, 261, 261)
                                 .addComponent(jbModificarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 278, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 262, Short.MAX_VALUE)
                                 .addComponent(jbEliminarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -680,7 +680,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(169, 169, 169)
                 .addComponent(jLabel4)
-                .addContainerGap(943, Short.MAX_VALUE))
+                .addContainerGap(927, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -696,14 +696,12 @@ public class AdministradorView1 extends javax.swing.JFrame {
         jPFondoVentanas.setLayout(jPFondoVentanasLayout);
         jPFondoVentanasLayout.setHorizontalGroup(
             jPFondoVentanasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPFondoVentanasLayout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1132, Short.MAX_VALUE)
         );
         jPFondoVentanasLayout.setVerticalGroup(
             jPFondoVentanasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPFondoVentanasLayout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 908, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 2, Short.MAX_VALUE))
         );
 
@@ -810,7 +808,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
                 }
             }
         } catch (NullPointerException e) {
-//            JOptionPane.showMessageDialog(this, "El alumno no existe" );
+//            JOptionPane.showMessageDialog(this, "" );
         }
     }//GEN-LAST:event_jbBuscarUsuarioActionPerformed
 
@@ -888,7 +886,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
             limpiarCamposMesa();
             
         } catch (NullPointerException ex) {
-//            JOptionPane.showMessageDialog(this, "No existe Materias con ese id ");
+//            JOptionPane.showMessageDialog(this, " ");
 
         }
         
@@ -979,7 +977,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
             limpiarCamposProducto();
             
         } catch (NullPointerException ex) {
-//            JOptionPane.showMessageDialog(this, "No existe Materias con ese id ");
+//            JOptionPane.showMessageDialog(this, " ");
 
         }
         
@@ -1041,7 +1039,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
             limpiarCamposProducto();
             
         } catch (NullPointerException ex) {
-//            JOptionPane.showMessageDialog(this, "No existe Materias con ese id ");
+//            JOptionPane.showMessageDialog(this, " ");
 
         }
 
@@ -1201,7 +1199,6 @@ public class AdministradorView1 extends javax.swing.JFrame {
         jtNombreProducto.setText("");
         jtCantidadProducto.setText("");
         jtPrecioProducto.setText("");
-//        jcbEstadoProducto.setSelectedItem(null);
         jcbTipoProducto.setSelectedItem(null);
         
         jbModificarProducto.setEnabled(false);
