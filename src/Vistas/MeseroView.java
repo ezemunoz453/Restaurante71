@@ -39,9 +39,6 @@ public class MeseroView extends javax.swing.JFrame {
         AgregarImagenALabel(jLabelLogo1, "src/imagenes/Logog71 resto.png");
 //        AgregarImagenALabel(jLabelBotones, "src/imagenes/fondoLoggin.jpg");
         
-       
-        
-        
     }
 
     
@@ -137,9 +134,9 @@ public class MeseroView extends javax.swing.JFrame {
     private void panelMesas() {
         List<Mesa> mesas= new ArrayList<>();
         MesaData mData= new MesaData();
-       List<Mesa> mesasDeListar= new ArrayList<>();    
+//       List<Mesa> mesas= new ArrayList<>();    
         
-        mesasDeListar= mData.listarMesas();
+        mesas= mData.listarMesas();
         
 //        mesas.addAll(Arrays.asList(mesasDeListar));
         
@@ -151,6 +148,7 @@ public class MeseroView extends javax.swing.JFrame {
             System.out.println("cont"+cont);
             System.out.println(" mesa"+ mesa1.getNumeroMesa());
             System.out.println(" cap mesa"+ mesa1.getCapacidad());
+            
 
 JLabel jl= new JLabel( new ImageIcon("src/imagenes/mesa1.png"));
 Dimension size = new Dimension(200, 50); // Ancho x Alto en píxeles

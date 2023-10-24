@@ -14,40 +14,59 @@ import java.time.LocalTime;
     public class Pedido {
     private int idPedido;
     public Mesa mesa;
-    private String nombreMesero;
+    private Mesero mesero;
 //    private LocalDateTime fechaHora;
     private LocalDate fecha;
     private LocalTime hora;
     private double importe;
-    private int estado;//0 pendiente, 1 entregado , 2 pagado
+    private String estado;//0 pendiente, 1 entregado , 2 pagado
     private List<PedidoProducto> pedidosP;
 
     public Pedido() {
         pedidosP = new ArrayList<>();
     }
 
-    public Pedido(Mesa mesa, String nombreMesero, LocalDate fecha, LocalTime hora, int estado, List<PedidoProducto> pedidosP) {
+        public Pedido(Mesa mesa, Mesero mesero, LocalDate fecha, LocalTime hora,  String estado, List<PedidoProducto> pedidosP) {
         this.mesa = mesa;
-        this.nombreMesero = nombreMesero;
-        this.fecha= fecha;
+        this.mesero = mesero;
+        this.fecha = fecha;
         this.hora = hora;
-//        this.fechaHora = fechaHora;
-        this.pedidosP = new ArrayList<>();
-        this.pedidosP.addAll(pedidosP); // Copiar la lista de productos
-        this.importe = calcularTotal(); // Calcular el importe total
+        this.importe = calcularTotal();
         this.estado = estado;
+        this.pedidosP = new ArrayList<>();
+        this.pedidosP.addAll(pedidosP);
     }
 
-    public Pedido(Mesa mesa, String nombreMesero, LocalDate fecha, LocalTime hora, int estado) {
+   
+    
+        
+//    public Pedido(Mesa mesa, String nombreMesero, LocalDate fecha, LocalTime hora, int estado, List<PedidoProducto> pedidosP) {
+//        this.mesa = mesa;
+//        this.nombreMesero = nombreMesero;
+//        this.fecha= fecha;
+//        this.hora = hora;
+//        this.pedidosP = new ArrayList<>();
+//        this.pedidosP.addAll(pedidosP); // Copiar la lista de productos
+//        this.importe = calcularTotal(); // Calcular el importe total
+//        this.estado = estado;
+//    }
+
+         public Pedido(Mesa mesa, Mesero mesero, LocalDate fecha, LocalTime hora, String estado) {
         this.mesa = mesa;
-        this.nombreMesero = nombreMesero;
-        this.fecha= fecha;
+        this.mesero = mesero;
+        this.fecha = fecha;
         this.hora = hora;
-//        this.fechaHora = fechaHora;
         this.estado = estado;
     }
-    
-    
+//    public Pedido(Mesa mesa, String nombreMesero, LocalDate fecha, LocalTime hora, int estado) {
+//        this.mesa = mesa;
+//        this.nombreMesero = nombreMesero;
+//        this.fecha= fecha;
+//        this.hora = hora;
+//        this.estado = estado;
+//    }
+//    
+//    
 
     public int getIdPedido() {
         return idPedido;
@@ -65,12 +84,12 @@ import java.time.LocalTime;
         this.mesa = mesa;
     }
 
-    public String getNombreMesero() {
-        return nombreMesero;
+    public Mesero getMesero() {
+        return mesero;
     }
 
-    public void setNombreMesero(String nombreMesero) {
-        this.nombreMesero = nombreMesero;
+    public void setMesero(Mesero mesero) {
+        this.mesero = mesero;
     }
 
     public LocalDate getFecha() {
@@ -88,16 +107,6 @@ import java.time.LocalTime;
     public void setHora(LocalTime hora) {
         this.hora = hora;
     }
-    
-    
-
-//    public LocalDateTime getFechaHora() {
-//        return fechaHora;
-//    }
-//
-//    public void setFechaHora(LocalDateTime fechaHora) {
-//        this.fechaHora = fechaHora;
-//    }
 
     public double getImporte() {
         return importe;
@@ -107,16 +116,13 @@ import java.time.LocalTime;
         this.importe = importe;
     }
 
-    public int getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(int estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
-
-    
-    
 
     public List<PedidoProducto> getPedidosP() {
         return pedidosP;
@@ -125,8 +131,7 @@ import java.time.LocalTime;
     public void setPedidosP(List<PedidoProducto> pedidosP) {
         this.pedidosP = pedidosP;
     }
-    
-    
+
 
     public void agregarPedidoProducto(PedidoProducto producto) {
         pedidosP.add(producto);
@@ -143,8 +148,11 @@ import java.time.LocalTime;
 
     @Override
     public String toString() {
-        return  "idPedido=" + idPedido + ", mesa=" + mesa + ", nombreMesero=" + nombreMesero + ", fecha=" + fecha + ", hora=" + hora + ", importe=" + importe + ", estado=" + estado + ", pedidosP=" + pedidosP ;
+        return "Pedido{" + "idPedido=" + idPedido + ", mesa=" + mesa + ", mesero=" + mesero + ", fecha=" + fecha + ", hora=" + hora + ", importe=" + importe + ", estado=" + estado + ", pedidosP=" + pedidosP + '}';
     }
+
+
+
 
   
     

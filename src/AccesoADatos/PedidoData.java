@@ -12,6 +12,7 @@ import java.sql.Timestamp;
 import javax.swing.JOptionPane;
 import java.time.LocalDateTime;
 import Entidades.Mesa;
+import Entidades.Mesero;
 import Entidades.PedidoProducto;
 import static java.lang.Character.UnicodeScript.UNKNOWN;
 import java.sql.Time;
@@ -31,6 +32,8 @@ public class PedidoData {
     PedidoProducto pp = new PedidoProducto();
     Mesa mesa = new Mesa();
     LocalDateTime now = LocalDateTime.now();
+    Mesero mesero= new Mesero();
+    MeseroData mesData= new MeseroData();
 
     public void guardarPedido(Pedido pedido) {
 
@@ -38,13 +41,13 @@ public class PedidoData {
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
-            ps.setString(1, pedido.getNombreMesero());
+            ps.setString(1, pedido.getMesero().getNombreMesero());
             ps.setDate(2,Date.valueOf(pedido.getFecha()));
             ps.setTime(3, Time.valueOf(pedido.getHora()));
 //            ps.setTimestamp(2, Timestamp.valueOf(now));
             ps.setDouble(4, pedido.getImporte());
             ps.setInt(5, pedido.getMesa().getIdMesa());
-            ps.setInt(6, pedido.getEstado());
+            ps.setString(6, pedido.getEstado());
 
             ps.executeUpdate();
 
@@ -66,7 +69,7 @@ public class PedidoData {
         String sql = "UPDATE pedido SET  estado=?  WHERE idPedido=? ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, pedido.getEstado());
+            ps.setString(1, pedido.getEstado());
             ps.setInt(2, pedido.getIdPedido());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Estado pedido modificado con exito ");
@@ -81,7 +84,7 @@ public class PedidoData {
         String sql = "UPDATE pedido SET nombreMesero=?, fecha=?, hora=?, importe=?=, idMesa=? WHERE idPedido=? ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, pedido.getNombreMesero());
+            ps.setString(1, pedido.getMesero().getNombreMesero());
 //            ps.setTimestamp(2, Timestamp.valueOf(now));
             ps.setDate(2,Date.valueOf(pedido.getFecha()));
             ps.setTime(3, Time.valueOf(pedido.getHora()));
@@ -125,13 +128,16 @@ public class PedidoData {
                 Mesa mesa = mData.buscarMesa(rs.getInt("idMesa"));
 //                System.out.println("mesa = " + mesa);
                 pedido.setIdPedido(idPedido);
-                pedido.setNombreMesero(rs.getString("nombreMesero"));
+               Mesero mesero= mesData.buscarMesero(rs.getString("nombreMesero"));
+               pedido.setMesero(mesero);
+//                pedido.setNombreMesero(rs.getString("nombreMesero"));
                 pedido.setFecha(rs.getDate("fecha").toLocalDate());
                 pedido.setHora(rs.getTime("hora").toLocalTime());
 //                pedido.setFechaHora(rs.getTimestamp("fechaHora").toLocalDateTime());
                 pedido.setImporte(rs.getDouble("importe"));
-                pedido.setEstado(rs.getInt("estado"));
+                pedido.setEstado(rs.getString("estado"));
                 pedido.setMesa(mesa);
+                
 
             } else {
                 JOptionPane.showMessageDialog(null, " No existe pedido con ese Id");
@@ -157,12 +163,13 @@ public class PedidoData {
                 Mesa mesa = mData.buscarMesa(rs.getInt("idMesa"));
 //                System.out.println("mesa = " + mesa);
                 pedido.setIdPedido(rs.getInt("idPedido"));
-                pedido.setNombreMesero(rs.getString("nombreMesero"));
+                Mesero mesero= mesData.buscarMesero(rs.getString("nombreMesero"));
+               pedido.setMesero(mesero);
+//                pedido.setNombreMesero(rs.getString("nombreMesero"));
                 pedido.setFecha(rs.getDate("fecha").toLocalDate());
                 pedido.setHora(rs.getTime("hora").toLocalTime());
-//                pedido.setFechaHora(rs.getTimestamp("fechaHora").toLocalDateTime());
                 pedido.setImporte(rs.getDouble("importe"));
-                pedido.setEstado(rs.getInt("estado"));
+                pedido.setEstado(rs.getString("estado"));
                 pedido.setMesa(mesa);
 
             } else {
@@ -178,7 +185,8 @@ public class PedidoData {
 
     public List<Pedido> ListarPedidosPorMesero(String nombreMesero) {
         List<Pedido> pedidos = new ArrayList<>();
-        String sql = "SELECT * FROM pedido WHERE nombreMesero = ?";
+        String sql = "SELECT * FROM pedido join mesero on( pedido.nombreMesero= mesero.nombreMesero)  "
+                + " WHERE pedido.nombreMesero = ? ";
 
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -194,7 +202,7 @@ public class PedidoData {
                 pedido.setIdPedido(rs.getInt("idPedido"));
                 pedido.setFecha(rs.getDate("fecha").toLocalDate());
                 pedido.setHora(rs.getTime("hora").toLocalTime());
-//                pedido.setFechaHora(rs.getTimestamp("fechaHora").toLocalDateTime());
+
                 pedido.setImporte(rs.getDouble("importe"));
                 MesaData mData = new MesaData();
                 Mesa mesa = mData.buscarMesa(rs.getInt("idMesa"));
@@ -212,7 +220,8 @@ public class PedidoData {
     
     public List<Pedido> ListarPedidosPorMeseroPorFecha(String nombreMesero, LocalDate fecha) {
         List<Pedido> pedidos = new ArrayList<>();
-        String sql = "SELECT * FROM pedido WHERE nombreMesero = ? AND estado=2 AND fecha=?";
+        String sql = "SELECT * FROM pedido join mesero on( pedido.nombreMesero= mesero.nombreMesero) "
+                + " WHERE nombreMesero = ? AND estado=2 AND fecha=?";
 
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -352,10 +361,5 @@ public class PedidoData {
 
     }
       
-      
-      
-      
-      
-      
-      
+     
 }
