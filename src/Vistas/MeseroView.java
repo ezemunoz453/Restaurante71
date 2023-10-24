@@ -14,6 +14,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -49,10 +50,11 @@ public class MeseroView extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        jbCerrarSesion = new javax.swing.JButton();
         jLabelLogo1 = new javax.swing.JLabel();
         jLabelBotones = new javax.swing.JLabel();
         PanelMesas = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(910, 6850));
@@ -60,13 +62,16 @@ public class MeseroView extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Cerrar Sesion");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jbCerrarSesion.setBackground(new java.awt.Color(229, 195, 157));
+        jbCerrarSesion.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jbCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
+        jbCerrarSesion.setText("Cerrar Sesion");
+        jbCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jbCerrarSesionActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 150, 50));
+        jPanel1.add(jbCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 150, 50));
 
         jLabelLogo1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(jLabelLogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 470, 170, 140));
@@ -76,15 +81,28 @@ public class MeseroView extends javax.swing.JFrame {
 
         PanelMesas.setBackground(new java.awt.Color(255, 255, 255));
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelMesasLayout = new javax.swing.GroupLayout(PanelMesas);
         PanelMesas.setLayout(PanelMesasLayout);
         PanelMesasLayout.setHorizontalGroup(
             PanelMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 980, Short.MAX_VALUE)
+            .addGroup(PanelMesasLayout.createSequentialGroup()
+                .addGap(114, 114, 114)
+                .addComponent(jButton1)
+                .addContainerGap(787, Short.MAX_VALUE))
         );
         PanelMesasLayout.setVerticalGroup(
             PanelMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
+            .addGroup(PanelMesasLayout.createSequentialGroup()
+                .addGap(95, 95, 95)
+                .addComponent(jButton1)
+                .addContainerGap(520, Short.MAX_VALUE))
         );
 
         jPanel1.add(PanelMesas, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 980, 640));
@@ -105,18 +123,26 @@ public class MeseroView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jbCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCerrarSesionActionPerformed
        dispose();
         new Login().setVisible(true);
+    }//GEN-LAST:event_jbCerrarSesionActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         AdicionMesaView amv= new AdicionMesaView ();
+        amv.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     
     private void panelMesas() {
         List<Mesa> mesas= new ArrayList<>();
         MesaData mData= new MesaData();
-           Mesa mesaInd= new Mesa();
+       List<Mesa> mesasDeListar= new ArrayList<>();    
         
-        mesas= mData.listarMesas();
+        mesasDeListar= mData.listarMesas();
+        
+//        mesas.addAll(Arrays.asList(mesasDeListar));
+        
         int cont=0;
         for (Mesa mesa1 : mesas) {
             
@@ -194,5 +220,6 @@ Dimension size = new Dimension(200, 50); // Ancho x Alto en píxeles
     private javax.swing.JLabel jLabelBotones;
     private javax.swing.JLabel jLabelLogo1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton jbCerrarSesion;
     // End of variables declaration//GEN-END:variables
 }
