@@ -145,9 +145,9 @@ public class MeseroView extends javax.swing.JFrame {
             
         
            cont= cont+1;
-            System.out.println("cont"+cont);
-            System.out.println(" mesa"+ mesa1.getNumeroMesa());
-            System.out.println(" cap mesa"+ mesa1.getCapacidad());
+//            System.out.println("cont"+cont);
+//            System.out.println(" mesa"+ mesa1.getNumeroMesa());
+//            System.out.println(" cap mesa"+ mesa1.getCapacidad());
             
 
 JLabel jl= new JLabel( new ImageIcon("src/imagenes/mesa1.png"));
