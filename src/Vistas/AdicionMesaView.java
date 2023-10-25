@@ -28,6 +28,7 @@ public class AdicionMesaView extends javax.swing.JFrame {
     PedidoProductoData ppd = new PedidoProductoData();
     PedidoProducto pedProd = new PedidoProducto();
     Pedido pedido = new Pedido();
+    List<PedidoProducto> pedidosP;
 
     private DefaultTableModel modelo = new DefaultTableModel() {
 //        para que sus celdas no sean editables
@@ -54,6 +55,7 @@ public class AdicionMesaView extends javax.swing.JFrame {
         cargarItemsMesas();
         cargarItemsMeseros();
         cargarColumnasPedido();
+        pedidosP = new ArrayList<>();
     }
 
     @SuppressWarnings("unchecked")
@@ -230,6 +232,11 @@ public class AdicionMesaView extends javax.swing.JFrame {
         jbRealizarPedido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbRealizarPedido.setForeground(new java.awt.Color(255, 255, 255));
         jbRealizarPedido.setText("Realizar Pedido");
+        jbRealizarPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbRealizarPedidoActionPerformed(evt);
+            }
+        });
 
         jbEliminar.setBackground(new java.awt.Color(229, 195, 159));
         jbEliminar.setText("Eliminar Seleccionado");
@@ -341,6 +348,8 @@ public class AdicionMesaView extends javax.swing.JFrame {
                     } else {
                         pp = new PedidoProducto(producto, cantidad);
                         ppd.guardarPedidoProducto(pp);
+                        jtProducto.setText("");
+                        jtCantidad.setText("");
                     }
                 }
             } catch (NumberFormatException n) {
@@ -352,20 +361,16 @@ public class AdicionMesaView extends javax.swing.JFrame {
             borrarFilas();
 
             // guardo pedido producto y cargo a un array
-            List<PedidoProducto> pedidosP;
             pedidosP = new ArrayList<>();
+           
             pedidosP.add(pp);
-
-            int cont = 0;
-
             for (PedidoProducto aux1 : pedidosP) {
-                modelo1.addRow(new Object[]{aux1.getCantidad(), aux1.getProducto().getNombre(), aux1.getProducto().getPrecio(), aux1.getSubtotal()});
-                cont = cont + 1;
+                modelo1.addRow(new Object[]{aux1.getIdPedidoProducto(), aux1.getCantidad(), aux1.getProducto().getNombre(), aux1.getProducto().getPrecio(), aux1.getSubtotal()});
             }
             double suma = 0;
             for (int i = 0; i < modelo1.getRowCount(); i++) {
 
-                suma += Double.parseDouble(modelo1.getValueAt(i, 3).toString());
+                suma += Double.parseDouble(modelo1.getValueAt(i, 4).toString());
             }
             jtTotal.setText(String.valueOf(suma));
 
@@ -389,14 +394,43 @@ public class AdicionMesaView extends javax.swing.JFrame {
     }//GEN-LAST:event_jtTotalActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
+        PedidoProducto pp = null;
+
         int filaSel1 = jTablaPedidoP.getSelectedRow();
         if (filaSel1 != -1) {
-           ///// ACA QUEDE/// 
-        }else{
+//            String nombreProducto = modelo1.getValueAt(filaSel1, 2).toString();
+////            System.out.println(nombreProducto);
+//            producto = pData.buscarProductoPorNombre(nombreProducto);
+//            System.out.println(producto.toString());
+            int IdPP = Integer.parseInt(modelo1.getValueAt(filaSel1, 0).toString());
+//            System.out.println(IdPP);
+            pp = ppd.buscarpp(IdPP);
+//            System.out.println(pp.toString());
+
+            ppd.eliminarPedidoProducto(IdPP);
+
+            modelo1.removeRow(filaSel1);
+            double suma = 0;
+            for (int i = 0; i < modelo1.getRowCount(); i++) {
+
+                suma += Double.parseDouble(modelo1.getValueAt(i, 3).toString());
+            }
+            jtTotal.setText(String.valueOf(suma));
+
+        } else {
             JOptionPane.showMessageDialog(this, "Debe seleccionar una fila de listado pedido");
         }
-        
+
     }//GEN-LAST:event_jbEliminarActionPerformed
+
+    private void jbRealizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRealizarPedidoActionPerformed
+        Pedido pedido = null;
+
+        Mesero meseroSel = (Mesero) jcbMesero.getSelectedItem();
+        String nombreMesero = meseroSel.getNombreMesero();
+
+
+    }//GEN-LAST:event_jbRealizarPedidoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -438,6 +472,7 @@ public class AdicionMesaView extends javax.swing.JFrame {
     }
 
     public void cargarColumnasPedido() {
+        modelo1.addColumn("ID");
         modelo1.addColumn("Cantidad ");
         modelo1.addColumn("Producto ");
         modelo1.addColumn("Precio ");
@@ -465,6 +500,15 @@ public class AdicionMesaView extends javax.swing.JFrame {
         for (int f = rowCount - 1; f >= 0; f--) {
             modelo.removeRow(f);
         }
+
+    }
+
+    private void borrarFilas1() {
+        int rowCount = modelo1.getRowCount();
+        for (int f = rowCount - 1; f >= 0; f--) {
+            modelo1.removeRow(f);
+        }
+
     }
 
 }

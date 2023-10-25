@@ -93,8 +93,8 @@ public class ProductoData {
     
     public Producto buscarProductoPorId(int idProducto) {
         Producto producto= new Producto();
-        String sql = " SELECT  idProducto, nombre , stock, precio, estado FROM producto "
-                + "WHERE idProducto=? and estado=1";
+        String sql = " SELECT  * FROM producto "
+                + "WHERE idProducto=? ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idProducto);
@@ -106,6 +106,7 @@ public class ProductoData {
                 producto.setNombre(rs.getString("nombre"));
                 producto.setStock(rs.getInt("stock"));
                 producto.setPrecio(rs.getDouble("precio"));
+                producto.setTipo(rs.getString("tipo"));
 //                producto.setEstado(true);
                 
             } else {
@@ -152,7 +153,37 @@ public class ProductoData {
         return producto;
     }
     
-    public Producto buscarProductoPorNombre(String nombreProd) {
+        public Producto buscarProductoPorNombre(String nombreProd) {
+        Producto producto= null;
+        
+        String sql = " SELECT  * FROM producto "
+                + "WHERE nombre=? and estado=1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, nombreProd);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                producto = new Producto();
+                producto.setIdProducto(rs.getInt("idProducto"));
+                producto.setNombre(rs.getString("nombre"));
+                producto.setStock(rs.getInt("stock"));
+                producto.setPrecio(rs.getDouble("precio"));
+                 producto.setTipo(rs.getString("tipo"));
+//                producto.setEstado(true);
+                
+            } else {
+                JOptionPane.showMessageDialog(null, " No existe Producto con ese Nombre");
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Producto");
+        }
+        return producto;
+    }
+    
+    public Producto buscarProductoPorNombre1(String nombreProd) {
         Producto producto= null;
         
         String sql = " SELECT  idProducto, nombre , stock, precio, estado, tipo FROM producto "
@@ -177,7 +208,7 @@ public class ProductoData {
             ps.close();
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Producto");
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Producto"+ex.getMessage());
         }
         return producto;
     }

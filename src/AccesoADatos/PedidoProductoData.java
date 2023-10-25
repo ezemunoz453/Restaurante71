@@ -85,7 +85,34 @@ public class PedidoProductoData {
      }
 
   
-     
+     public PedidoProducto buscarpp(int idPedidoProducto) {
+        PedidoProducto pp= new PedidoProducto(); 
+        String sql = " SELECT * FROM pedidoproducto "
+                + "WHERE idPedidoProducto=? ";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idPedidoProducto);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                pp.setIdPedidoProducto(idPedidoProducto);
+                Producto prod;
+                prod= pData.buscarProductoPorId(rs.getInt("idProducto"));
+                pp.setProducto(prod);
+                pp.setCantidad(rs.getInt("cantidad"));
+                pp.setSubtotal(rs.getDouble("subtotal"));
+              
+            } else {
+                JOptionPane.showMessageDialog(null, " No existe Pedido Producto con ese id");
+                pp= null;
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla PedidoProducto");
+        }
+        return pp;
+    }
      
      
 }
