@@ -32,7 +32,7 @@ public class AdicionMesaView extends javax.swing.JFrame {
     PedidoProducto pedProd = new PedidoProducto();
     Pedido pedido = new Pedido();
     List<PedidoProducto> pedidosP;
-    PedidoData pedidoData= new PedidoData();
+    PedidoData pedidoData = new PedidoData();
 
     private DefaultTableModel modelo = new DefaultTableModel() {
 //        para que sus celdas no sean editables
@@ -59,13 +59,20 @@ public class AdicionMesaView extends javax.swing.JFrame {
         cargarItemsMesas();
         cargarItemsMeseros();
         cargarColumnasPedido();
-        
-         jcbMesas.setSelectedItem(null);
-         jcbMesero.setSelectedItem(null);
-         
-             }
 
-   
+        jcbMesas.setSelectedItem(null);
+        jcbMesero.setSelectedItem(null);
+        
+        jTablaPedidoP.setEnabled(false);
+        jTableProductos.setEnabled(false);
+        jbAgregarAPedido.setEnabled(false);
+        jbEliminar.setEnabled(false);
+        jbConfirmarPedido.setEnabled(false);
+        jtCantidad.setEnabled(false);
+        jtProducto.setEnabled(false);
+
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -99,7 +106,7 @@ public class AdicionMesaView extends javax.swing.JFrame {
         jtTotal = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jbEliminar = new javax.swing.JButton();
-        jbRealizarPedido = new javax.swing.JButton();
+        jbConfirmarPedido = new javax.swing.JButton();
         jtIdPedido = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -267,19 +274,25 @@ public class AdicionMesaView extends javax.swing.JFrame {
             }
         });
 
-        jbRealizarPedido.setBackground(new java.awt.Color(229, 195, 157));
-        jbRealizarPedido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jbRealizarPedido.setForeground(new java.awt.Color(255, 255, 255));
-        jbRealizarPedido.setText("Confirmar Pedido");
-        jbRealizarPedido.addActionListener(new java.awt.event.ActionListener() {
+        jbConfirmarPedido.setBackground(new java.awt.Color(229, 195, 157));
+        jbConfirmarPedido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbConfirmarPedido.setForeground(new java.awt.Color(255, 255, 255));
+        jbConfirmarPedido.setText("Confirmar Pedido");
+        jbConfirmarPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbRealizarPedidoActionPerformed(evt);
+                jbConfirmarPedidoActionPerformed(evt);
             }
         });
+
+        jtIdPedido.setEditable(false);
 
         jLabel7.setText("Mesero");
 
         jLabel8.setText("Mesa");
+
+        jtMesa.setEditable(false);
+
+        jtMesero.setEditable(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -311,7 +324,7 @@ public class AdicionMesaView extends javax.swing.JFrame {
                             .addComponent(jScrollPane2)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(193, 193, 193)
-                        .addComponent(jbRealizarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jbConfirmarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -342,7 +355,7 @@ public class AdicionMesaView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbRealizarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbConfirmarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(72, 72, 72))))
         );
 
@@ -395,10 +408,10 @@ public class AdicionMesaView extends javax.swing.JFrame {
             Producto producto = new Producto();
             String nombre = (String) modelo.getValueAt(filaSel, 0);
             producto = pData.buscarProductoPorNombre(nombre);
-            
-            int idPedido= Integer.parseInt(jtIdPedido.getText().toString());
-            pedido1= pedidoData.buscarPedidoPorId(idPedido);
-            
+
+            int idPedido = Integer.parseInt(jtIdPedido.getText().toString());
+            pedido1 = pedidoData.buscarPedidoPorId(idPedido);
+
             try {
                 if (jtCantidad.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(this, "El campo cantidad no puede estar vacio");
@@ -413,6 +426,7 @@ public class AdicionMesaView extends javax.swing.JFrame {
                         ppd.guardarPedidoProducto(pp);
                         jtProducto.setText("");
                         jtCantidad.setText("");
+                        jbConfirmarPedido.setEnabled(true);
                     }
                 }
             } catch (NumberFormatException n) {
@@ -429,12 +443,13 @@ public class AdicionMesaView extends javax.swing.JFrame {
             for (PedidoProducto aux1 : pedidosP) {
                 modelo1.addRow(new Object[]{aux1.getIdPedidoProducto(), aux1.getCantidad(), aux1.getProducto().getNombre(), aux1.getProducto().getPrecio(), aux1.getSubtotal()});
             }
-            
+
             //realizo suma para textfield
             double suma = 0;
             for (int i = 0; i < modelo1.getRowCount(); i++) {
                 suma += Double.parseDouble(modelo1.getValueAt(i, 4).toString());
-            }            jtTotal.setText(String.valueOf(suma));
+            }
+            jtTotal.setText(String.valueOf(suma));
         } else {
             JOptionPane.showMessageDialog(this, "Debe seleccionar una fila");
         }
@@ -469,7 +484,7 @@ public class AdicionMesaView extends javax.swing.JFrame {
 //            System.out.println(pp.toString());
 
             ppd.eliminarPedidoProducto(IdPP);
-            
+
             pedidosP.remove(pp);
             modelo1.removeRow(filaSel1);
             double suma = 0;
@@ -485,51 +500,51 @@ public class AdicionMesaView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jbEliminarActionPerformed
 
-    private void jbRealizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRealizarPedidoActionPerformed
+    private void jbConfirmarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarPedidoActionPerformed
         Pedido pedido2 = null;
-        int idPedido= Integer.parseInt(jtIdPedido.getText().toString());
+        int idPedido = Integer.parseInt(jtIdPedido.getText().toString());
         System.out.println(idPedido);
-        Double importe=0.0;
+        Double importe = 0.0;
         pedidosP = new ArrayList<>();
-        pedidosP= ppd.ListarPedidosProductoPorIdPedido(idPedido);
-        
-        
+        pedidosP = ppd.ListarPedidosProductoPorIdPedido(idPedido);
+
         for (PedidoProducto pedidoProducto : pedidosP) {
 //            System.out.println(pedidoProducto.getPedido().toString());
-            importe+= pedidoProducto.getSubtotal();
-            
+            importe += pedidoProducto.getSubtotal();
+
         }
 //        System.out.println("importe total"+importe);
-        
+
         pedidoData.modificarImportePedido(idPedido, importe);
 
-    }//GEN-LAST:event_jbRealizarPedidoActionPerformed
+    }//GEN-LAST:event_jbConfirmarPedidoActionPerformed
 
     private void jbIniciarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbIniciarPedidoActionPerformed
-       Pedido pedido = null;
-                try{
-        Mesero meseroSel = (Mesero) jcbMesero.getSelectedItem();
-         Mesa mesa= (Mesa)jcbMesas.getSelectedItem();
-         
-         if ( mesa.getEstado().equalsIgnoreCase("libre")){
-                   pedido= new Pedido(mesa, meseroSel, LocalDate.now(), LocalTime.now(), "INICIADO");
-         pedidoData.guardarPedido(pedido);
-         
-         // imprimir en textf datos de pedido
-         jtIdPedido.setText(pedido.getIdPedido()+"");
-         jtMesa.setText(pedido.getMesa().getNumeroMesa()+"");
-         jtMesero.setText(pedido.getMesero().getNombreMesero());
-         
-         mesa.setEstado("OCUPADA");
-         mData.modificarMesa(mesa);
-         } else {
-             JOptionPane.showMessageDialog(this, " No puede iniciarse nuevo pedido en la mesa, se encuentra ocupada");
-         }
-       } catch ( NullPointerException n){
-           JOptionPane.showMessageDialog(this, " Debe seleccionar un campo de mesa y mesero");
-       }
-        
-       
+        Pedido pedido = null;
+        try {
+            Mesero meseroSel = (Mesero) jcbMesero.getSelectedItem();
+            Mesa mesa = (Mesa) jcbMesas.getSelectedItem();
+
+            if (mesa.getEstado().equalsIgnoreCase("libre")) {
+                pedido = new Pedido(mesa, meseroSel, LocalDate.now(), LocalTime.now(), "INICIADO");
+                pedidoData.guardarPedido(pedido);
+
+                // imprimir en textf datos de pedido
+                jtIdPedido.setText(pedido.getIdPedido() + "");
+                jtMesa.setText(pedido.getMesa().getNumeroMesa() + "");
+                jtMesero.setText(pedido.getMesero().getNombreMesero());
+
+                mesa.setEstado("OCUPADA");
+                mData.modificarMesa(mesa);
+                activarCambios();
+            } else {
+                JOptionPane.showMessageDialog(this, " No puede iniciarse nuevo pedido en la mesa, se encuentra ocupada");
+            }
+        } catch (NullPointerException n) {
+            JOptionPane.showMessageDialog(this, " Debe seleccionar un campo de mesa y mesero");
+        }
+
+
     }//GEN-LAST:event_jbIniciarPedidoActionPerformed
 
 
@@ -551,9 +566,9 @@ public class AdicionMesaView extends javax.swing.JFrame {
     private javax.swing.JTable jTablaPedidoP;
     private javax.swing.JTable jTableProductos;
     private javax.swing.JButton jbAgregarAPedido;
+    private javax.swing.JButton jbConfirmarPedido;
     private javax.swing.JButton jbEliminar;
     private javax.swing.JButton jbIniciarPedido;
-    private javax.swing.JButton jbRealizarPedido;
     private javax.swing.JComboBox<Mesa> jcbMesas;
     private javax.swing.JComboBox<Mesero> jcbMesero;
     private javax.swing.JTextField jtCantidad;
@@ -617,9 +632,15 @@ public class AdicionMesaView extends javax.swing.JFrame {
         }
 
     }
-    
-    private void activarCambios(){
+
+    private void activarCambios() {
+        jTablaPedidoP.setEnabled(true);
+        jTableProductos.setEnabled(true);
+        jbAgregarAPedido.setEnabled(true);
+        jbEliminar.setEnabled(true);
         
+        jtCantidad.setEnabled(true);
+        jtProducto.setEnabled(true);
     }
 
 }
