@@ -1,9 +1,11 @@
 package Vistas;
 
 import AccesoADatos.MesaData;
+import AccesoADatos.MeseroData;
 import AccesoADatos.ProductoData;
 import AccesoADatos.UsuarioData;
 import Entidades.Mesa;
+import Entidades.Mesero;
 import Entidades.Producto;
 import Entidades.Usuario;
 import java.awt.BorderLayout;
@@ -11,6 +13,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -19,29 +23,30 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 public class AdministradorView1 extends javax.swing.JFrame {
-    
+
     Usuario usuario = new Usuario();
     UsuarioData uData = new UsuarioData();
     Mesa mesa = new Mesa();
     MesaData mData = new MesaData();
     Producto producto = new Producto();
     ProductoData pData = new ProductoData();
-    
+    Mesero mesero = new Mesero();
+    MeseroData meseroData = new MeseroData();
+
     public AdministradorView1() {
         initComponents();
-        
-//        this.setSize(1280, 720);
 
+//        this.setSize(1280, 720);
         this.setSize(1700, 1000);
 //        setResizable(false);
-        
+
         this.setLocationRelativeTo(this);
         AgregarImagenALabel(jLFondoBotones, "src/imagenes/fondobotones.jpg");
         AgregarImagenALabel(jLabelLogo, "src/imagenes/Logog71 resto.png");
         AgregarImagenALabel(jlLogoUser, "src/imagenes/username.png");
         AgregarImagenALabel(jlLogoMesa, "src/imagenes/mesa1.png");
         AgregarImagenALabel(jlLogoProducto, "src/imagenes/stock1.png");
-        
+
         cargarComboNivel();
         jcbNivel.setSelectedItem(null);
         jbModificarUsuario.setEnabled(false);
@@ -51,13 +56,16 @@ public class AdministradorView1 extends javax.swing.JFrame {
         jbModificarMesa.setEnabled(false);
         jbEliminarMesa.setEnabled(false);
         cargarComboTipoProducto();
-        
+
         jcbTipoProducto.setSelectedItem(null);
         jbModificarProducto.setEnabled(false);
         jbEliminarProducto.setEnabled(false);
         
+        
+        jbEliminarMesero.setEnabled(false);
+
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -73,6 +81,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
         ;
         jLabelLogo = new javax.swing.JLabel();
         jdUsuarios = new javax.swing.JButton();
+        jbMeseros = new javax.swing.JButton();
         jbProductos = new javax.swing.JButton();
         jbCerrarSesion = new javax.swing.JButton();
         jbReportes = new javax.swing.JButton();
@@ -127,6 +136,14 @@ public class AdministradorView1 extends javax.swing.JFrame {
         jcbTipoProducto = new javax.swing.JComboBox<>();
         jPanel7 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jtNombreMesero = new javax.swing.JTextField();
+        jtApellidoMesero = new javax.swing.JTextField();
+        jbBuscarMesero = new javax.swing.JButton();
+        jbEliminarMesero = new javax.swing.JButton();
+        jbGuardarMesero = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -155,6 +172,25 @@ public class AdministradorView1 extends javax.swing.JFrame {
         });
         MiEscritorio.add(jdUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 230, 80));
 
+        jbMeseros.setBackground(new java.awt.Color(255, 255, 255));
+        jbMeseros.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        jbMeseros.setForeground(new java.awt.Color(201, 162, 123));
+        jbMeseros.setText("MESEROS");
+        jbMeseros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jbMeserosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbMeserosMouseExited(evt);
+            }
+        });
+        jbMeseros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbMeserosActionPerformed(evt);
+            }
+        });
+        MiEscritorio.add(jbMeseros, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 510, 230, 80));
+
         jbProductos.setBackground(new java.awt.Color(255, 255, 255));
         jbProductos.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jbProductos.setForeground(new java.awt.Color(201, 162, 123));
@@ -174,7 +210,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
                 jbProductosActionPerformed(evt);
             }
         });
-        MiEscritorio.add(jbProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 230, 80));
+        MiEscritorio.add(jbProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 230, 80));
 
         jbCerrarSesion.setBackground(new java.awt.Color(229, 195, 157));
         jbCerrarSesion.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
@@ -185,7 +221,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
                 jbCerrarSesionActionPerformed(evt);
             }
         });
-        MiEscritorio.add(jbCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 710, 230, 80));
+        MiEscritorio.add(jbCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 740, 230, 80));
 
         jbReportes.setBackground(new java.awt.Color(255, 255, 255));
         jbReportes.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
@@ -206,7 +242,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
                 jbReportesActionPerformed(evt);
             }
         });
-        MiEscritorio.add(jbReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 460, 230, 80));
+        MiEscritorio.add(jbReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, 230, 80));
 
         jbMesas.setBackground(new java.awt.Color(255, 255, 255));
         jbMesas.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
@@ -227,10 +263,10 @@ public class AdministradorView1 extends javax.swing.JFrame {
                 jbMesasActionPerformed(evt);
             }
         });
-        MiEscritorio.add(jbMesas, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 230, 80));
+        MiEscritorio.add(jbMesas, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 230, 80));
 
         jLFondoBotones.setBackground(new java.awt.Color(0, 51, 204));
-        MiEscritorio.add(jLFondoBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 1160));
+        MiEscritorio.add(jLFondoBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 380, 1160));
 
         jPFondoVentanas.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -377,7 +413,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
                     .addComponent(jbGuardarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbEliminarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbModificarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(359, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("GESTION DE USUARIOS", jPanel4);
@@ -502,7 +538,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
                         .addComponent(jbEliminarMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jbModificarMesa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jbGuardarMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addContainerGap(413, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("GESTION DE MESAS", jPanel5);
@@ -664,7 +700,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
                         .addComponent(jbEliminarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jbModificarProducto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jbGuardarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(339, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("GESTION DE PRODUCTOS", jPanel6);
@@ -692,10 +728,92 @@ public class AdministradorView1 extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(78, 78, 78)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(675, Short.MAX_VALUE))
+                .addContainerGap(971, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("REPORTES ", jPanel7);
+
+        jPanel1.setBackground(new java.awt.Color(229, 195, 157));
+
+        jLabel11.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Nombre Mesero");
+
+        jLabel18.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setText("Apellido Mesero");
+
+        jtNombreMesero.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+
+        jtApellidoMesero.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+
+        jbBuscarMesero.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbBuscarMesero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
+        jbBuscarMesero.setText("BUSCAR");
+        jbBuscarMesero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarMeseroActionPerformed(evt);
+            }
+        });
+
+        jbEliminarMesero.setBackground(new java.awt.Color(255, 255, 255));
+        jbEliminarMesero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar.png"))); // NOI18N
+        jbEliminarMesero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEliminarMeseroActionPerformed(evt);
+            }
+        });
+
+        jbGuardarMesero.setBackground(new java.awt.Color(255, 255, 255));
+        jbGuardarMesero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png"))); // NOI18N
+        jbGuardarMesero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarMeseroActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel18)
+                        .addComponent(jLabel11)
+                        .addComponent(jtApellidoMesero, javax.swing.GroupLayout.PREFERRED_SIZE, 829, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(jtNombreMesero, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(35, 35, 35)
+                            .addComponent(jbBuscarMesero, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jbGuardarMesero, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(617, 617, 617)
+                        .addComponent(jbEliminarMesero, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(148, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(163, 163, 163)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jbBuscarMesero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jtNombreMesero))
+                .addGap(132, 132, 132)
+                .addComponent(jLabel18)
+                .addGap(18, 18, 18)
+                .addComponent(jtApellidoMesero, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbGuardarMesero, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbEliminarMesero, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(482, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("GESTION DE MESEROS", jPanel1);
 
         javax.swing.GroupLayout jPFondoVentanasLayout = new javax.swing.GroupLayout(jPFondoVentanas);
         jPFondoVentanas.setLayout(jPFondoVentanasLayout);
@@ -707,7 +825,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
             jPFondoVentanasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPFondoVentanasLayout.createSequentialGroup()
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         MiEscritorio.add(jPFondoVentanas, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, 1130, 910));
@@ -791,12 +909,12 @@ public class AdministradorView1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jbCerrarSesionActionPerformed
 
     private void jbBuscarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarUsuarioActionPerformed
-        
+
         try {
             if (jtNombreUsuario.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "El campo Nombre de Usuario no puede estar vacio ");
                 limpiarCamposUser();
-                
+
             } else {
                 usuario = uData.buscarUsuario(jtNombreUsuario.getText());
                 if (usuario != null) {
@@ -804,7 +922,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
                     jtNombre.setText(usuario.getNombre());
                     jtContraseña.setText(usuario.getContrasena());
                     jcbNivel.setSelectedItem(usuario.getNivel());
-                    
+
                     jbGuardarUsuario.setEnabled(false);
                     jbModificarUsuario.setEnabled(true);
                     jbEliminarUsuario.setEnabled(true);
@@ -837,13 +955,13 @@ public class AdministradorView1 extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Los campos no pueden estar vacios al modificar un USUARIO ");
             return;
         } else {
-            
+
             usuario.setUsername(jtNombreUsuario.getText());
             usuario.setNombre(jtNombre.getText());
             usuario.setApellido(jtApellido.getText());
             usuario.setContrasena(jtContraseña.getText());
             usuario.setNivel(jcbNivel.getSelectedItem().toString());
-            
+
             uData.modificarUsuario(usuario);
             limpiarCamposUser();
         }
@@ -851,11 +969,11 @@ public class AdministradorView1 extends javax.swing.JFrame {
 
     private void jbEliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarUsuarioActionPerformed
         if (jtNombreUsuario.getText().isEmpty()) {
-            
+
             JOptionPane.showMessageDialog(this, "No existe USUARIO a eliminar , indique un NOMBRE DE USUARIO para su busqueda ");
         } else {
             int opcion = JOptionPane.showConfirmDialog(null, "¿Desea eliminar ?", "Confirmación", JOptionPane.YES_NO_OPTION);
-            
+
             if (opcion == JOptionPane.YES_OPTION) {
                 uData.eliminarUsuario(jtNombreUsuario.getText());
                 limpiarCamposUser();
@@ -872,13 +990,13 @@ public class AdministradorView1 extends javax.swing.JFrame {
                 limpiarCamposMesa();
             } else {
                 mesa = mData.buscarMesaPorNumero(Integer.parseInt(jtNumeroMesa.getText()));
-                
+
                 if (mesa != null) {
-                    
+
                     jtNumeroMesa.setText(mesa.getNumeroMesa() + "");
                     jtCapacidad.setText(mesa.getCapacidad() + "");
                     jcbEstado.setSelectedItem(mesa.getEstado());
-                    
+
                     jbGuardarMesa.setEnabled(false);
                     jbModificarMesa.setEnabled(true);
                     jbEliminarMesa.setEnabled(true);
@@ -889,12 +1007,12 @@ public class AdministradorView1 extends javax.swing.JFrame {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "El campo solo acepta numeros ");
             limpiarCamposMesa();
-            
+
         } catch (NullPointerException ex) {
 //            JOptionPane.showMessageDialog(this, " ");
 
         }
-        
+
 
     }//GEN-LAST:event_jbBuscarMesaActionPerformed
 
@@ -904,18 +1022,18 @@ public class AdministradorView1 extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Los campos Numero y Capacidad no pueden estar vacios al crear una Mesa");
                 return;
             } else {
-                
+
                 mesa.setNumeroMesa(Integer.parseInt(jtNumeroMesa.getText()));
                 mesa.setCapacidad(Integer.parseInt(jtCapacidad.getText()));
                 mesa.setEstado("LIBRE");
-                
+
                 mData.guardarMesa(mesa);
             }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, " Los campos deben se numericos");
         }
         limpiarCamposMesa();
-        
+
 
     }//GEN-LAST:event_jbGuardarMesaActionPerformed
 
@@ -924,27 +1042,27 @@ public class AdministradorView1 extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Los campos no pueden estar vacios al modificar una MESA ");
             return;
         } else {
-            
+
             mesa.setNumeroMesa(Integer.parseInt(jtNumeroMesa.getText()));
             mesa.setCapacidad(Integer.parseInt(jtCapacidad.getText()));
             mesa.setEstado("LIBRE");
-            
+
             mData.modificarMesa(mesa);
-            
+
             limpiarCamposMesa();
         }
     }//GEN-LAST:event_jbModificarMesaActionPerformed
 
     private void jbEliminarMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarMesaActionPerformed
         if (jtNumeroMesa.getText().isEmpty()) {
-            
+
             JOptionPane.showMessageDialog(this, "No existe Mesa a eliminar , indique un Numero de Mesa para su busqueda ");
         } else {
             int opcion = JOptionPane.showConfirmDialog(null, "¿Desea eliminar ?", "Confirmación", JOptionPane.YES_NO_OPTION);
-            
+
             if (opcion == JOptionPane.YES_OPTION) {
                 mData.eliminarMesaPorNumeroMesa(Integer.parseInt(jtNumeroMesa.getText()));
-                
+
                 limpiarCamposMesa();
             } else {
                 limpiarCamposMesa();
@@ -959,20 +1077,20 @@ public class AdministradorView1 extends javax.swing.JFrame {
                 limpiarCamposProducto();
             } else {
                 producto = pData.buscarProductoPorId(Integer.parseInt(jtIdProducto.getText()));
-                
+
                 if (producto != null) {
-                    
+
                     jtIdProducto.setText(producto.getIdProducto() + "");
                     jtNombreProducto.setText(producto.getNombre());
                     jtCantidadProducto.setText(producto.getStock() + "");
                     jtPrecioProducto.setText(producto.getPrecio() + "");
 //                jcbEstadoProducto.setSelectedItem(producto.isEstado());
                     jcbTipoProducto.setSelectedItem(producto.getTipo());
-                    
+
                     jbGuardarProducto.setEnabled(false);
                     jbModificarProducto.setEnabled(true);
                     jbEliminarProducto.setEnabled(true);
-                    
+
                 } else {
                     limpiarCamposProducto();
                 }
@@ -980,12 +1098,12 @@ public class AdministradorView1 extends javax.swing.JFrame {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "El campo solo acepta numeros ");
             limpiarCamposProducto();
-            
+
         } catch (NullPointerException ex) {
 //            JOptionPane.showMessageDialog(this, " ");
 
         }
-        
+
 
     }//GEN-LAST:event_jbBuscarProductoIdActionPerformed
 
@@ -995,13 +1113,13 @@ public class AdministradorView1 extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Los campos  no pueden estar vacios al crear un Producto");
                 return;
             } else {
-                
+
                 producto.setNombre(jtNombreProducto.getText());
                 producto.setStock(Integer.parseInt(jtCantidadProducto.getText()));
                 producto.setPrecio(Double.parseDouble(jtPrecioProducto.getText()));
                 producto.setEstado(true);
                 producto.setTipo(jcbTipoProducto.getSelectedItem().toString());
-                
+
                 pData.guardarProducto(producto);
                 limpiarCamposProducto();
             }
@@ -1011,30 +1129,30 @@ public class AdministradorView1 extends javax.swing.JFrame {
         limpiarCamposProducto();
 
     }//GEN-LAST:event_jbGuardarProductoActionPerformed
-    
+
 
     private void jbBuscarProductoNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarProductoNombreActionPerformed
-        
+
         try {
             if (jtNombreProducto.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "El campo Nombre Producto no puede estar vacio para realizar busqueda por Nombre ");
                 limpiarCamposProducto();
             } else {
                 producto = pData.buscarProductoPorNombre(jtNombreProducto.getText());
-                
+
                 if (producto != null) {
-                    
+
                     jtIdProducto.setText(producto.getIdProducto() + "");
                     jtNombreProducto.setText(producto.getNombre());
                     jtCantidadProducto.setText(producto.getStock() + "");
                     jtPrecioProducto.setText(producto.getPrecio() + "");
 //                jcbEstadoProducto.setSelectedItem(producto.isEstado());
                     jcbTipoProducto.setSelectedItem(producto.getTipo());
-                    
+
                     jbGuardarProducto.setEnabled(false);
                     jbModificarProducto.setEnabled(true);
                     jbEliminarProducto.setEnabled(true);
-                    
+
                 } else {
                     limpiarCamposProducto();
                 }
@@ -1042,7 +1160,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "El campo solo acepta Letras ");
             limpiarCamposProducto();
-            
+
         } catch (NullPointerException ex) {
 //            JOptionPane.showMessageDialog(this, " ");
 
@@ -1051,50 +1169,127 @@ public class AdministradorView1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jbBuscarProductoNombreActionPerformed
 
     private void jbModificarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarProductoActionPerformed
-         try {
-        if (jtNombreProducto.getText().isEmpty() || jtPrecioProducto.getText().isEmpty() || jcbTipoProducto.getSelectedItem() == null) {
-            JOptionPane.showMessageDialog(this, "Los campos no pueden estar vacios al modificar un Producto ");
-            return;
-        } else {
-            producto.setNombre(jtNombreProducto.getText());
-            producto.setStock(Integer.parseInt(jtCantidadProducto.getText()));
-            producto.setPrecio(Double.parseDouble(jtPrecioProducto.getText()));
-            producto.setEstado(true);
-            producto.setTipo(jcbTipoProducto.getSelectedItem().toString());
-            
-            pData.modificarProducto(producto);
-            limpiarCamposProducto();
-        }
+        try {
+            if (jtNombreProducto.getText().isEmpty() || jtPrecioProducto.getText().isEmpty() || jcbTipoProducto.getSelectedItem() == null) {
+                JOptionPane.showMessageDialog(this, "Los campos no pueden estar vacios al modificar un Producto ");
+                return;
+            } else {
+                producto.setNombre(jtNombreProducto.getText());
+                producto.setStock(Integer.parseInt(jtCantidadProducto.getText()));
+                producto.setPrecio(Double.parseDouble(jtPrecioProducto.getText()));
+                producto.setEstado(true);
+                producto.setTipo(jcbTipoProducto.getSelectedItem().toString());
+
+                pData.modificarProducto(producto);
+                limpiarCamposProducto();
+            }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, " Error en formato de atributos");
         }
         limpiarCamposProducto();
-        
+
 
     }//GEN-LAST:event_jbModificarProductoActionPerformed
 
     private void jbEliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarProductoActionPerformed
-          if (jtIdProducto.getText().isEmpty() || jtNombreProducto.getText().isEmpty() ) {
-            
+        if (jtIdProducto.getText().isEmpty() || jtNombreProducto.getText().isEmpty()) {
+
             JOptionPane.showMessageDialog(this, "No existe Producto a eliminar , Primero debe realizar busqueda ");
         } else {
             int opcion = JOptionPane.showConfirmDialog(null, "¿Desea eliminar ?", "Confirmación", JOptionPane.YES_NO_OPTION);
-            
+
             if (opcion == JOptionPane.YES_OPTION) {
                 pData.eliminarProducto(Integer.parseInt(jtIdProducto.getText()));
-                               
+
                 limpiarCamposProducto();
             } else {
-               limpiarCamposProducto();
+                limpiarCamposProducto();
             }
         }
     }//GEN-LAST:event_jbEliminarProductoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ReporteUsuarioView ruv= new ReporteUsuarioView();
+        ReporteUsuarioView ruv = new ReporteUsuarioView();
         ruv.setVisible(true);
-       
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jbMeserosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbMeserosMouseEntered
+        jbMeseros.setBackground(new Color(201, 162, 123));
+        jbMeseros.setForeground(Color.white);
+    }//GEN-LAST:event_jbMeserosMouseEntered
+
+    private void jbMeserosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbMeserosMouseExited
+        jbMeseros.setBackground(Color.white);
+        jbMeseros.setForeground(new Color(201, 162, 123));
+    }//GEN-LAST:event_jbMeserosMouseExited
+
+    private void jbMeserosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMeserosActionPerformed
+        jTabbedPane1.setSelectedIndex(4);
+    }//GEN-LAST:event_jbMeserosActionPerformed
+
+    private void jbBuscarMeseroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarMeseroActionPerformed
+        try {
+            if (jtNombreMesero.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "El campo Nombre no puede estar vacio para buscar un Mesero");
+                limpiarCamposMesero();
+            } else {
+                mesero = meseroData.buscarMesero(jtNombreMesero.getText().toString());
+
+                if (mesero != null) {
+                    jtNombreMesero.setText(mesero.getNombreMesero());
+                    jtApellidoMesero.setText(mesero.getApellidoMesero());
+
+                    jbGuardarMesero.setEnabled(false);
+                    jbEliminarMesero.setEnabled(true);
+                } else {
+                    limpiarCamposMesero();
+                }
+            }
+        } catch (NumberFormatException e) {
+            limpiarCamposMesero();
+        } catch (NullPointerException ex) {
+        }
+
+    }//GEN-LAST:event_jbBuscarMeseroActionPerformed
+
+    private void jbGuardarMeseroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarMeseroActionPerformed
+        try {
+            if (jtNombreMesero.getText().isEmpty() || jtApellidoMesero.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Los campos  no pueden estar vacios al crear un Mesero");
+                limpiarCamposMesero();
+                return;
+            } else {
+                mesero.setNombreMesero(jtNombreMesero.getText());
+                mesero.setApellidoMesero(jtApellidoMesero.getText());
+
+                meseroData.guardarMesero(mesero);
+
+                limpiarCamposMesero();
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, " Error en formato de atributos");
+        }
+        limpiarCamposMesero();
+    }//GEN-LAST:event_jbGuardarMeseroActionPerformed
+
+    private void jbEliminarMeseroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarMeseroActionPerformed
+        if (jtNombreMesero.getText().isEmpty() || jtApellidoMesero.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No existe mesero a eliminar, debe realizar busqueda primero para eliminar");
+            return;
+            
+        } else {
+            int opcion = JOptionPane.showConfirmDialog(null, "¿Desea eliminar ?", "Confirmación", JOptionPane.YES_NO_OPTION);
+
+            if (opcion == JOptionPane.YES_OPTION) {
+                meseroData.eliminarMesero(jtNombreMesero.getText().toString());
+                
+                limpiarCamposMesero();
+            } else {
+                limpiarCamposMesero();
+            }
+        }
+    }//GEN-LAST:event_jbEliminarMeseroActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1102,12 +1297,14 @@ public class AdministradorView1 extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLFondoBotones;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1116,23 +1313,28 @@ public class AdministradorView1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JPanel jPFondoVentanas;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton jbBuscarMesa;
+    private javax.swing.JButton jbBuscarMesero;
     private javax.swing.JButton jbBuscarProductoId;
     private javax.swing.JButton jbBuscarProductoNombre;
     private javax.swing.JButton jbBuscarUsuario;
     private javax.swing.JButton jbCerrarSesion;
     private javax.swing.JButton jbEliminarMesa;
+    private javax.swing.JButton jbEliminarMesero;
     private javax.swing.JButton jbEliminarProducto;
     private javax.swing.JButton jbEliminarUsuario;
     private javax.swing.JButton jbGuardarMesa;
+    private javax.swing.JButton jbGuardarMesero;
     private javax.swing.JButton jbGuardarProducto;
     private javax.swing.JButton jbGuardarUsuario;
     private javax.swing.JButton jbMesas;
+    private javax.swing.JButton jbMeseros;
     private javax.swing.JButton jbModificarMesa;
     private javax.swing.JButton jbModificarProducto;
     private javax.swing.JButton jbModificarUsuario;
@@ -1146,11 +1348,13 @@ public class AdministradorView1 extends javax.swing.JFrame {
     private javax.swing.JLabel jlLogoProducto;
     private javax.swing.JLabel jlLogoUser;
     private javax.swing.JTextField jtApellido;
+    private javax.swing.JTextField jtApellidoMesero;
     private javax.swing.JTextField jtCantidadProducto;
     private javax.swing.JTextField jtCapacidad;
     private javax.swing.JTextField jtContraseña;
     private javax.swing.JTextField jtIdProducto;
     private javax.swing.JTextField jtNombre;
+    private javax.swing.JTextField jtNombreMesero;
     private javax.swing.JTextField jtNombreProducto;
     private javax.swing.JTextField jtNombreUsuario;
     private javax.swing.JTextField jtNumeroMesa;
@@ -1161,12 +1365,12 @@ public class AdministradorView1 extends javax.swing.JFrame {
         jcbNivel.addItem("ADMINISTRADOR");
         jcbNivel.addItem("MESERO");
     }
-    
+
     private void cargarComboEstadoMesal() {
         jcbEstado.addItem("LIBRE");
         jcbEstado.addItem("OCUPADA");
     }
-    
+
     private void cargarComboTipoProducto() {
         jcbTipoProducto.addItem("BEBIDAS SIN ALCOHOL");
         jcbTipoProducto.addItem("BEBIDAS CON ALCOHOL");
@@ -1174,47 +1378,57 @@ public class AdministradorView1 extends javax.swing.JFrame {
         jcbTipoProducto.addItem("LOMITOS");
         jcbTipoProducto.addItem("PIZZAS");
     }
-    
+
     public void AgregarImagenALabel(JLabel labelName, String root) {
         ImageIcon image = new ImageIcon(root);
         Icon icon = new ImageIcon(image.getImage().getScaledInstance(labelName.getWidth(), labelName.getHeight(), Image.SCALE_DEFAULT));
         labelName.setIcon(icon);
         this.repaint();
     }
-    
+
     public void limpiarCamposUser() {
         jtNombreUsuario.setText("");
         jtApellido.setText("");
         jtNombre.setText("");
         jtContraseña.setText("");
         jcbNivel.setSelectedItem(null);
-        
+
         jbModificarUsuario.setEnabled(false);
         jbGuardarUsuario.setEnabled(true);
         jbEliminarUsuario.setEnabled(false);
-        
+
     }
-    
+
     public void limpiarCamposMesa() {
         jtNumeroMesa.setText("");
         jtCapacidad.setText("");
         jcbEstado.setSelectedItem(null);
-        
+
         jbModificarMesa.setEnabled(false);
         jbGuardarMesa.setEnabled(true);
         jbEliminarMesa.setEnabled(false);
+
     }
-    
+
+    public void limpiarCamposMesero() {
+        jtNombreMesero.setText("");
+        jtApellidoMesero.setText("");
+
+        jbGuardarMesero.setEnabled(true);
+        jbEliminarMesero.setEnabled(false);
+
+    }
+
     public void limpiarCamposProducto() {
         jtIdProducto.setText("");
         jtNombreProducto.setText("");
         jtCantidadProducto.setText("");
         jtPrecioProducto.setText("");
         jcbTipoProducto.setSelectedItem(null);
-        
+
         jbModificarProducto.setEnabled(false);
         jbGuardarProducto.setEnabled(true);
         jbEliminarProducto.setEnabled(false);
     }
-    
+
 }

@@ -151,15 +151,15 @@ public class UsuarioData {
       public Usuario buscarUsuario(String userName) {
         Usuario us= new Usuario();
         String sql = " SELECT username, contrasena, Nivel, nombre, apellido FROM usuario "
-                + "WHERE username=? ";
+                + "WHERE username LIKE ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, userName);
+            ps.setString(1,"%"+ userName+"%");
             ResultSet rs = ps.executeQuery();
             
             if (rs.next()) {
             
-                us.setUsername(userName);
+                us.setUsername(rs.getString("username"));
                 us.setContrasena(rs.getString("contrasena"));
                 us.setNivel(rs.getString("nivel"));
                 us.setNombre(rs.getString("nombre"));

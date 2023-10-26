@@ -38,9 +38,7 @@ public class MeseroData {
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Mesero");
-
         }
-
     }
     
     
@@ -48,14 +46,14 @@ public class MeseroData {
        public Mesero buscarMesero(String nombreMesero) {
         Mesero mesero= new Mesero();
         String sql = " SELECT * FROM mesero "
-                + "WHERE nombreMesero=? ";
+                + "WHERE nombreMesero LIKE ? ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, nombreMesero);
+            ps.setString(1, "%"+nombreMesero+"%");
             ResultSet rs = ps.executeQuery();
             
             if (rs.next()) {
-                mesero.setNombreMesero(nombreMesero);
+                mesero.setNombreMesero(rs.getString("nombreMesero"));
                 mesero.setIdMesero(rs.getInt("idMesero"));
                 mesero.setApellidoMesero(rs.getString("apellidoMesero"));
                 
@@ -72,7 +70,42 @@ public class MeseroData {
         return mesero;
     }
        
-       
+        public void modificarMesero(Mesero mesero) {
+        String sql = "UPDATE mesero SET nombreMesero=?, apellidoMesero=? WHERE idMesero=? ";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, mesero.getNombreMesero());
+            ps.setString(2, mesero.getApellidoMesero());
+            ps.setInt(3, mesero.getIdMesero());
+            
+              int exito = ps.executeUpdate();
+
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, " Datos de Mesero modificado");
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Mesero");
+        }
+    }
+        
+        public void eliminarMesero(String nombreMesero) {
+        String sql = "DELETE FROM mesero WHERE nombreMesero=? ";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, nombreMesero);
+
+            int exito = ps.executeUpdate();
+
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, " Mesero eliminado Definitivamente");
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Mesero");
+        }
+    }
+        
         public List<Mesero> listarMeseros() {
 
         String sql = " SELECT * FROM mesero ";

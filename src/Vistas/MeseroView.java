@@ -47,9 +47,11 @@ public class MeseroView extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
         jbCerrarSesion = new javax.swing.JButton();
         jLabelLogo1 = new javax.swing.JLabel();
         jLabelBotones = new javax.swing.JLabel();
+        jdEscritorioMesero = new javax.swing.JDesktopPane();
         PanelMesas = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
 
@@ -58,6 +60,9 @@ public class MeseroView extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton2.setText("LISTAR MESAS");
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 150, 50));
 
         jbCerrarSesion.setBackground(new java.awt.Color(229, 195, 157));
         jbCerrarSesion.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
@@ -90,19 +95,38 @@ public class MeseroView extends javax.swing.JFrame {
         PanelMesasLayout.setHorizontalGroup(
             PanelMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelMesasLayout.createSequentialGroup()
-                .addGap(114, 114, 114)
-                .addComponent(jButton1)
-                .addContainerGap(787, Short.MAX_VALUE))
+                .addGap(46, 46, 46)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(701, Short.MAX_VALUE))
         );
         PanelMesasLayout.setVerticalGroup(
             PanelMesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelMesasLayout.createSequentialGroup()
-                .addGap(95, 95, 95)
-                .addComponent(jButton1)
-                .addContainerGap(520, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(435, Short.MAX_VALUE))
         );
 
-        jPanel1.add(PanelMesas, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 980, 640));
+        jdEscritorioMesero.setLayer(PanelMesas, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout jdEscritorioMeseroLayout = new javax.swing.GroupLayout(jdEscritorioMesero);
+        jdEscritorioMesero.setLayout(jdEscritorioMeseroLayout);
+        jdEscritorioMeseroLayout.setHorizontalGroup(
+            jdEscritorioMeseroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jdEscritorioMeseroLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(PanelMesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(61, Short.MAX_VALUE))
+        );
+        jdEscritorioMeseroLayout.setVerticalGroup(
+            jdEscritorioMeseroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jdEscritorioMeseroLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(PanelMesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jdEscritorioMesero, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 980, 640));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -126,7 +150,7 @@ public class MeseroView extends javax.swing.JFrame {
     }//GEN-LAST:event_jbCerrarSesionActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         AdicionMesaView amv= new AdicionMesaView ();
+        AdicionMesaView amv= new AdicionMesaView ();
         amv.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -135,39 +159,29 @@ public class MeseroView extends javax.swing.JFrame {
         List<Mesa> mesas= new ArrayList<>();
         MesaData mData= new MesaData();
 //       List<Mesa> mesas= new ArrayList<>();    
-        
-        mesas= mData.listarMesas();
+              mesas= mData.listarMesas();
         
 //        mesas.addAll(Arrays.asList(mesasDeListar));
-        
-        int cont=0;
+         int cont=0;
         for (Mesa mesa1 : mesas) {
-            
-        
+
            cont= cont+1;
 //            System.out.println("cont"+cont);
 //            System.out.println(" mesa"+ mesa1.getNumeroMesa());
 //            System.out.println(" cap mesa"+ mesa1.getCapacidad());
             
-
 JLabel jl= new JLabel( new ImageIcon("src/imagenes/mesa1.png"));
 Dimension size = new Dimension(200, 50); // Ancho x Alto en píxeles
         jl.setPreferredSize(size);
-
       JPanel panel= PanelMesas;
 
-
-//         
 //            JButton boton = new JButton("MESA N°: " +  new ImageIcon(getClass().getResource("src/imagenes/mesa1.png")));
 //            boton.setHorizontalTextPosition(JButton.CENTER);
 //            boton.setVerticalTextPosition(JButton.BOTTOM);
 //            boton.setBackground(new Color(255, 51, 51));
             panel.add(jl);
             panel.revalidate();
-
         }
-        
-        
 //        for (int i = 1; i <= cant; i++) {
 //            int num_mesa = i;
 //            //verificar estado
@@ -215,9 +229,21 @@ Dimension size = new Dimension(200, 50); // Ancho x Alto en píxeles
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelMesas;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabelBotones;
     private javax.swing.JLabel jLabelLogo1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbCerrarSesion;
+    private javax.swing.JDesktopPane jdEscritorioMesero;
     // End of variables declaration//GEN-END:variables
+
+//Escritorio.removeAll();
+//       Escritorio.repaint();
+//      GestionDeAlumnos gda= new GestionDeAlumnos();
+//       gda.setVisible(true);
+//       Escritorio.add(gda);
+//       gda.getContentPane().setBackground(Color.LIGHT_GRAY);
+//       Escritorio.moveToFront(gda);
+
+
 }

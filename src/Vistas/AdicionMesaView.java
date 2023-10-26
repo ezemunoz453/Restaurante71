@@ -270,7 +270,7 @@ public class AdicionMesaView extends javax.swing.JFrame {
         jbRealizarPedido.setBackground(new java.awt.Color(229, 195, 157));
         jbRealizarPedido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbRealizarPedido.setForeground(new java.awt.Color(255, 255, 255));
-        jbRealizarPedido.setText("Realizar Pedido");
+        jbRealizarPedido.setText("Confirmar Pedido");
         jbRealizarPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbRealizarPedidoActionPerformed(evt);
@@ -495,20 +495,14 @@ public class AdicionMesaView extends javax.swing.JFrame {
         
         
         for (PedidoProducto pedidoProducto : pedidosP) {
-            System.out.println(pedidoProducto.getPedido().toString());
+//            System.out.println(pedidoProducto.getPedido().toString());
             importe+= pedidoProducto.getSubtotal();
             
-        }System.out.println("importe total"+importe);
+        }
+//        System.out.println("importe total"+importe);
         
         pedidoData.modificarImportePedido(idPedido, importe);
 
-
-//        Mesero meseroSel = (Mesero) jcbMesero.getSelectedItem();
-////        String nombreMesero = meseroSel.getNombreMesero();
-//        Mesa mesa= (Mesa)jcbMesas.getSelectedItem();
-//        
-//         pedido1= new Pedido(mesa, meseroSel, LocalDate.now(), LocalTime.now(), "PENDIENTE", pedidosP );
-//pedidoData.guardarPedido(pedido1);
     }//GEN-LAST:event_jbRealizarPedidoActionPerformed
 
     private void jbIniciarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbIniciarPedidoActionPerformed
@@ -622,6 +616,10 @@ public class AdicionMesaView extends javax.swing.JFrame {
             modelo1.removeRow(f);
         }
 
+    }
+    
+    private void activarCambios(){
+        
     }
 
 }
