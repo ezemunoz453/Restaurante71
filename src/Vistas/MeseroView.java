@@ -47,6 +47,11 @@ public class MeseroView extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jbMesasLibres = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jbListarMesas = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jbCerrarSesion = new javax.swing.JButton();
         jLabelLogo1 = new javax.swing.JLabel();
@@ -61,8 +66,23 @@ public class MeseroView extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setText("LISTAR MESAS");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 150, 50));
+        jButton4.setText("ABRIR MESA");
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 150, 50));
+
+        jButton5.setText("CERRAR MESA");
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 150, 50));
+
+        jbMesasLibres.setText(" MESAS LIBRES");
+        jPanel1.add(jbMesasLibres, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 150, 50));
+
+        jButton3.setText("ADICION A MESA");
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 150, 50));
+
+        jbListarMesas.setText("LISTAR MESAS");
+        jPanel1.add(jbListarMesas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 150, 50));
+
+        jButton2.setText("MESAS OCUPADAS");
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 150, 50));
 
         jbCerrarSesion.setBackground(new java.awt.Color(229, 195, 157));
         jbCerrarSesion.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
@@ -73,10 +93,10 @@ public class MeseroView extends javax.swing.JFrame {
                 jbCerrarSesionActionPerformed(evt);
             }
         });
-        jPanel1.add(jbCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 150, 50));
+        jPanel1.add(jbCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 580, 150, 50));
 
         jLabelLogo1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(jLabelLogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 470, 170, 140));
+        jPanel1.add(jLabelLogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, 170, 140));
 
         jLabelBotones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoLoggin.jpg"))); // NOI18N
         jPanel1.add(jLabelBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 640));
@@ -230,10 +250,15 @@ Dimension size = new Dimension(200, 50); // Ancho x Alto en píxeles
     private javax.swing.JPanel PanelMesas;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabelBotones;
     private javax.swing.JLabel jLabelLogo1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbCerrarSesion;
+    private javax.swing.JButton jbListarMesas;
+    private javax.swing.JButton jbMesasLibres;
     private javax.swing.JDesktopPane jdEscritorioMesero;
     // End of variables declaration//GEN-END:variables
 
