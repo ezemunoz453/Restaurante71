@@ -2,6 +2,7 @@ package Vistas;
 
 import AccesoADatos.MesaData;
 import AccesoADatos.MeseroData;
+import AccesoADatos.PedidoData;
 import AccesoADatos.PedidoProductoData;
 import AccesoADatos.ProductoData;
 import Entidades.Mesa;
@@ -11,6 +12,8 @@ import Entidades.PedidoProducto;
 import Entidades.Producto;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.Icon;
@@ -29,6 +32,7 @@ public class AdicionMesaView extends javax.swing.JFrame {
     PedidoProducto pedProd = new PedidoProducto();
     Pedido pedido = new Pedido();
     List<PedidoProducto> pedidosP;
+    PedidoData pedidoData= new PedidoData();
 
     private DefaultTableModel modelo = new DefaultTableModel() {
 //        para que sus celdas no sean editables
@@ -55,9 +59,12 @@ public class AdicionMesaView extends javax.swing.JFrame {
         cargarItemsMesas();
         cargarItemsMeseros();
         cargarColumnasPedido();
-        pedidosP = new ArrayList<>();
+        
+         jcbMesas.setSelectedItem(null);
+         jcbMesero.setSelectedItem(null);
     }
 
+   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -328,6 +335,7 @@ public class AdicionMesaView extends javax.swing.JFrame {
 
     private void jbAgregarAPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarAPedidoActionPerformed
         PedidoProducto pp = null;
+       
 
         int filaSel = jTableProductos.getSelectedRow();
 
@@ -408,7 +416,8 @@ public class AdicionMesaView extends javax.swing.JFrame {
 //            System.out.println(pp.toString());
 
             ppd.eliminarPedidoProducto(IdPP);
-
+            
+            pedidosP.remove(pp);
             modelo1.removeRow(filaSel1);
             double suma = 0;
             for (int i = 0; i < modelo1.getRowCount(); i++) {
@@ -424,12 +433,14 @@ public class AdicionMesaView extends javax.swing.JFrame {
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jbRealizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRealizarPedidoActionPerformed
-        Pedido pedido = null;
+        Pedido pedido1 = null;
 
         Mesero meseroSel = (Mesero) jcbMesero.getSelectedItem();
-        String nombreMesero = meseroSel.getNombreMesero();
-
-
+//        String nombreMesero = meseroSel.getNombreMesero();
+        Mesa mesa= (Mesa)jcbMesas.getSelectedItem();
+        
+         pedido1= new Pedido(mesa, meseroSel, LocalDate.now(), LocalTime.now(), "PENDIENTE", pedidosP );
+pedidoData.guardarPedido(pedido1);
     }//GEN-LAST:event_jbRealizarPedidoActionPerformed
 
 
