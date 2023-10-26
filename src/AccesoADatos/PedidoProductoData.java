@@ -1,5 +1,6 @@
 package AccesoADatos;
 
+import Entidades.Mesa;
 import Entidades.Pedido;
 import Entidades.PedidoProducto;
 import Entidades.Producto;
@@ -8,6 +9,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -118,5 +121,38 @@ public class PedidoProductoData {
         return pp;
     }
      
-     
+      public List<PedidoProducto> ListarPedidosProductoPorIdPedido(int idPedido) {
+        List<PedidoProducto> pedidosProductos = new ArrayList<>();
+        String sql = "SELECT * FROM pedidoproducto join pedido on( pedidoproducto.idPedido= pedido.idPedido)  "
+                + " WHERE pedidoproducto.idPedido = ? ";
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, idPedido);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                PedidoProducto pedidoProducto = new PedidoProducto();
+                pedidoProducto.setIdPedidoProducto(rs.getInt("idPedidoProducto"));
+                pedidoProducto.setCantidad(rs.getInt("cantidad"));
+               pedidoProducto.setSubtotal(rs.getDouble("subtotal"));
+                Producto prod;
+                prod= pData.buscarProductoPorId(rs.getInt("idProducto"));
+               pedidoProducto.setProducto(producto);
+               Pedido ped;
+               ped= pedData.buscarPedidoPorId(idPedido);
+               pedidoProducto.setPedido(ped);
+
+                pedidosProductos.add(pedidoProducto);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Pedido: ");
+        }
+
+        return pedidosProductos;
+
+    }
 }

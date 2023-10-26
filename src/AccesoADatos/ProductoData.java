@@ -157,10 +157,10 @@ public class ProductoData {
         Producto producto= null;
         
         String sql = " SELECT  * FROM producto "
-                + "WHERE nombre=? and estado=1";
+                + "WHERE nombre LIKE ? and estado=1";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, nombreProd);
+            ps.setString(1, "%"+nombreProd+"%");
             ResultSet rs = ps.executeQuery();
             
             if (rs.next()) {

@@ -85,12 +85,29 @@ public class PedidoData {
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, pedido.getMesero().getNombreMesero());
-//            ps.setTimestamp(2, Timestamp.valueOf(now));
             ps.setDate(2,Date.valueOf(pedido.getFecha()));
             ps.setTime(3, Time.valueOf(pedido.getHora()));
             ps.setDouble(4, pedido.getImporte());
             ps.setInt(5, pedido.getMesa().getIdMesa());
             ps.setInt(6, pedido.getIdPedido());
+
+            int exito = ps.executeUpdate();
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, " Pedido modificado con exito");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Pedido");
+        }
+    }
+    
+    public void modificarImportePedido(int idPedido, double importe) {
+            Pedido pedido= new Pedido();
+        String sql = "UPDATE pedido SET  importe=? WHERE idPedido=? ";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            pedido= buscarPedidoPorId(idPedido);
+            ps.setDouble(1, importe);
+            ps.setInt(2, pedido.getIdPedido());
 
             int exito = ps.executeUpdate();
             if (exito == 1) {

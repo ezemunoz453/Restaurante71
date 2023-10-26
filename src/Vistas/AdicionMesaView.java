@@ -423,20 +423,18 @@ public class AdicionMesaView extends javax.swing.JFrame {
             }
             borrarFilas();
 
-            // guardo pedido producto y cargo a un array
+            // guardo pedido producto y cargo a un array en tabla
             pedidosP = new ArrayList<>();
-           
             pedidosP.add(pp);
             for (PedidoProducto aux1 : pedidosP) {
                 modelo1.addRow(new Object[]{aux1.getIdPedidoProducto(), aux1.getCantidad(), aux1.getProducto().getNombre(), aux1.getProducto().getPrecio(), aux1.getSubtotal()});
             }
+            
+            //realizo suma para textfield
             double suma = 0;
             for (int i = 0; i < modelo1.getRowCount(); i++) {
-
                 suma += Double.parseDouble(modelo1.getValueAt(i, 4).toString());
-            }
-            jtTotal.setText(String.valueOf(suma));
-
+            }            jtTotal.setText(String.valueOf(suma));
         } else {
             JOptionPane.showMessageDialog(this, "Debe seleccionar una fila");
         }
@@ -488,14 +486,29 @@ public class AdicionMesaView extends javax.swing.JFrame {
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jbRealizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRealizarPedidoActionPerformed
-        Pedido pedido1 = null;
-
-        Mesero meseroSel = (Mesero) jcbMesero.getSelectedItem();
-//        String nombreMesero = meseroSel.getNombreMesero();
-        Mesa mesa= (Mesa)jcbMesas.getSelectedItem();
+        Pedido pedido2 = null;
+        int idPedido= Integer.parseInt(jtIdPedido.getText().toString());
+        System.out.println(idPedido);
+        Double importe=0.0;
+        pedidosP = new ArrayList<>();
+        pedidosP= ppd.ListarPedidosProductoPorIdPedido(idPedido);
         
-         pedido1= new Pedido(mesa, meseroSel, LocalDate.now(), LocalTime.now(), "PENDIENTE", pedidosP );
-pedidoData.guardarPedido(pedido1);
+        
+        for (PedidoProducto pedidoProducto : pedidosP) {
+            System.out.println(pedidoProducto.getPedido().toString());
+            importe+= pedidoProducto.getSubtotal();
+            
+        }System.out.println("importe total"+importe);
+        
+        pedidoData.modificarImportePedido(idPedido, importe);
+
+
+//        Mesero meseroSel = (Mesero) jcbMesero.getSelectedItem();
+////        String nombreMesero = meseroSel.getNombreMesero();
+//        Mesa mesa= (Mesa)jcbMesas.getSelectedItem();
+//        
+//         pedido1= new Pedido(mesa, meseroSel, LocalDate.now(), LocalTime.now(), "PENDIENTE", pedidosP );
+//pedidoData.guardarPedido(pedido1);
     }//GEN-LAST:event_jbRealizarPedidoActionPerformed
 
     private void jbIniciarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbIniciarPedidoActionPerformed
@@ -504,15 +517,20 @@ pedidoData.guardarPedido(pedido1);
         Mesero meseroSel = (Mesero) jcbMesero.getSelectedItem();
          Mesa mesa= (Mesa)jcbMesas.getSelectedItem();
          
-         pedido= new Pedido(mesa, meseroSel, LocalDate.now(), LocalTime.now(), "INICIADO");
+         if ( mesa.getEstado().equalsIgnoreCase("libre")){
+                   pedido= new Pedido(mesa, meseroSel, LocalDate.now(), LocalTime.now(), "INICIADO");
          pedidoData.guardarPedido(pedido);
+         
+         // imprimir en textf datos de pedido
          jtIdPedido.setText(pedido.getIdPedido()+"");
          jtMesa.setText(pedido.getMesa().getNumeroMesa()+"");
          jtMesero.setText(pedido.getMesero().getNombreMesero());
          
          mesa.setEstado("OCUPADA");
          mData.modificarMesa(mesa);
-         
+         } else {
+             JOptionPane.showMessageDialog(this, " No puede iniciarse nuevo pedido en la mesa, se encuentra ocupada");
+         }
        } catch ( NullPointerException n){
            JOptionPane.showMessageDialog(this, " Debe seleccionar un campo de mesa y mesero");
        }
