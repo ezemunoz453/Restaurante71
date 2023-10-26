@@ -15,58 +15,36 @@ import java.time.LocalTime;
     private int idPedido;
     public Mesa mesa;
     private Mesero mesero;
-//    private LocalDateTime fechaHora;
     private LocalDate fecha;
     private LocalTime hora;
     private double importe;
-    private String estado;//0 pendiente, 1 entregado , 2 pagado
+    private String estado;//INICIADO , PENDIENTE, ENTREGADO, PAGADO
     private List<PedidoProducto> pedidosP;
 
     public Pedido() {
         pedidosP = new ArrayList<>();
     }
 
-        public Pedido(Mesa mesa, Mesero mesero, LocalDate fecha, LocalTime hora,  String estado, List<PedidoProducto> pedidosP) {
+    public Pedido(Mesa mesa, Mesero mesero, LocalDate fecha, LocalTime hora, String estado, List<PedidoProducto> pedidosP) {
         this.mesa = mesa;
         this.mesero = mesero;
         this.fecha = fecha;
         this.hora = hora;
-        this.importe = calcularTotal();
+        this.importe = 0;
         this.estado = estado;
         this.pedidosP = new ArrayList<>();
         this.pedidosP.addAll(pedidosP);
     }
 
-   
-    
-        
-//    public Pedido(Mesa mesa, String nombreMesero, LocalDate fecha, LocalTime hora, int estado, List<PedidoProducto> pedidosP) {
-//        this.mesa = mesa;
-//        this.nombreMesero = nombreMesero;
-//        this.fecha= fecha;
-//        this.hora = hora;
-//        this.pedidosP = new ArrayList<>();
-//        this.pedidosP.addAll(pedidosP); // Copiar la lista de productos
-//        this.importe = calcularTotal(); // Calcular el importe total
-//        this.estado = estado;
-//    }
-
-         public Pedido(Mesa mesa, Mesero mesero, LocalDate fecha, LocalTime hora, String estado) {
+        public Pedido(Mesa mesa, Mesero mesero, LocalDate fecha, LocalTime hora,  String estado) {
         this.mesa = mesa;
         this.mesero = mesero;
         this.fecha = fecha;
         this.hora = hora;
+        this.importe = 0;
         this.estado = estado;
-    }
-//    public Pedido(Mesa mesa, String nombreMesero, LocalDate fecha, LocalTime hora, int estado) {
-//        this.mesa = mesa;
-//        this.nombreMesero = nombreMesero;
-//        this.fecha= fecha;
-//        this.hora = hora;
-//        this.estado = estado;
-//    }
-//    
-//    
+         }
+
 
     public int getIdPedido() {
         return idPedido;

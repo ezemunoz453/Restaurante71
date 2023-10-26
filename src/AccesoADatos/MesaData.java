@@ -63,6 +63,7 @@ public class MesaData {
         }
 
     }
+    
 
     public void eliminarMesaPorId(int idMesa) {
         String sql = "DELETE FROM mesa WHERE idMesa=? ";

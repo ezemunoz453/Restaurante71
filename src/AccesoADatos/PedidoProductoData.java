@@ -1,5 +1,6 @@
 package AccesoADatos;
 
+import Entidades.Pedido;
 import Entidades.PedidoProducto;
 import Entidades.Producto;
 import java.sql.Connection;
@@ -21,14 +22,16 @@ public class PedidoProductoData {
     
     Producto producto= new Producto();
     ProductoData pData= new ProductoData();
+    PedidoData pedData= new PedidoData();
 
     public void guardarPedidoProducto(PedidoProducto pp) {
-        String sql = "INSERT INTO pedidoproducto (idProducto, cantidad, subtotal) VALUES (?,?,?)";
+        String sql = "INSERT INTO pedidoproducto (idProducto, cantidad, subtotal, idPedido) VALUES (?,?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, org.mariadb.jdbc.Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, pp.getProducto().getIdProducto());
             ps.setInt(2, pp.getCantidad());
             ps.setDouble(3, pp.getSubtotal());
+            ps.setInt(4, pp.getPedido().getIdPedido());
 
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
@@ -37,24 +40,22 @@ public class PedidoProductoData {
                 JOptionPane.showMessageDialog(null, "Pedido Producto generado con exito ");
             }
             
-            
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Pedido Producto");
         }
-        
-
-           
+       
     }
 
     public void modificarPedidoProducto(PedidoProducto pp) {
-        String sql = "UPDATE pedidoproducto SET idProducto=?, cantidad=? , subtotal=? "
+        String sql = "UPDATE pedidoproducto SET idProducto=?, cantidad=? , subtotal=? , idPedido=? "
                 + "WHERE idPedidoProducto=? ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, pp.getProducto().getIdProducto());
             ps.setInt(2, pp.getCantidad());
             ps.setDouble(3, pp.getSubtotal());
-            ps.setInt(4, pp.getIdPedidoProducto());
+            ps.setInt(4, pp.getPedido().getIdPedido());
+            ps.setInt(5, pp.getIdPedidoProducto());
             int exito = ps.executeUpdate();
             if (exito == 1) {
                 JOptionPane.showMessageDialog(null, " Pedido Producto modificado");
@@ -101,6 +102,9 @@ public class PedidoProductoData {
                 pp.setProducto(prod);
                 pp.setCantidad(rs.getInt("cantidad"));
                 pp.setSubtotal(rs.getDouble("subtotal"));
+                Pedido ped;
+                ped= pedData.buscarPedidoPorId(rs.getInt("idPedido"));
+                pp.setPedido(ped);
               
             } else {
                 JOptionPane.showMessageDialog(null, " No existe Pedido Producto con ese id");
