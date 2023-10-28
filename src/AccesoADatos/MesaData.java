@@ -236,5 +236,15 @@ public class MesaData {
         }
         return mesa;
     }
+      
+      public int contarMesas(){
+          
+          List<Mesa> mesas= new ArrayList<>();
+          mesas: listarMesas();
+          int cont=0;
+          for (Mesa mesa : mesas) {
+              cont++;
+          } return cont;
+      }
     
 }

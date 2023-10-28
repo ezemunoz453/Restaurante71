@@ -65,11 +65,13 @@ public class PedidoData {
 
     }
 
-    public void modificarEstadoPedido(Pedido pedido) {
+    public void modificarEstadoPedido(int idPedido, String estado) {
         String sql = "UPDATE pedido SET  estado=?  WHERE idPedido=? ";
         try {
+            Pedido pedido= buscarPedidoPorId(idPedido);
+            
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, pedido.getEstado());
+            ps.setString(1, estado);
             ps.setInt(2, pedido.getIdPedido());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Estado pedido modificado con exito ");
@@ -199,6 +201,41 @@ public class PedidoData {
         }
         return pedido;
     }
+    
+    public Pedido buscarPedidoPorNumeroMesaConEstadoPedido(int idMesa, String estadoPedido) {
+        Pedido pedido = new Pedido();
+        String sql = " SELECT * FROM pedido JOIN mesa ON (pedido.idMesa=mesa.idMesa) WHERE pedido.idMesa=?  AND pedido.estado= ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idMesa);
+            ps.setString(2, estadoPedido);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                pedido = new Pedido();
+                MesaData mData = new MesaData();
+                Mesa mesa = mData.buscarMesa(rs.getInt("idMesa"));
+//                System.out.println("mesa = " + mesa);
+                pedido.setIdPedido(rs.getInt("idPedido"));
+                Mesero mesero= mesData.buscarMesero(rs.getString("nombreMesero"));
+               pedido.setMesero(mesero);
+//                pedido.setNombreMesero(rs.getString("nombreMesero"));
+                pedido.setFecha(rs.getDate("fecha").toLocalDate());
+                pedido.setHora(rs.getTime("hora").toLocalTime());
+                pedido.setImporte(rs.getDouble("importe"));
+                pedido.setEstado(rs.getString("estado"));
+                pedido.setMesa(mesa);
+
+            } else {
+                JOptionPane.showMessageDialog(null, " No existe pedido con ese Numero de Mesa");
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Pedido"+ex.getMessage());
+        }
+        return pedido;
+    }
+    
 
     public List<Pedido> ListarPedidosPorMesero(String nombreMesero) {
         List<Pedido> pedidos = new ArrayList<>();

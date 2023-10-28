@@ -221,7 +221,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
                 jbCerrarSesionActionPerformed(evt);
             }
         });
-        MiEscritorio.add(jbCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 740, 230, 80));
+        MiEscritorio.add(jbCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 720, 230, 80));
 
         jbReportes.setBackground(new java.awt.Color(255, 255, 255));
         jbReportes.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
@@ -266,7 +266,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
         MiEscritorio.add(jbMesas, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 230, 80));
 
         jLFondoBotones.setBackground(new java.awt.Color(0, 51, 204));
-        MiEscritorio.add(jLFondoBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 380, 1160));
+        MiEscritorio.add(jLFondoBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 380, 1060));
 
         jPFondoVentanas.setBackground(new java.awt.Color(204, 204, 204));
 

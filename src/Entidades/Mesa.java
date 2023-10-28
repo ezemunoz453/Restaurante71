@@ -72,7 +72,7 @@ public class Mesa {
 
     @Override
     public String toString() {
-        return  " Numero de Mesa= " + numeroMesa + " , Capacidad= " + capacidad + ", Estado= " + estado ;
+        return  " N Mesa = " + numeroMesa + " , Pax " + capacidad  ;
     }
 
 
