@@ -562,6 +562,7 @@ cargarItemsMeseros();
 
 
         pedidoData.modificarImportePedido(idPedido, importe);
+        dispose();
 //        pedidoData.modificarEstadoPedido(idPedido, "PENDIENTE");
 
     }//GEN-LAST:event_jbConfirmarPedidoActionPerformed

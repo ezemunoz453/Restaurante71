@@ -57,13 +57,13 @@ public class AdicionMesaView1 extends javax.swing.JFrame {
         this.setLocationRelativeTo(this);
         cargarColumnasProductos();
          cargarColumnasPedido();
+//         cargarTablaPedido();
 
         
 
         mesaSel = mesa;
         int numeromesa = mesaSel.getNumeroMesa();
         int capacidadmesa = mesaSel.getCapacidad();
-//        int idMesasel= mesaSel.getIdMesa();
         jtMesaSeleccionada.setText(numeromesa + "");
         jtCapacidadSeleccionada.setText(capacidadmesa + "");
         
@@ -73,7 +73,7 @@ public class AdicionMesaView1 extends javax.swing.JFrame {
        jtMeseroSeleccionado.setText(pedidoSel.getMesero().toString());
        
        jtIdPedido.setText(pedidoSel.getIdPedido()+"");
-        
+        cargarTablaPedido(pedidoSel);
     }
     
 
@@ -111,7 +111,7 @@ public class AdicionMesaView1 extends javax.swing.JFrame {
         jtTotal = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jbEliminar = new javax.swing.JButton();
-        jbConfirmarPedido = new javax.swing.JButton();
+        jbAdicionarPedido = new javax.swing.JButton();
         jtIdPedido = new javax.swing.JTextField();
         jbSalir = new javax.swing.JButton();
 
@@ -284,13 +284,13 @@ public class AdicionMesaView1 extends javax.swing.JFrame {
             }
         });
 
-        jbConfirmarPedido.setBackground(new java.awt.Color(229, 195, 157));
-        jbConfirmarPedido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jbConfirmarPedido.setForeground(new java.awt.Color(255, 255, 255));
-        jbConfirmarPedido.setText("Adicionar a Pedido");
-        jbConfirmarPedido.addActionListener(new java.awt.event.ActionListener() {
+        jbAdicionarPedido.setBackground(new java.awt.Color(229, 195, 157));
+        jbAdicionarPedido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jbAdicionarPedido.setForeground(new java.awt.Color(255, 255, 255));
+        jbAdicionarPedido.setText("Adicionar a Pedido");
+        jbAdicionarPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbConfirmarPedidoActionPerformed(evt);
+                jbAdicionarPedidoActionPerformed(evt);
             }
         });
 
@@ -319,7 +319,7 @@ public class AdicionMesaView1 extends javax.swing.JFrame {
                             .addComponent(jScrollPane2)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(193, 193, 193)
-                        .addComponent(jbConfirmarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jbAdicionarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -342,7 +342,7 @@ public class AdicionMesaView1 extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbConfirmarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbAdicionarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(72, 72, 72))))
         );
 
@@ -427,7 +427,7 @@ public class AdicionMesaView1 extends javax.swing.JFrame {
                         ppd.guardarPedidoProducto(pp);
                         jtProducto.setText("");
                         jtCantidad.setText("");
-                        jbConfirmarPedido.setEnabled(true);
+                        jbAdicionarPedido.setEnabled(true);
                     }
                 }
             } catch (NumberFormatException n) {
@@ -441,9 +441,6 @@ public class AdicionMesaView1 extends javax.swing.JFrame {
             // guardo pedido producto y cargo a un array en tabla
             pedidosP = new ArrayList<>();
             // listar oEDIDOS PRODUCTOS CON ID PEDIDO ??
-            
-            pedidosP= ppd.ListarPedidosProductoPorIdPedido(Integer.parseInt(jtIdPedido.getText()));
-            
             
             
             pedidosP.add(pp);
@@ -503,7 +500,7 @@ public class AdicionMesaView1 extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jbEliminarActionPerformed
 
-    private void jbConfirmarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarPedidoActionPerformed
+    private void jbAdicionarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAdicionarPedidoActionPerformed
         Pedido pedido2 = null;
         int idPedido = Integer.parseInt(jtIdPedido.getText().toString());
         System.out.println(idPedido);
@@ -519,8 +516,8 @@ public class AdicionMesaView1 extends javax.swing.JFrame {
 //        System.out.println("importe total"+importe);
 
         pedidoData.modificarImportePedido(idPedido, importe);
-
-    }//GEN-LAST:event_jbConfirmarPedidoActionPerformed
+        dispose();
+    }//GEN-LAST:event_jbAdicionarPedidoActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
         dispose();
@@ -543,8 +540,8 @@ public class AdicionMesaView1 extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTablaPedidoP;
     private javax.swing.JTable jTableProductos;
+    private javax.swing.JButton jbAdicionarPedido;
     private javax.swing.JButton jbAgregarAPedido;
-    private javax.swing.JButton jbConfirmarPedido;
     private javax.swing.JButton jbEliminar;
     private javax.swing.JButton jbSalir;
     private javax.swing.JTextField jtCantidad;
@@ -593,6 +590,24 @@ public class AdicionMesaView1 extends javax.swing.JFrame {
         for (int f = rowCount - 1; f >= 0; f--) {
             modelo1.removeRow(f);
         }
+    }
+    
+    private void cargarTablaPedido(Pedido pedidoSel){
+         
+     Producto prod= new Producto();
+            pedidosP= ppd.ListarPedidosProductoPorIdPedido(pedidoSel.getIdPedido());
+            
+//           System.out.println( pedidosP.toString());
+             for (PedidoProducto aux1 : pedidosP) {
+//                 prod= pData.buscarProductoPorId(aux1.getProducto().getIdProducto());
+
+                modelo1.addRow(new Object[]{aux1.getIdPedidoProducto(), aux1.getCantidad(), aux1.getProducto().getNombre(), aux1.getProducto().getPrecio(), aux1.getSubtotal()});
+            }
+             double suma = 0;
+            for (int i = 0; i < modelo1.getRowCount(); i++) {
+                suma += Double.parseDouble(modelo1.getValueAt(i, 4).toString());
+            }
+            jtTotal.setText(String.valueOf(suma));
     }
 
 }
