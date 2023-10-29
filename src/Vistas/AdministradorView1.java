@@ -135,7 +135,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
         jbBuscarProductoNombre = new javax.swing.JButton();
         jcbTipoProducto = new javax.swing.JComboBox<>();
         jPanel7 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        ListadePedidosPorMesero = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -707,10 +707,10 @@ public class AdministradorView1 extends javax.swing.JFrame {
 
         jPanel7.setBackground(new java.awt.Color(229, 195, 157));
 
-        jButton1.setText("USUARIO");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ListadePedidosPorMesero.setText("Lista De Pedidos Por Mesero");
+        ListadePedidosPorMesero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ListadePedidosPorMeseroActionPerformed(evt);
             }
         });
 
@@ -719,16 +719,16 @@ public class AdministradorView1 extends javax.swing.JFrame {
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(765, Short.MAX_VALUE))
+                .addGap(118, 118, 118)
+                .addComponent(ListadePedidosPorMesero)
+                .addContainerGap(816, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(971, Short.MAX_VALUE))
+                .addGap(57, 57, 57)
+                .addComponent(ListadePedidosPorMesero, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(1043, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("REPORTES ", jPanel7);
@@ -819,7 +819,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
         jPFondoVentanas.setLayout(jPFondoVentanasLayout);
         jPFondoVentanasLayout.setHorizontalGroup(
             jPFondoVentanasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1132, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         jPFondoVentanasLayout.setVerticalGroup(
             jPFondoVentanasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1208,12 +1208,6 @@ public class AdministradorView1 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jbEliminarProductoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ReporteUsuarioView ruv = new ReporteUsuarioView();
-        ruv.setVisible(true);
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jbMeserosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbMeserosMouseEntered
         jbMeseros.setBackground(new Color(201, 162, 123));
         jbMeseros.setForeground(Color.white);
@@ -1291,10 +1285,15 @@ public class AdministradorView1 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jbEliminarMeseroActionPerformed
 
+    private void ListadePedidosPorMeseroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListadePedidosPorMeseroActionPerformed
+        ListaDePedidosPorMesero ldppm = new ListaDePedidosPorMesero();
+        ldppm.setVisible(true);
+    }//GEN-LAST:event_ListadePedidosPorMeseroActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ListadePedidosPorMesero;
     private javax.swing.JDesktopPane MiEscritorio;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLFondoBotones;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
