@@ -34,10 +34,10 @@ public class AdicionMesaView extends javax.swing.JFrame {
     Pedido pedido = new Pedido();
     List<PedidoProducto> pedidosP;
     PedidoData pedidoData = new PedidoData();
-    Mesa mesaSel= new Mesa();
+    Mesa mesaSel = new Mesa();
 
     private DefaultTableModel modelo = new DefaultTableModel() {
-            @Override
+        @Override
         public boolean isCellEditable(int fila, int columna) {
             return false;
         }
@@ -56,15 +56,14 @@ public class AdicionMesaView extends javax.swing.JFrame {
 
         this.setLocationRelativeTo(this);
         cargarColumnasProductos();
-cargarItemsMeseros();
+        cargarItemsMeseros();
         cargarColumnasPedido();
 
-        
         jcbMesero.setSelectedItem(null);
-        
-        mesaSel= mesa;
+
+        mesaSel = mesa;
         int numeromesa = mesaSel.getNumeroMesa();
-        int capacidadmesa= mesaSel.getCapacidad();
+        int capacidadmesa = mesaSel.getCapacidad();
 //        int idMesasel= mesaSel.getIdMesa();
         jtMesaSeleccionada.setText(numeromesa + "");
         jtCapacidadSeleccionada.setText(capacidadmesa + "");
@@ -76,6 +75,9 @@ cargarItemsMeseros();
         jbConfirmarPedido.setEnabled(false);
         jtCantidad.setEnabled(false);
         jtProducto.setEnabled(false);
+        
+        jtIdPedido.setText("");
+        jtMesero.setText("");
 
     }
 
@@ -528,7 +530,6 @@ cargarItemsMeseros();
 
             pp = ppd.buscarpp(IdPP);
 
-
             ppd.eliminarPedidoProducto(IdPP);
 
             pedidosP.remove(pp);
@@ -560,36 +561,39 @@ cargarItemsMeseros();
 
         }
 
-
         pedidoData.modificarImportePedido(idPedido, importe);
         dispose();
-//        pedidoData.modificarEstadoPedido(idPedido, "PENDIENTE");
-
     }//GEN-LAST:event_jbConfirmarPedidoActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
-        dispose();
+      
+      
+        
+        if(jtIdPedido.getText().isEmpty() && jtMesero.getText().isEmpty()){
+           JOptionPane.showMessageDialog(this, " Debe seleccionar un mesero ");
+           return;
+       } else {
+        dispose();}
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jcbMeseroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMeseroActionPerformed
-     
+
     }//GEN-LAST:event_jcbMeseroActionPerformed
 
     private void jcbMeseroItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbMeseroItemStateChanged
-     
+
     }//GEN-LAST:event_jcbMeseroItemStateChanged
 
     private void jbConfirmarMeseroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarMeseroActionPerformed
-            Pedido pedido = new Pedido();
-         
+        Pedido pedido = new Pedido();
+
         try {
             Mesero meseroSel = (Mesero) jcbMesero.getSelectedItem();
-            
+
             Mesa mesa = mesaSel;
-            if (meseroSel!= null){
-                
-         
-             pedido = new Pedido(mesa, meseroSel, LocalDate.now(), LocalTime.now(), "PENDIENTE");
+            if (meseroSel != null) {
+
+                pedido = new Pedido(mesa, meseroSel, LocalDate.now(), LocalTime.now(), "REALIZADO");
                 pedidoData.guardarPedido(pedido);
 
                 // imprimir en textf datos de pedido
@@ -597,10 +601,9 @@ cargarItemsMeseros();
                 jtMesa.setText(pedido.getMesa().getNumeroMesa() + "");
                 jtMesero.setText(pedido.getMesero().getNombreMesero());
 
-                
                 activarCambios();
-   } 
- 
+            }
+
         } catch (NullPointerException n) {
             JOptionPane.showMessageDialog(this, " Debe seleccionar un campo de mesa y mesero");
         }
@@ -665,9 +668,8 @@ cargarItemsMeseros();
         jTablaPedidoP.setModel(modelo1);
     }
 
-
-    public void cargarItemsMeseros(){
-        List <Mesero> meseros= meseroData.listarMeseros();
+    public void cargarItemsMeseros() {
+        List<Mesero> meseros = meseroData.listarMeseros();
         for (Mesero mesero1 : meseros) {
             jcbMesero.addItem(mesero1);
         }

@@ -267,7 +267,37 @@ public class ProductoData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla usuario");
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Producto");
+        }
+        return productos;
+    }
+       
+        public List<Producto> listarProductosPorPedido() {
+
+        String sql = " SELECT * FROM producto JOIN pedidoproducto on( producto.idProducto= pedidoproducto.idProducto) join pedido on "
+                + "(pedidoproducto.idPedido=pedido.idPedido) where pedido.idPedido=?";
+                
+        ArrayList<Producto> productos = new ArrayList<>();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+              Producto producto = new Producto();
+                producto.setIdProducto(rs.getInt("idProducto"));
+                producto.setNombre(rs.getString("nombre"));
+                producto.setStock(rs.getInt("stock"));
+                producto.setPrecio(rs.getDouble("precio"));
+                producto.setEstado(rs.getBoolean("estado"));
+                 producto.setTipo(rs.getString("tipo"));
+
+                productos.add(producto);
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Producto");
         }
         return productos;
     }
