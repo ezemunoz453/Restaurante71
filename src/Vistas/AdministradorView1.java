@@ -136,6 +136,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
         jcbTipoProducto = new javax.swing.JComboBox<>();
         jPanel7 = new javax.swing.JPanel();
         ListadePedidosPorMesero = new javax.swing.JButton();
+        jbTotalEntreFechas = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -151,12 +152,11 @@ public class AdministradorView1 extends javax.swing.JFrame {
         MiEscritorio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         MiEscritorio.add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 830, 200, 170));
 
-        jdUsuarios.setBackground(new java.awt.Color(255, 255, 255));
         jdUsuarios.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jdUsuarios.setForeground(new java.awt.Color(201, 162, 123));
         jdUsuarios.setText("USUARIOS");
         jdUsuarios.setBorder(null);
-        jdUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jdUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jdUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jdUsuariosMouseEntered(evt);
@@ -172,7 +172,6 @@ public class AdministradorView1 extends javax.swing.JFrame {
         });
         MiEscritorio.add(jdUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 230, 80));
 
-        jbMeseros.setBackground(new java.awt.Color(255, 255, 255));
         jbMeseros.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jbMeseros.setForeground(new java.awt.Color(201, 162, 123));
         jbMeseros.setText("MESEROS");
@@ -191,12 +190,11 @@ public class AdministradorView1 extends javax.swing.JFrame {
         });
         MiEscritorio.add(jbMeseros, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 510, 230, 80));
 
-        jbProductos.setBackground(new java.awt.Color(255, 255, 255));
         jbProductos.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jbProductos.setForeground(new java.awt.Color(201, 162, 123));
         jbProductos.setText("PRODUCTOS");
         jbProductos.setBorder(null);
-        jbProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbProductos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jbProductosMouseEntered(evt);
@@ -223,12 +221,11 @@ public class AdministradorView1 extends javax.swing.JFrame {
         });
         MiEscritorio.add(jbCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 720, 230, 80));
 
-        jbReportes.setBackground(new java.awt.Color(255, 255, 255));
         jbReportes.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jbReportes.setForeground(new java.awt.Color(201, 162, 123));
         jbReportes.setText("REPORTES");
         jbReportes.setBorder(null);
-        jbReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbReportes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jbReportesMouseEntered(evt);
@@ -244,12 +241,11 @@ public class AdministradorView1 extends javax.swing.JFrame {
         });
         MiEscritorio.add(jbReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, 230, 80));
 
-        jbMesas.setBackground(new java.awt.Color(255, 255, 255));
         jbMesas.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jbMesas.setForeground(new java.awt.Color(201, 162, 123));
         jbMesas.setText("MESAS");
         jbMesas.setBorder(null);
-        jbMesas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbMesas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jbMesas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jbMesasMouseEntered(evt);
@@ -306,7 +302,6 @@ public class AdministradorView1 extends javax.swing.JFrame {
 
         jtContraseña.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
-        jbBuscarUsuario.setBackground(new java.awt.Color(255, 255, 255));
         jbBuscarUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbBuscarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
         jbBuscarUsuario.setText("BUSCAR");
@@ -316,7 +311,6 @@ public class AdministradorView1 extends javax.swing.JFrame {
             }
         });
 
-        jbModificarUsuario.setBackground(new java.awt.Color(255, 255, 255));
         jbModificarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar.png"))); // NOI18N
         jbModificarUsuario.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jbModificarUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -325,7 +319,6 @@ public class AdministradorView1 extends javax.swing.JFrame {
             }
         });
 
-        jbEliminarUsuario.setBackground(new java.awt.Color(255, 255, 255));
         jbEliminarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar.png"))); // NOI18N
         jbEliminarUsuario.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jbEliminarUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -334,7 +327,6 @@ public class AdministradorView1 extends javax.swing.JFrame {
             }
         });
 
-        jbGuardarUsuario.setBackground(new java.awt.Color(255, 255, 255));
         jbGuardarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png"))); // NOI18N
         jbGuardarUsuario.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jbGuardarUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -436,7 +428,6 @@ public class AdministradorView1 extends javax.swing.JFrame {
 
         jtCapacidad.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
-        jbBuscarMesa.setBackground(new java.awt.Color(255, 255, 255));
         jbBuscarMesa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbBuscarMesa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
         jbBuscarMesa.setText("BUSCAR");
@@ -446,7 +437,6 @@ public class AdministradorView1 extends javax.swing.JFrame {
             }
         });
 
-        jbGuardarMesa.setBackground(new java.awt.Color(255, 255, 255));
         jbGuardarMesa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png"))); // NOI18N
         jbGuardarMesa.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jbGuardarMesa.addActionListener(new java.awt.event.ActionListener() {
@@ -455,7 +445,6 @@ public class AdministradorView1 extends javax.swing.JFrame {
             }
         });
 
-        jbModificarMesa.setBackground(new java.awt.Color(255, 255, 255));
         jbModificarMesa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar.png"))); // NOI18N
         jbModificarMesa.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jbModificarMesa.addActionListener(new java.awt.event.ActionListener() {
@@ -464,7 +453,6 @@ public class AdministradorView1 extends javax.swing.JFrame {
             }
         });
 
-        jbEliminarMesa.setBackground(new java.awt.Color(255, 255, 255));
         jbEliminarMesa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar.png"))); // NOI18N
         jbEliminarMesa.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jbEliminarMesa.addActionListener(new java.awt.event.ActionListener() {
@@ -553,7 +541,6 @@ public class AdministradorView1 extends javax.swing.JFrame {
 
         jtPrecioProducto.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
-        jbBuscarProductoId.setBackground(new java.awt.Color(255, 255, 255));
         jbBuscarProductoId.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbBuscarProductoId.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
         jbBuscarProductoId.setText("BUSCAR");
@@ -583,7 +570,6 @@ public class AdministradorView1 extends javax.swing.JFrame {
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Tipo");
 
-        jbGuardarProducto.setBackground(new java.awt.Color(255, 255, 255));
         jbGuardarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png"))); // NOI18N
         jbGuardarProducto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jbGuardarProducto.addActionListener(new java.awt.event.ActionListener() {
@@ -592,7 +578,6 @@ public class AdministradorView1 extends javax.swing.JFrame {
             }
         });
 
-        jbModificarProducto.setBackground(new java.awt.Color(255, 255, 255));
         jbModificarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar.png"))); // NOI18N
         jbModificarProducto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jbModificarProducto.addActionListener(new java.awt.event.ActionListener() {
@@ -601,7 +586,6 @@ public class AdministradorView1 extends javax.swing.JFrame {
             }
         });
 
-        jbEliminarProducto.setBackground(new java.awt.Color(255, 255, 255));
         jbEliminarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar.png"))); // NOI18N
         jbEliminarProducto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jbEliminarProducto.addActionListener(new java.awt.event.ActionListener() {
@@ -610,7 +594,6 @@ public class AdministradorView1 extends javax.swing.JFrame {
             }
         });
 
-        jbBuscarProductoNombre.setBackground(new java.awt.Color(255, 255, 255));
         jbBuscarProductoNombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbBuscarProductoNombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
         jbBuscarProductoNombre.setText("BUSCAR");
@@ -714,21 +697,32 @@ public class AdministradorView1 extends javax.swing.JFrame {
             }
         });
 
+        jbTotalEntreFechas.setText("Total entre fechas");
+        jbTotalEntreFechas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbTotalEntreFechasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(118, 118, 118)
-                .addComponent(ListadePedidosPorMesero)
-                .addContainerGap(816, Short.MAX_VALUE))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ListadePedidosPorMesero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbTotalEntreFechas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(833, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addComponent(ListadePedidosPorMesero, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1043, Short.MAX_VALUE))
+                .addGap(56, 56, 56)
+                .addComponent(jbTotalEntreFechas, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(909, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("REPORTES ", jPanel7);
@@ -756,7 +750,6 @@ public class AdministradorView1 extends javax.swing.JFrame {
             }
         });
 
-        jbEliminarMesero.setBackground(new java.awt.Color(255, 255, 255));
         jbEliminarMesero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar.png"))); // NOI18N
         jbEliminarMesero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -764,7 +757,6 @@ public class AdministradorView1 extends javax.swing.JFrame {
             }
         });
 
-        jbGuardarMesero.setBackground(new java.awt.Color(255, 255, 255));
         jbGuardarMesero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png"))); // NOI18N
         jbGuardarMesero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -834,11 +826,17 @@ public class AdministradorView1 extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(MiEscritorio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(109, 109, 109)
+                .addComponent(MiEscritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 1585, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(MiEscritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 1078, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(MiEscritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 1066, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -1290,6 +1288,11 @@ public class AdministradorView1 extends javax.swing.JFrame {
         ldppm.setVisible(true);
     }//GEN-LAST:event_ListadePedidosPorMeseroActionPerformed
 
+    private void jbTotalEntreFechasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbTotalEntreFechasActionPerformed
+    
+                new TotalEntreFechas().setVisible(true);
+    }//GEN-LAST:event_jbTotalEntreFechasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ListadePedidosPorMesero;
@@ -1339,6 +1342,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
     private javax.swing.JButton jbModificarUsuario;
     private javax.swing.JButton jbProductos;
     private javax.swing.JButton jbReportes;
+    private javax.swing.JButton jbTotalEntreFechas;
     private javax.swing.JComboBox<String> jcbEstado;
     private javax.swing.JComboBox<String> jcbNivel;
     private javax.swing.JComboBox<String> jcbTipoProducto;

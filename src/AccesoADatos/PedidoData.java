@@ -16,8 +16,11 @@ import Entidades.Mesero;
 import Entidades.PedidoProducto;
 import static java.lang.Character.UnicodeScript.UNKNOWN;
 import java.sql.Time;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -347,7 +350,7 @@ public class PedidoData {
      
       public double SumarTotalesPorFecha( LocalDate fecha) {
         List<Pedido> pedidos = new ArrayList<>();
-        String sql = "SELECT * FROM pedido WHERE  estado=2 AND fecha=?";
+        String sql = "SELECT * FROM pedido WHERE   fecha=?";
 
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -414,6 +417,32 @@ public class PedidoData {
         return pedidos;
 
     }
-      
-     
+   
+   public double SumarTotalesEntreFechas(String fechaInicioStr, String fechaFinStr) {
+        LocalDate fechaInicio = convertirFecha(fechaInicioStr);
+        LocalDate fechaFin = convertirFecha(fechaFinStr);
+        
+        double sumaTotal = 0;
+        
+        while (!fechaInicio.isAfter(fechaFin)) {
+           
+            sumaTotal += SumarTotalesPorFecha(fechaInicio);
+            fechaInicio = fechaInicio.plusDays(1);
+        }
+        
+        return sumaTotal;
+    }
+   
+   public LocalDate convertirFecha(String fecha) {
+    try {
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("ddMMyyyy");
+        LocalDate fechaConvertida = LocalDate.parse(fecha, formato);
+        return fechaConvertida;
+    } catch (DateTimeParseException e) {
+        System.err.println("Error al convertir la fecha: " + e.getMessage());
+        return null; 
+    }
 }
+    
+    }
+
