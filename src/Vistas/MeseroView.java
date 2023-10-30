@@ -131,6 +131,7 @@ public class MeseroView extends javax.swing.JFrame {
 
                             } else if (pedido2.getImporte() != 0) {
                                 JOptionPane.showMessageDialog(panel, "Cerrando Mesa... Obteniento comprobante");   
+                                pedidoData.modificarEstadoPedido(pedido2.getIdPedido(), "CERRADO");
                                  mesa1.setEstado("LIBRE");
                                 boton.setBackground(Color.WHITE);
                                 mData.modificarMesa(mesa1);
@@ -158,7 +159,6 @@ public class MeseroView extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
         jbListaPedidosPorMesero = new javax.swing.JButton();
         jbCerrarSesion = new javax.swing.JButton();
         jLabelLogo1 = new javax.swing.JLabel();
@@ -170,14 +170,6 @@ public class MeseroView extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton1.setText("Pedidos Pendientes");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 150, 50));
 
         jbListaPedidosPorMesero.setBackground(new java.awt.Color(229, 195, 157));
         jbListaPedidosPorMesero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -247,11 +239,6 @@ public class MeseroView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jbListaPedidosPorMeseroActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        PedidosPendientesView ppv = new PedidosPendientesView();
-        ppv.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     public void AgregarImagenALabel(JLabel labelName, String root) {
         ImageIcon image = new ImageIcon(root);
         Icon icon = new ImageIcon(image.getImage().getScaledInstance(labelName.getWidth(), labelName.getHeight(), Image.SCALE_DEFAULT));
@@ -262,7 +249,6 @@ public class MeseroView extends javax.swing.JFrame {
 //  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabelBotones;
     private javax.swing.JLabel jLabelLogo1;
     private javax.swing.JPanel jPanel1;

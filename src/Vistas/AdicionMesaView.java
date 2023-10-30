@@ -602,6 +602,7 @@ public class AdicionMesaView extends javax.swing.JFrame {
                 jtMesero.setText(pedido.getMesero().getNombreMesero());
 
                 activarCambios();
+                jbConfirmarMesero.setEnabled(false);
             }
 
         } catch (NullPointerException n) {
