@@ -30,15 +30,12 @@ public class MeseroView extends javax.swing.JFrame {
 
     private int[] contadorDeClics;
     private int cantidadDeMesas;
-    private JDialog tablaDialog;
-    private DefaultTableModel model;
-    private JLabel importeLabel;
-    private double importeTotal;
-    private JPanel panelDialog;
+
     private JPanel buttonPanel;
 
     Mesa mesa = new Mesa();
     MesaData mData = new MesaData();
+    PedidoData pedidoData = new PedidoData();
 
     public MeseroView() {
 
@@ -49,10 +46,8 @@ public class MeseroView extends javax.swing.JFrame {
         AgregarImagenALabel(jLabelLogo1, "src/imagenes/Logog71 resto.png");
 
         int cantidadDeMesas = mData.contarMesas();
-        contadorDeClics = new int[cantidadDeMesas];
+//        contadorDeClics = new int[cantidadDeMesas];
         agregarBotonesAlPanel(cantidadDeMesas);
-
-//        getContentPane().add(panel);// por esto en el constructos no se veian las mesas hasta recorrerlas
     }
 
     private void agregarBotonesAlPanel(int cantidadDeBotones) {
@@ -70,15 +65,15 @@ public class MeseroView extends javax.swing.JFrame {
             boton.setFont(nuevaFuente);
 
             if (mesa1.getEstado().equalsIgnoreCase("libre")) {
-                boton.setBackground(Color.GREEN);
+                boton.setBackground(Color.white);
             } else {
-                boton.setBackground(Color.RED);
+                boton.setBackground(new Color(229, 195, 157));
             }
 
             boton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    Object[] options = {"ABRIR MESA", "NUEVO CONSUMO", "CERRAR MESA"};
+                    Object[] options = {"NUEVO PEDIDO", "ADICIONAR CONSUMO", "CERRAR MESA"};
 
                     int seleccion = JOptionPane.showOptionDialog(null,
                             "MESA N°= " + mesa1.getNumeroMesa() + " CAPACIDAD = " + mesa1.getCapacidad(),
@@ -89,7 +84,7 @@ public class MeseroView extends javax.swing.JFrame {
                             options,
                             options[0]);
 
-//0 ABRIR MESA
+                    //0 ABRIR MESA
                     if (seleccion == 0) {
                         if (mesa1.getEstado().equalsIgnoreCase("ocupada")) {
                             JOptionPane.showMessageDialog(panel, " La mesa ya se encuentra ocupada");
@@ -97,10 +92,10 @@ public class MeseroView extends javax.swing.JFrame {
                             AdicionMesaView amv = new AdicionMesaView(mesa1);
                             amv.setVisible(true);
                             mesa1.setEstado("OCUPADA");
-                            boton.setBackground(Color.RED);
+                            boton.setBackground(new Color(229, 195, 157));
                             mData.modificarMesa(mesa1);
                         }
-                        
+
                         //1 NUEVO CONSUMO
                     } else if (seleccion == 1) {
                         if (mesa1.getEstado().equalsIgnoreCase("LIBRE")) {
@@ -108,13 +103,45 @@ public class MeseroView extends javax.swing.JFrame {
                         } else {
                             AdicionMesaView1 amv = new AdicionMesaView1(mesa1);
                             amv.setVisible(true);
-                            
+                        }
+                    } // CERRAR MESA
+                    else if (seleccion == 2) {
+
+                        if (mesa1.getEstado().equalsIgnoreCase("libre")) {
+                            JOptionPane.showMessageDialog(panel, " La Mesa NO esta Ocupada");
+
+                        } else {
+                            int idMesa = mesa1.getIdMesa();
+                            String estadoPedido = "REALIZADO";
+                            Pedido pedido2 = pedidoData.buscarPedidoPorIdMesaConEstadoPedido(idMesa, estadoPedido);
+
+                            if (pedido2.getImporte() == 0) {
+                                JOptionPane.showMessageDialog(panel, " Su Mesa no tiene consumo, cerrando mesa... .");
+                                pedidoData.modificarEstadoPedido(pedido2.getIdPedido(), "CERRADO");
+                                mesa1.setEstado("LIBRE");
+                                boton.setBackground(Color.WHITE);
+                                mData.modificarMesa(mesa1);
+
+                            } else if (pedido2 == null) {
+
+                                JOptionPane.showMessageDialog(panel, " Su Mesa no tiene consumo, cerrando mesa... .");
+                                mesa1.setEstado("LIBRE");
+                                boton.setBackground(Color.WHITE);
+                                mData.modificarMesa(mesa1);
+
+                            } else if (pedido2.getImporte() != 0) {
+                                JOptionPane.showMessageDialog(panel, "Cerrando Mesa... Obteniento comprobante");   
+                                pedidoData.modificarEstadoPedido(pedido2.getIdPedido(), "CERRADO");
+                                 mesa1.setEstado("LIBRE");
+                                boton.setBackground(Color.WHITE);
+                                mData.modificarMesa(mesa1);
+                                 ComprobanteView cv = new ComprobanteView();
+                            cv.setVisible(true);
+                                
+                            }
 
                         }
-                        
-                        // CERRAR MESA
-                    } else if (seleccion == 2) {
-                        JOptionPane.showMessageDialog(null, "Seleccionaste: Opción 3", "Opción 3", JOptionPane.INFORMATION_MESSAGE);
+
                     } else {
                         System.out.println("No se realizó ninguna selección");
                     }
@@ -132,6 +159,7 @@ public class MeseroView extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jbListaPedidosPorMesero = new javax.swing.JButton();
         jbCerrarSesion = new javax.swing.JButton();
         jLabelLogo1 = new javax.swing.JLabel();
         jLabelBotones = new javax.swing.JLabel();
@@ -142,6 +170,17 @@ public class MeseroView extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jbListaPedidosPorMesero.setBackground(new java.awt.Color(229, 195, 157));
+        jbListaPedidosPorMesero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jbListaPedidosPorMesero.setForeground(new java.awt.Color(255, 255, 255));
+        jbListaPedidosPorMesero.setText("Lista de Pedidos x Mesero");
+        jbListaPedidosPorMesero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbListaPedidosPorMeseroActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbListaPedidosPorMesero, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 160, 40));
 
         jbCerrarSesion.setBackground(new java.awt.Color(229, 195, 157));
         jbCerrarSesion.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
@@ -194,6 +233,12 @@ public class MeseroView extends javax.swing.JFrame {
         new Login().setVisible(true);
     }//GEN-LAST:event_jbCerrarSesionActionPerformed
 
+    private void jbListaPedidosPorMeseroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbListaPedidosPorMeseroActionPerformed
+        ListaDePedidosPorMesero lpm = new ListaDePedidosPorMesero();
+        lpm.setVisible(true);
+
+    }//GEN-LAST:event_jbListaPedidosPorMeseroActionPerformed
+
     public void AgregarImagenALabel(JLabel labelName, String root) {
         ImageIcon image = new ImageIcon(root);
         Icon icon = new ImageIcon(image.getImage().getScaledInstance(labelName.getWidth(), labelName.getHeight(), Image.SCALE_DEFAULT));
@@ -208,6 +253,7 @@ public class MeseroView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelLogo1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbCerrarSesion;
+    private javax.swing.JButton jbListaPedidosPorMesero;
     private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
 

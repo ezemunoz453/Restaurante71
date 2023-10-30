@@ -12,19 +12,12 @@ public class Mesa {
     private String estado;
     
 
-    
-    
-//    public double calcularImporteTotal() {
-//        double importeTotal = 0;
-//        for (Pedido pedido : pedidos) {
-//            importeTotal += pedido.obtenerTotal((ArrayList) pedidos);
-//        }
-//        return importeTotal;
-//    }   
 
     public Mesa() {
     }
 
+   
+    
     public Mesa(int numeroMesa, int capacidad, String estado) {
         this.numeroMesa = numeroMesa;
         this.capacidad = capacidad;

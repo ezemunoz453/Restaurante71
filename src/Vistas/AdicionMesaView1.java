@@ -56,26 +56,21 @@ public class AdicionMesaView1 extends javax.swing.JFrame {
 
         this.setLocationRelativeTo(this);
         cargarColumnasProductos();
-         cargarColumnasPedido();
+        cargarColumnasPedido();
 //         cargarTablaPedido();
-
-        
 
         mesaSel = mesa;
         int numeromesa = mesaSel.getNumeroMesa();
         int capacidadmesa = mesaSel.getCapacidad();
         jtMesaSeleccionada.setText(numeromesa + "");
         jtCapacidadSeleccionada.setText(capacidadmesa + "");
-        
-          
-       
-     Pedido pedidoSel= pedidoData.buscarPedidoPorNumeroMesaConEstadoPedido(mesa.getIdMesa(), "PENDIENTE");
-       jtMeseroSeleccionado.setText(pedidoSel.getMesero().toString());
-       
-       jtIdPedido.setText(pedidoSel.getIdPedido()+"");
+
+        Pedido pedidoSel = pedidoData.buscarPedidoPorIdMesaConEstadoPedido(mesa.getIdMesa(), "REALIZADO");
+        jtMeseroSeleccionado.setText(pedidoSel.getMesero().toString());
+
+        jtIdPedido.setText(pedidoSel.getIdPedido() + "");
         cargarTablaPedido(pedidoSel);
     }
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -441,8 +436,7 @@ public class AdicionMesaView1 extends javax.swing.JFrame {
             // guardo pedido producto y cargo a un array en tabla
             pedidosP = new ArrayList<>();
             // listar oEDIDOS PRODUCTOS CON ID PEDIDO ??
-            
-            
+
             pedidosP.add(pp);
             for (PedidoProducto aux1 : pedidosP) {
                 modelo1.addRow(new Object[]{aux1.getIdPedidoProducto(), aux1.getCantidad(), aux1.getProducto().getNombre(), aux1.getProducto().getPrecio(), aux1.getSubtotal()});
@@ -577,7 +571,6 @@ public class AdicionMesaView1 extends javax.swing.JFrame {
         jTablaPedidoP.setModel(modelo1);
     }
 
-
     private void borrarFilas() {
         int rowCount = modelo.getRowCount();
         for (int f = rowCount - 1; f >= 0; f--) {
@@ -591,23 +584,26 @@ public class AdicionMesaView1 extends javax.swing.JFrame {
             modelo1.removeRow(f);
         }
     }
-    
-    private void cargarTablaPedido(Pedido pedidoSel){
-         
-     Producto prod= new Producto();
-            pedidosP= ppd.ListarPedidosProductoPorIdPedido(pedidoSel.getIdPedido());
-            
-//           System.out.println( pedidosP.toString());
-             for (PedidoProducto aux1 : pedidosP) {
-//                 prod= pData.buscarProductoPorId(aux1.getProducto().getIdProducto());
 
-                modelo1.addRow(new Object[]{aux1.getIdPedidoProducto(), aux1.getCantidad(), aux1.getProducto().getNombre(), aux1.getProducto().getPrecio(), aux1.getSubtotal()});
-            }
-             double suma = 0;
-            for (int i = 0; i < modelo1.getRowCount(); i++) {
-                suma += Double.parseDouble(modelo1.getValueAt(i, 4).toString());
-            }
-            jtTotal.setText(String.valueOf(suma));
+    private void cargarTablaPedido(Pedido pedidoSel) {
+
+        Producto producto = new Producto();
+        List<Producto> productos = new ArrayList<>();
+        pedidosP = ppd.ListarPedidosProductoPorIdPedido(pedidoSel.getIdPedido());
+
+//           System.out.println( pedidosP.toString());
+        for (PedidoProducto aux1 : pedidosP) {
+//                 
+//        productos= pData.listarProductosPorPedido();
+
+            modelo1.addRow(new Object[]{
+                aux1.getIdPedidoProducto(), aux1.getCantidad(), aux1.getProducto().getNombre(), aux1.getProducto().getPrecio(), aux1.getSubtotal()});
+        }
+        double suma = 0;
+        for (int i = 0; i < modelo1.getRowCount(); i++) {
+            suma += Double.parseDouble(modelo1.getValueAt(i, 4).toString());
+        }
+        jtTotal.setText(String.valueOf(suma));
     }
 
 }
