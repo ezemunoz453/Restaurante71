@@ -35,6 +35,7 @@ public class ListaDePedidosPorMesero extends javax.swing.JFrame {
         initComponents();
         cargarItems();
         cargarColumnas();
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -150,10 +151,11 @@ public class ListaDePedidosPorMesero extends javax.swing.JFrame {
             LocalDate fecha = al.getFecha();
             LocalTime hora = al.getHora();
             double importe = al.getImporte();
+            int NumeroMesa = al.getMesa().getNumeroMesa();
             
           
 
-            modelo.addRow(new Object[]{idPedido, fecha, hora, importe});
+            modelo.addRow(new Object[]{idPedido, fecha, hora, importe, NumeroMesa});
 
         }
 
@@ -181,7 +183,7 @@ public class ListaDePedidosPorMesero extends javax.swing.JFrame {
         modelo.addColumn("Fecha");
         modelo.addColumn("Hora");
         modelo.addColumn("Importe");
-        modelo.addColumn("IdMesa");
+        modelo.addColumn("Numero Mesa");
 
         jtTabla.setModel(modelo);
     }

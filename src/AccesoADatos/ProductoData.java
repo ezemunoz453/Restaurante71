@@ -71,6 +71,25 @@ public class ProductoData {
         
     }
     
+    public void modificarStockProducto(int cantidad, int idProducto) {
+        String sql = "UPDATE producto SET stock=?  WHERE idProducto=? ";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+             ps.setInt(1, cantidad);
+             ps.setInt(2, idProducto);
+                      
+            int exito = ps.executeUpdate();
+            
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, " Producto modificado");
+            }
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Producto");
+        }
+        
+    }
+    
     
     public void eliminarProducto(int idProducto) {
         String sql = "UPDATE producto SET estado=0 WHERE idProducto=? ";

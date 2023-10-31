@@ -110,6 +110,7 @@ public class AdicionMesaView extends javax.swing.JFrame {
         jbSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -422,6 +423,12 @@ public class AdicionMesaView extends javax.swing.JFrame {
                         jtProducto.setText("");
                         jtCantidad.setText("");
                         jbAdicionarPedido.setEnabled(true);
+                        
+                        int cantidadStock = producto.getStock();
+                        
+                        int nuevaCantidad = cantidadStock - cantidad;
+                        
+                        pData.modificarStockProducto(nuevaCantidad, producto.getIdProducto());
                     }
                 }
             } catch (NumberFormatException n) {
@@ -478,6 +485,18 @@ public class AdicionMesaView extends javax.swing.JFrame {
 
             ppd.eliminarPedidoProducto(IdPP);
 
+            //cambios stock
+            String nombreProd;
+            nombreProd= modelo1.getValueAt(filaSel1, 2).toString();
+            
+            Producto prod= pData.buscarProductoPorNombre(nombreProd);            
+            int cantidad= Integer.parseInt(modelo1.getValueAt(filaSel1, 1).toString());
+            int cantidadStock = prod.getStock();
+            
+            int nuevaCantidad = cantidadStock + cantidad;
+            
+            pData.modificarStockProducto(nuevaCantidad, prod.getIdProducto());
+            
             pedidosP.remove(pp);
             modelo1.removeRow(filaSel1);
             double suma = 0;

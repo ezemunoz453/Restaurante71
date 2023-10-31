@@ -159,16 +159,34 @@ public class MeseroView extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jbCerrarSesion = new javax.swing.JButton();
         jLabelLogo1 = new javax.swing.JLabel();
         jLabelBotones = new javax.swing.JLabel();
         panel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(910, 6850));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton2.setText("Admin");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, 90, -1));
+
+        jButton1.setBackground(new java.awt.Color(229, 195, 157));
+        jButton1.setText("Pedidos x Cobrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 130, 40));
 
         jbCerrarSesion.setBackground(new java.awt.Color(229, 195, 157));
         jbCerrarSesion.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
@@ -221,6 +239,18 @@ public class MeseroView extends javax.swing.JFrame {
         new Login().setVisible(true);
     }//GEN-LAST:event_jbCerrarSesionActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+      PedidosPorCobrar ppc= new PedidosPorCobrar();
+      ppc.setVisible(true);
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Login log= new Login();
+        log.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     public void AgregarImagenALabel(JLabel labelName, String root) {
         ImageIcon image = new ImageIcon(root);
         Icon icon = new ImageIcon(image.getImage().getScaledInstance(labelName.getWidth(), labelName.getHeight(), Image.SCALE_DEFAULT));
@@ -231,6 +261,8 @@ public class MeseroView extends javax.swing.JFrame {
 //  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabelBotones;
     private javax.swing.JLabel jLabelLogo1;
     private javax.swing.JPanel jPanel1;

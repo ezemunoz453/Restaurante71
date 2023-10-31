@@ -45,19 +45,15 @@ public class TotalEntreFechas extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Totales entre fechas");
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Ingrese fecha final  ddmmaaaa : ");
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Ingrese fecha inicial ddmmaaaa :  ");
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Total entre las fechas solicitadas  :     $");
 
         jtFechaInicio.addActionListener(new java.awt.event.ActionListener() {

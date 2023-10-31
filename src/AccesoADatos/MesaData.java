@@ -55,7 +55,7 @@ public class MesaData {
             int exito = ps.executeUpdate();
 
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, " Datos de Mesa modificada");
+//                JOptionPane.showMessageDialog(null, " Datos de Mesa modificada");
             }
 
         } catch (SQLException ex) {

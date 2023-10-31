@@ -52,10 +52,8 @@ public class VentasPorHora extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jlVentaPorHora.setForeground(new java.awt.Color(0, 0, 0));
         jlVentaPorHora.setText("Ventas por hora");
 
-        jlFecha.setForeground(new java.awt.Color(0, 0, 0));
         jlFecha.setText("Ingrese fecha ddmmaaaa : ");
 
         jtFecha.addActionListener(new java.awt.event.ActionListener() {
@@ -64,10 +62,8 @@ public class VentasPorHora extends javax.swing.JFrame {
             }
         });
 
-        jlHoraComienzo.setForeground(new java.awt.Color(0, 0, 0));
         jlHoraComienzo.setText("Ingrese hora comienzo hhmm : ");
 
-        jlHoraFinal.setForeground(new java.awt.Color(0, 0, 0));
         jlHoraFinal.setText("Ingrese hora final hhmm : ");
 
         jtHoraFinal.addActionListener(new java.awt.event.ActionListener() {
@@ -76,7 +72,6 @@ public class VentasPorHora extends javax.swing.JFrame {
             }
         });
 
-        jlTotal.setForeground(new java.awt.Color(0, 0, 0));
         jlTotal.setText("Total :    $");
 
         jbConsulta.setBackground(new java.awt.Color(228, 195, 150));

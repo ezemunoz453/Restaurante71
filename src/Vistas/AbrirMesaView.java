@@ -75,7 +75,7 @@ public class AbrirMesaView extends javax.swing.JFrame {
         jbConfirmarPedido.setEnabled(false);
         jtCantidad.setEnabled(false);
         jtProducto.setEnabled(false);
-        
+
         jtIdPedido.setText("");
         jtMesero.setText("");
 
@@ -125,6 +125,7 @@ public class AbrirMesaView extends javax.swing.JFrame {
         jbSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -478,6 +479,12 @@ public class AbrirMesaView extends javax.swing.JFrame {
                         jtProducto.setText("");
                         jtCantidad.setText("");
                         jbConfirmarPedido.setEnabled(true);
+
+                        int cantidadStock = producto.getStock();
+                        
+                        int nuevaCantidad = cantidadStock - cantidad;
+                        
+                        pData.modificarStockProducto(nuevaCantidad, producto.getIdProducto());
                     }
                 }
             } catch (NumberFormatException n) {
@@ -531,6 +538,18 @@ public class AbrirMesaView extends javax.swing.JFrame {
             pp = ppd.buscarpp(IdPP);
 
             ppd.eliminarPedidoProducto(IdPP);
+            
+            //cambios stock
+            String nombreProd;
+            nombreProd= modelo1.getValueAt(filaSel1, 2).toString();
+            
+            Producto prod= pData.buscarProductoPorNombre(nombreProd);            
+            int cantidad= Integer.parseInt(modelo1.getValueAt(filaSel1, 1).toString());
+            int cantidadStock = prod.getStock();
+            
+            int nuevaCantidad = cantidadStock + cantidad;
+            
+            pData.modificarStockProducto(nuevaCantidad, prod.getIdProducto());
 
             pedidosP.remove(pp);
             modelo1.removeRow(filaSel1);
@@ -550,7 +569,7 @@ public class AbrirMesaView extends javax.swing.JFrame {
     private void jbConfirmarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarPedidoActionPerformed
         Pedido pedido2 = null;
         int idPedido = Integer.parseInt(jtIdPedido.getText().toString());
-        
+
         Double importe = 0.0;
         pedidosP = new ArrayList<>();
         pedidosP = ppd.ListarPedidosProductoPorIdPedido(idPedido);
@@ -566,14 +585,13 @@ public class AbrirMesaView extends javax.swing.JFrame {
     }//GEN-LAST:event_jbConfirmarPedidoActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
-      
-      
-        
-        if(jtIdPedido.getText().isEmpty() && jtMesero.getText().isEmpty()){
-           JOptionPane.showMessageDialog(this, " Debe seleccionar un mesero ");
-           return;
-       } else {
-        dispose();}
+
+        if (jtIdPedido.getText().isEmpty() && jtMesero.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, " Debe seleccionar un mesero ");
+            return;
+        } else {
+            dispose();
+        }
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jcbMeseroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMeseroActionPerformed

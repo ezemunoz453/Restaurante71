@@ -141,17 +141,11 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jlVentaPorHora">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Ventas por hora"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jlFecha">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Ingrese fecha ddmmaaaa : "/>
           </Properties>
         </Component>
@@ -162,9 +156,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jlHoraComienzo">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Ingrese hora comienzo hhmm : "/>
           </Properties>
         </Component>
@@ -172,9 +163,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jlHoraFinal">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Ingrese hora final hhmm : "/>
           </Properties>
         </Component>
@@ -187,9 +175,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jlTotal">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Total :    $"/>
           </Properties>
         </Component>

@@ -76,6 +76,7 @@ public class ComprobanteView extends javax.swing.JFrame {
         jLabel2.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jpFondo.setBackground(new java.awt.Color(229, 195, 165));
 
