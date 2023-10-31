@@ -547,6 +547,32 @@ public class PedidoData {
         return null; 
     }
 }
-    
+    public double SumarTotalesPorFechaEntreHoras(LocalDate fecha, LocalTime horaInicio, LocalTime horaFinal) {
+    List<Pedido> pedidos = new ArrayList<>();
+    String sql = "SELECT * FROM pedido WHERE fecha = ? AND hora BETWEEN ? AND ?";
+
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+    double sumaTotal = 0;
+
+    try {
+        ps = con.prepareStatement(sql);
+        ps.setDate(1, Date.valueOf(fecha));
+        ps.setTime(2, Time.valueOf(horaInicio));
+        ps.setTime(3, Time.valueOf(horaFinal));
+        rs = ps.executeQuery();
+        while (rs.next()) {
+            Pedido pedido = new Pedido();
+            pedido.setImporte(rs.getDouble("importe"));
+            pedidos.add(pedido);
+
+            sumaTotal += pedido.getImporte();
+        }
+
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Pedido: ");
+    }
+    return sumaTotal;
+}
     }
 

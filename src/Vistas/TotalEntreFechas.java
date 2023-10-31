@@ -143,13 +143,13 @@ public class TotalEntreFechas extends javax.swing.JFrame {
 
     private void jtFechaInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtFechaInicioActionPerformed
            
-   // String fechaInicio=jtFechaInicio.getText();
+   
        
     }//GEN-LAST:event_jtFechaInicioActionPerformed
 
     private void jtFechaFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtFechaFinalActionPerformed
     
-    //String fechaFinal=jtFechaFinal.getText();
+   
         
     }//GEN-LAST:event_jtFechaFinalActionPerformed
 

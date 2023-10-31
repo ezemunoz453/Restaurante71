@@ -137,6 +137,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         ListadePedidosPorMesero = new javax.swing.JButton();
         jbTotalEntreFechas = new javax.swing.JButton();
+        jbTotal = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -704,6 +705,13 @@ public class AdministradorView1 extends javax.swing.JFrame {
             }
         });
 
+        jbTotal.setText("Total entre horas");
+        jbTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbTotalActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -711,8 +719,10 @@ public class AdministradorView1 extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(118, 118, 118)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ListadePedidosPorMesero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jbTotalEntreFechas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jbTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(ListadePedidosPorMesero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbTotalEntreFechas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(833, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
@@ -722,7 +732,9 @@ public class AdministradorView1 extends javax.swing.JFrame {
                 .addComponent(ListadePedidosPorMesero, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56)
                 .addComponent(jbTotalEntreFechas, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(909, Short.MAX_VALUE))
+                .addGap(68, 68, 68)
+                .addComponent(jbTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(764, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("REPORTES ", jPanel7);
@@ -1293,6 +1305,10 @@ public class AdministradorView1 extends javax.swing.JFrame {
                 new TotalEntreFechas().setVisible(true);
     }//GEN-LAST:event_jbTotalEntreFechasActionPerformed
 
+    private void jbTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbTotalActionPerformed
+    new VentasPorHora().setVisible(true);
+    }//GEN-LAST:event_jbTotalActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ListadePedidosPorMesero;
@@ -1342,6 +1358,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
     private javax.swing.JButton jbModificarUsuario;
     private javax.swing.JButton jbProductos;
     private javax.swing.JButton jbReportes;
+    private javax.swing.JButton jbTotal;
     private javax.swing.JButton jbTotalEntreFechas;
     private javax.swing.JComboBox<String> jcbEstado;
     private javax.swing.JComboBox<String> jcbNivel;
