@@ -1,7 +1,9 @@
 package Vistas;
 
+import AccesoADatos.MesaData;
 import AccesoADatos.MeseroData;
 import AccesoADatos.PedidoData;
+import Entidades.Mesa;
 import Entidades.Mesero;
 import Entidades.Pedido;
 import java.awt.Graphics;
@@ -18,6 +20,8 @@ public class ListaDePedidosPorMesero extends javax.swing.JFrame {
     MeseroData meseroD = new MeseroData();
     Mesero mesero = new Mesero();
     Pedido pedido = new Pedido();
+    MesaData mesaD= new MesaData();
+    
 
     private DefaultTableModel modelo = new DefaultTableModel() {
 //        para que sus celdas no sean editables
@@ -139,12 +143,15 @@ public class ListaDePedidosPorMesero extends javax.swing.JFrame {
 
         List<Pedido> a = peData.ListarPedidosPorMesero(nombreMesero);
         borrarFilas();
+        
         for (Pedido al : a) {
 
             int idPedido = al.getIdPedido();
             LocalDate fecha = al.getFecha();
             LocalTime hora = al.getHora();
             double importe = al.getImporte();
+            
+          
 
             modelo.addRow(new Object[]{idPedido, fecha, hora, importe});
 
