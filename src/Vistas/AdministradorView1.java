@@ -156,6 +156,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
         MiEscritorio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         MiEscritorio.add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 500, 200, 170));
 
+        jdUsuarios.setBackground(new java.awt.Color(255, 255, 255));
         jdUsuarios.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jdUsuarios.setForeground(new java.awt.Color(201, 162, 123));
         jdUsuarios.setText("USUARIOS");
@@ -176,6 +177,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
         });
         MiEscritorio.add(jdUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 220, 60));
 
+        jbMeseros.setBackground(new java.awt.Color(255, 255, 255));
         jbMeseros.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jbMeseros.setForeground(new java.awt.Color(201, 162, 123));
         jbMeseros.setText("MESEROS");
@@ -194,6 +196,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
         });
         MiEscritorio.add(jbMeseros, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 220, 60));
 
+        jbProductos.setBackground(new java.awt.Color(255, 255, 255));
         jbProductos.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jbProductos.setForeground(new java.awt.Color(201, 162, 123));
         jbProductos.setText("PRODUCTOS");
@@ -233,6 +236,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
         });
         MiEscritorio.add(jbSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 460, -1, -1));
 
+        jbReportes.setBackground(new java.awt.Color(255, 255, 255));
         jbReportes.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jbReportes.setForeground(new java.awt.Color(201, 162, 123));
         jbReportes.setText("REPORTES");
@@ -253,6 +257,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
         });
         MiEscritorio.add(jbReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 220, 60));
 
+        jbMesas.setBackground(new java.awt.Color(255, 255, 255));
         jbMesas.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jbMesas.setForeground(new java.awt.Color(201, 162, 123));
         jbMesas.setText("MESAS");
@@ -1239,7 +1244,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jbMeserosMouseExited
 
     private void jbMeserosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMeserosActionPerformed
-        jTabbedPane1.setSelectedIndex(1);
+        jTabbedPane1.setSelectedIndex(2);
     }//GEN-LAST:event_jbMeserosActionPerformed
 
     private void jbBuscarMeseroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarMeseroActionPerformed
