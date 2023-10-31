@@ -57,7 +57,6 @@ public class AdicionMesaView extends javax.swing.JFrame {
         this.setLocationRelativeTo(this);
         cargarColumnasProductos();
         cargarColumnasPedido();
-//         cargarTablaPedido();
 
         mesaSel = mesa;
         int numeromesa = mesaSel.getNumeroMesa();
@@ -435,8 +434,7 @@ public class AdicionMesaView extends javax.swing.JFrame {
 
             // guardo pedido producto y cargo a un array en tabla
             pedidosP = new ArrayList<>();
-            // listar oEDIDOS PRODUCTOS CON ID PEDIDO ??
-
+            
             pedidosP.add(pp);
             for (PedidoProducto aux1 : pedidosP) {
 
@@ -498,17 +496,17 @@ public class AdicionMesaView extends javax.swing.JFrame {
     private void jbAdicionarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAdicionarPedidoActionPerformed
         Pedido pedido2 = null;
         int idPedido = Integer.parseInt(jtIdPedido.getText().toString());
-        System.out.println(idPedido);
+        
         Double importe = 0.0;
         pedidosP = new ArrayList<>();
         pedidosP = ppd.ListarPedidosProductoPorIdPedido(idPedido);
 
         for (PedidoProducto pedidoProducto : pedidosP) {
-//            System.out.println(pedidoProducto.getPedido().toString());
+
             importe += pedidoProducto.getSubtotal();
 
         }
-//        System.out.println("importe total"+importe);
+
 
         pedidoData.modificarImportePedido(idPedido, importe);
         dispose();

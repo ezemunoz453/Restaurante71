@@ -64,7 +64,7 @@ public class AbrirMesaView extends javax.swing.JFrame {
         mesaSel = mesa;
         int numeromesa = mesaSel.getNumeroMesa();
         int capacidadmesa = mesaSel.getCapacidad();
-//        int idMesasel= mesaSel.getIdMesa();
+
         jtMesaSeleccionada.setText(numeromesa + "");
         jtCapacidadSeleccionada.setText(capacidadmesa + "");
 
@@ -550,7 +550,7 @@ public class AbrirMesaView extends javax.swing.JFrame {
     private void jbConfirmarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarPedidoActionPerformed
         Pedido pedido2 = null;
         int idPedido = Integer.parseInt(jtIdPedido.getText().toString());
-        System.out.println(idPedido);
+        
         Double importe = 0.0;
         pedidosP = new ArrayList<>();
         pedidosP = ppd.ListarPedidosProductoPorIdPedido(idPedido);

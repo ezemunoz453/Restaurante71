@@ -28,7 +28,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class MeseroView extends javax.swing.JFrame {
 
-//    private int[] contadorDeClics;
+
     private int cantidadDeMesas;
 
     private JPanel buttonPanel;
@@ -46,7 +46,7 @@ public class MeseroView extends javax.swing.JFrame {
         AgregarImagenALabel(jLabelLogo1, "src/imagenes/Logog71 resto.png");
 
         int cantidadDeMesas = mData.contarMesas();
-//        contadorDeClics = new int[cantidadDeMesas];
+
         agregarBotonesAlPanel(cantidadDeMesas);
     }
 
