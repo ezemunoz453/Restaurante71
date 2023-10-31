@@ -28,7 +28,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class MeseroView extends javax.swing.JFrame {
 
-    private int[] contadorDeClics;
+//    private int[] contadorDeClics;
     private int cantidadDeMesas;
 
     private JPanel buttonPanel;
@@ -89,7 +89,7 @@ public class MeseroView extends javax.swing.JFrame {
                         if (mesa1.getEstado().equalsIgnoreCase("ocupada")) {
                             JOptionPane.showMessageDialog(panel, " La mesa ya se encuentra ocupada");
                         } else {
-                            AdicionMesaView amv = new AdicionMesaView(mesa1);
+                            AbrirMesaView amv = new AbrirMesaView(mesa1);
                             amv.setVisible(true);
                             mesa1.setEstado("OCUPADA");
                             boton.setBackground(new Color(229, 195, 157));
@@ -101,7 +101,7 @@ public class MeseroView extends javax.swing.JFrame {
                         if (mesa1.getEstado().equalsIgnoreCase("LIBRE")) {
                             JOptionPane.showMessageDialog(panel, " Debe abrir mesa para adicionar consumo");
                         } else {
-                            AdicionMesaView1 amv = new AdicionMesaView1(mesa1);
+                            AdicionMesaView amv = new AdicionMesaView(mesa1);
                             amv.setVisible(true);
                         }
                     } // CERRAR MESA
@@ -135,7 +135,7 @@ public class MeseroView extends javax.swing.JFrame {
                                  mesa1.setEstado("LIBRE");
                                 boton.setBackground(Color.WHITE);
                                 mData.modificarMesa(mesa1);
-                                 ComprobanteView cv = new ComprobanteView();
+                                 ComprobanteView cv = new ComprobanteView(pedido2);
                             cv.setVisible(true);
                                 
                             }
@@ -159,7 +159,6 @@ public class MeseroView extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jbListaPedidosPorMesero = new javax.swing.JButton();
         jbCerrarSesion = new javax.swing.JButton();
         jLabelLogo1 = new javax.swing.JLabel();
         jLabelBotones = new javax.swing.JLabel();
@@ -170,17 +169,6 @@ public class MeseroView extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jbListaPedidosPorMesero.setBackground(new java.awt.Color(229, 195, 157));
-        jbListaPedidosPorMesero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jbListaPedidosPorMesero.setForeground(new java.awt.Color(255, 255, 255));
-        jbListaPedidosPorMesero.setText("Lista de Pedidos x Mesero");
-        jbListaPedidosPorMesero.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbListaPedidosPorMeseroActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jbListaPedidosPorMesero, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 160, 40));
 
         jbCerrarSesion.setBackground(new java.awt.Color(229, 195, 157));
         jbCerrarSesion.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
@@ -233,12 +221,6 @@ public class MeseroView extends javax.swing.JFrame {
         new Login().setVisible(true);
     }//GEN-LAST:event_jbCerrarSesionActionPerformed
 
-    private void jbListaPedidosPorMeseroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbListaPedidosPorMeseroActionPerformed
-        ListaDePedidosPorMesero lpm = new ListaDePedidosPorMesero();
-        lpm.setVisible(true);
-
-    }//GEN-LAST:event_jbListaPedidosPorMeseroActionPerformed
-
     public void AgregarImagenALabel(JLabel labelName, String root) {
         ImageIcon image = new ImageIcon(root);
         Icon icon = new ImageIcon(image.getImage().getScaledInstance(labelName.getWidth(), labelName.getHeight(), Image.SCALE_DEFAULT));
@@ -253,7 +235,6 @@ public class MeseroView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelLogo1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbCerrarSesion;
-    private javax.swing.JButton jbListaPedidosPorMesero;
     private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
 

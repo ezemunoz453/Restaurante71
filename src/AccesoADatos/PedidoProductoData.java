@@ -141,7 +141,7 @@ public class PedidoProductoData {
                pedidoProducto.setSubtotal(rs.getDouble("subtotal"));
                 Producto prod;
                 prod= pData.buscarProductoPorId(rs.getInt("idProducto"));
-               pedidoProducto.setProducto(producto);
+               pedidoProducto.setProducto(prod);
                Pedido ped;
                ped= pedData.buscarPedidoPorId(idPedido);
                pedidoProducto.setPedido(ped);
