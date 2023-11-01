@@ -112,6 +112,10 @@ public class AdministradorView1 extends javax.swing.JFrame {
         ListadePedidosPorMesero = new javax.swing.JButton();
         jbTotalEntreFechas = new javax.swing.JButton();
         jbTotal = new javax.swing.JButton();
+        jbListarMesas = new javax.swing.JButton();
+        jbListarMeseros = new javax.swing.JButton();
+        jbListarUsuarios = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -194,7 +198,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
                 jbMeserosActionPerformed(evt);
             }
         });
-        MiEscritorio.add(jbMeseros, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 220, 60));
+        MiEscritorio.add(jbMeseros, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, 220, 60));
 
         jbProductos.setBackground(new java.awt.Color(255, 255, 255));
         jbProductos.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
@@ -215,7 +219,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
                 jbProductosActionPerformed(evt);
             }
         });
-        MiEscritorio.add(jbProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 220, 60));
+        MiEscritorio.add(jbProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 220, 60));
 
         jbCerrarSesion.setBackground(new java.awt.Color(229, 195, 157));
         jbCerrarSesion.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
@@ -255,7 +259,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
                 jbReportesActionPerformed(evt);
             }
         });
-        MiEscritorio.add(jbReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 220, 60));
+        MiEscritorio.add(jbReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 220, 60));
 
         jbMesas.setBackground(new java.awt.Color(255, 255, 255));
         jbMesas.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
@@ -475,29 +479,70 @@ public class AdministradorView1 extends javax.swing.JFrame {
             }
         });
 
+        jbListarMesas.setText("Listar Mesas");
+        jbListarMesas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbListarMesasActionPerformed(evt);
+            }
+        });
+
+        jbListarMeseros.setText("Listar Meseros");
+        jbListarMeseros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbListarMeserosActionPerformed(evt);
+            }
+        });
+
+        jbListarUsuarios.setText("Listar Usuarios");
+        jbListarUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbListarUsuariosActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Listar Productos");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(118, 118, 118)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(141, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbListarMeseros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jbTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ListadePedidosPorMesero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(ListadePedidosPorMesero))
                 .addGap(78, 78, 78)
-                .addComponent(jbTotalEntreFechas, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jbTotalEntreFechas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbListarMesas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbListarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(131, 131, 131))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(57, 57, 57)
+                .addGap(90, 90, 90)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ListadePedidosPorMesero, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbTotalEntreFechas, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(51, 51, 51)
-                .addComponent(jbTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(393, Short.MAX_VALUE))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jbTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbListarMesas, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(62, 62, 62)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jbListarMeseros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbListarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(55, 55, 55)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("REPORTES ", jPanel7);
@@ -1337,10 +1382,31 @@ public class AdministradorView1 extends javax.swing.JFrame {
       msv.setVisible(true);
     }//GEN-LAST:event_jbStockActionPerformed
 
+    private void jbListarMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbListarMesasActionPerformed
+        ListarMesas lm= new ListarMesas();
+        lm.setVisible(true);
+    }//GEN-LAST:event_jbListarMesasActionPerformed
+
+    private void jbListarMeserosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbListarMeserosActionPerformed
+       ListarMeseros lme= new ListarMeseros();
+        lme.setVisible(true);
+    }//GEN-LAST:event_jbListarMeserosActionPerformed
+
+    private void jbListarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbListarUsuariosActionPerformed
+       ListarUsuarios lu= new ListarUsuarios();
+    lu.setVisible(true);
+    }//GEN-LAST:event_jbListarUsuariosActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ListarProductos lp= new ListarProductos();
+        lp.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ListadePedidosPorMesero;
     private javax.swing.JDesktopPane MiEscritorio;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLFondoBotones;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1379,6 +1445,9 @@ public class AdministradorView1 extends javax.swing.JFrame {
     private javax.swing.JButton jbGuardarMesero;
     private javax.swing.JButton jbGuardarProducto;
     private javax.swing.JButton jbGuardarUsuario;
+    private javax.swing.JButton jbListarMesas;
+    private javax.swing.JButton jbListarMeseros;
+    private javax.swing.JButton jbListarUsuarios;
     private javax.swing.JButton jbMesas;
     private javax.swing.JButton jbMeseros;
     private javax.swing.JButton jbModificarMesa;
