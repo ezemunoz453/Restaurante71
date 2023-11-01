@@ -418,17 +418,23 @@ public class AdicionMesaView extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(this, "El campo cantidad no puede ser cero");
                         return;
                     } else {
+                        int cantidadStock = producto.getStock();
+                        int nuevaCantidad = cantidadStock - cantidad;
+                        
+                        if(nuevaCantidad>=0){
+                        pData.modificarStockProducto(nuevaCantidad, producto.getIdProducto());
                         pp = new PedidoProducto(producto, cantidad, pedido1);
                         ppd.guardarPedidoProducto(pp);
                         jtProducto.setText("");
                         jtCantidad.setText("");
                         jbAdicionarPedido.setEnabled(true);
                         
-                        int cantidadStock = producto.getStock();
+                        } else{
+                            JOptionPane.showMessageDialog(this, "No hay stock para realizar operacion");
+                            return;
+                        }
                         
-                        int nuevaCantidad = cantidadStock - cantidad;
-                        
-                        pData.modificarStockProducto(nuevaCantidad, producto.getIdProducto());
+//                       
                     }
                 }
             } catch (NumberFormatException n) {
