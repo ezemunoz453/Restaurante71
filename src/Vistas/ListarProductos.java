@@ -69,7 +69,7 @@ public class ListarProductos extends javax.swing.JFrame {
         setUndecorated(true);
 
         jlVentaPorHora.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jlVentaPorHora.setText("Listar Usuarios");
+        jlVentaPorHora.setText("Listar Productos");
 
         jTProductos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTProductos.setModel(new javax.swing.table.DefaultTableModel(

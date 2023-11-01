@@ -57,7 +57,7 @@ public class PedidoData {
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 pedido.setIdPedido(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "Pedido añadido con exito ");
+//                JOptionPane.showMessageDialog(null, "Pedido añadido con exito ");
             }
             ps.close();
 
@@ -77,7 +77,7 @@ public class PedidoData {
             ps.setString(1, estado);
             ps.setInt(2, pedido.getIdPedido());
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Estado pedido modificado con exito ");
+//            JOptionPane.showMessageDialog(null, "Estado pedido modificado con exito ");
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Pedido");
@@ -98,7 +98,7 @@ public class PedidoData {
 
             int exito = ps.executeUpdate();
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, " Pedido modificado con exito");
+//                JOptionPane.showMessageDialog(null, " Pedido modificado con exito");
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Pedido");
@@ -116,7 +116,7 @@ public class PedidoData {
 
             int exito = ps.executeUpdate();
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, " Pedido modificado con exito");
+//                JOptionPane.showMessageDialog(null, " Pedido modificado con exito");
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Pedido");
@@ -130,7 +130,7 @@ public class PedidoData {
             ps.setInt(1, idPedido);
             int exito = ps.executeUpdate();
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, " Pedido eliminado Definitivamente");
+//                JOptionPane.showMessageDialog(null, " Pedido eliminado Definitivamente");
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Pedido");

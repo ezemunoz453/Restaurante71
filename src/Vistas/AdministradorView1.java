@@ -1075,6 +1075,7 @@ public class AdministradorView1 extends javax.swing.JFrame {
                     jbEliminarMesa.setEnabled(true);
                 } else {
                     limpiarCamposMesa();
+                    jbGuardarMesa.setEnabled(true);
                 }
             }
         } catch (NumberFormatException e) {

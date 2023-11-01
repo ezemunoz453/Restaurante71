@@ -40,7 +40,7 @@ public class PedidoProductoData {
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 pp.setIdPedidoProducto(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "Pedido Producto generado con exito ");
+//                JOptionPane.showMessageDialog(null, "Pedido Producto generado con exito ");
             }
             
         } catch (SQLException ex) {
@@ -61,7 +61,7 @@ public class PedidoProductoData {
             ps.setInt(5, pp.getIdPedidoProducto());
             int exito = ps.executeUpdate();
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, " Pedido Producto modificado");
+//                JOptionPane.showMessageDialog(null, " Pedido Producto modificado");
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Pedido Producto");
@@ -79,7 +79,7 @@ public class PedidoProductoData {
             int exito = ps.executeUpdate();
 
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, " Pedido Producto eliminado Definitivamente");
+//                JOptionPane.showMessageDialog(null, " Pedido Producto eliminado Definitivamente");
             }
 
         } catch (SQLException ex) {

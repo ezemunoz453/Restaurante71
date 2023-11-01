@@ -62,7 +62,7 @@ public class ProductoData {
             int exito = ps.executeUpdate();
             
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, " Producto modificado");
+//                JOptionPane.showMessageDialog(null, " Producto modificado");
             }
             
         } catch (SQLException ex) {
@@ -81,7 +81,7 @@ public class ProductoData {
             int exito = ps.executeUpdate();
             
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, " Producto modificado");
+//                JOptionPane.showMessageDialog(null, " Producto modificado");
             }
             
         } catch (SQLException ex) {
